@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.3/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.1/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
@@ -29,7 +29,7 @@
     <logging>
         <junit outputFile=".cache/phpunit/report.junit.xml" />
     </logging>
-    <source restrictDeprecations="true" restrictNotices="true" restrictWarnings="true">
+    <source restrictNotices="true" restrictWarnings="true" ignoreIndirectDeprecations="true">
         <include>
             <directory suffix=".php">src</directory>
         </include>
