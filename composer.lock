@@ -583,22 +583,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/shell.git",
-                "reference": "bc8810b4508d6446242a1d558985867c308d8c18"
+                "reference": "a7322044536482612c0fcefcbdca2f44bc9af619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/shell/zipball/bc8810b4508d6446242a1d558985867c308d8c18",
-                "reference": "bc8810b4508d6446242a1d558985867c308d8c18",
+                "url": "https://api.github.com/repos/ghostwriter/shell/zipball/a7322044536482612c0fcefcbdca2f44bc9af619",
+                "reference": "a7322044536482612c0fcefcbdca2f44bc9af619",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-pcntl": "*",
-                "ext-posix": "*",
-                "ext-spl": "*",
-                "ghostwriter/json": "^3.0.0",
-                "php": "^8.2"
+                "php": "^8.3"
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main",
@@ -627,6 +621,7 @@
             "homepage": "https://github.com/ghostwriter/shell",
             "keywords": [
                 "ghostwriter",
+                "process",
                 "shell"
             ],
             "support": {
@@ -642,7 +637,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-05T07:32:08+00:00"
+            "time": "2024-04-07T00:35:51+00:00"
         },
         {
             "name": "psr/container",
@@ -2245,12 +2240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/coding-standard.git",
-                "reference": "3dc242b31c0c69637b56c4f86babb58a36d46a8e"
+                "reference": "673a9fd8286a7f7c661b1401b9914de4bb08f018"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/3dc242b31c0c69637b56c4f86babb58a36d46a8e",
-                "reference": "3dc242b31c0c69637b56c4f86babb58a36d46a8e",
+                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/673a9fd8286a7f7c661b1401b9914de4bb08f018",
+                "reference": "673a9fd8286a7f7c661b1401b9914de4bb08f018",
                 "shasum": ""
             },
             "require": {
@@ -2315,7 +2310,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-05T13:24:06+00:00"
+            "time": "2024-04-06T23:27:42+00:00"
         },
         {
             "name": "ghostwriter/psalm-plugin",
