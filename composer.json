@@ -79,11 +79,13 @@
         "allow-plugins": {
             "ghostwriter/coding-standard": true
         },
+        "classmap-authoritative": false,
         "discard-changes": true,
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "prepend-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "use-parent-dir": false
     },
     "scripts": {
         "cache": [
