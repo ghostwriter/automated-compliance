@@ -111,6 +111,6 @@ jobs:
         uses: codecov/codecov-action@v4
         if: ${{ matrix.php == '8.3' && matrix.dependency == 'locked' }}
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN || '63caea06-f036-4606-a791-ccbd81d86c51' }}
           directory: ${{ github.workspace }}/.cache/phpunit/
           verbose: true
