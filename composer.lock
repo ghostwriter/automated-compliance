@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d761219488372f6debccd15ea5a7a0d",
+    "content-hash": "a6346251274dfc37bd220ebe3dc14c44",
     "packages": [
         {
             "name": "composer/semver",
@@ -583,16 +583,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/shell.git",
-                "reference": "a7322044536482612c0fcefcbdca2f44bc9af619"
+                "reference": "64a40885de5c142ac7448f448a700878420762f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/shell/zipball/a7322044536482612c0fcefcbdca2f44bc9af619",
-                "reference": "a7322044536482612c0fcefcbdca2f44bc9af619",
+                "url": "https://api.github.com/repos/ghostwriter/shell/zipball/64a40885de5c142ac7448f448a700878420762f5",
+                "reference": "64a40885de5c142ac7448f448a700878420762f5",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.3"
+                "php": ">=8.3"
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main",
@@ -637,7 +637,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-07T00:35:51+00:00"
+            "time": "2024-04-08T21:14:01+00:00"
         },
         {
             "name": "psr/container",
@@ -2240,12 +2240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/coding-standard.git",
-                "reference": "673a9fd8286a7f7c661b1401b9914de4bb08f018"
+                "reference": "81206e2964988bfb3e426172b44d8dac5e682a16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/673a9fd8286a7f7c661b1401b9914de4bb08f018",
-                "reference": "673a9fd8286a7f7c661b1401b9914de4bb08f018",
+                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/81206e2964988bfb3e426172b44d8dac5e682a16",
+                "reference": "81206e2964988bfb3e426172b44d8dac5e682a16",
                 "shasum": ""
             },
             "require": {
@@ -2255,6 +2255,8 @@
                 "mockery/mockery": "^1.6.11 || ^2.0.0",
                 "php": "^8.2",
                 "phpunit/phpunit": "^10.5.17 || ^11.0.9 || ^12.0.0",
+                "rector/rector": "^1.0.4",
+                "symplify/easy-coding-standard": "^12.1.14",
                 "vimeo/psalm": "^5.23.1 || ^6.0.0"
             },
             "suggest": {
@@ -2269,8 +2271,8 @@
             "type": "composer-plugin",
             "extra": {
                 "class": "Ghostwriter\\CodingStandard\\Plugin\\ComposerPlugin",
-                "plugin-modifies-downloads": true,
-                "plugin-modifies-install-path": true,
+                "plugin-modifies-downloads": false,
+                "plugin-modifies-install-path": false,
                 "plugin-optional": false
             },
             "autoload": {
@@ -2310,7 +2312,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-06T23:27:42+00:00"
+            "time": "2024-04-08T21:00:24+00:00"
         },
         {
             "name": "ghostwriter/psalm-plugin",
@@ -5328,6 +5330,64 @@
             "time": "2024-02-22T20:27:20+00:00"
         },
         {
+            "name": "symplify/easy-coding-standard",
+            "version": "12.1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
+                "reference": "e3c4a241ee36704f7cf920d5931f39693e64afd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/e3c4a241ee36704f7cf920d5931f39693e64afd5",
+                "reference": "e3c4a241ee36704f7cf920d5931f39693e64afd5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "conflict": {
+                "friendsofphp/php-cs-fixer": "<3.46",
+                "phpcsstandards/php_codesniffer": "<3.8",
+                "symplify/coding-standard": "<12.1"
+            },
+            "bin": [
+                "bin/ecs"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer",
+            "keywords": [
+                "Code style",
+                "automation",
+                "fixer",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.1.14"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-23T13:10:40+00:00"
+        },
+        {
             "name": "theseer/tokenizer",
             "version": "1.2.3",
             "source": {
@@ -5563,7 +5623,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.3",
+        "php": ">=8.3",
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pcov": "*",
