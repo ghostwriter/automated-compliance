@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.23.1@8471a896ccea3526b26d082f4461eeea467f10a4">
   <file src="src/Command/AbstractCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public static function getDefaultName(): string]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[build]]></code>
       <code><![CDATA[build]]></code>
@@ -17,6 +20,10 @@
     </PossiblyUnusedProperty>
   </file>
   <file src="src/Command/CheckCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
     </MissingThrowsDocblock>
@@ -25,6 +32,10 @@
     </UnusedClass>
   </file>
   <file src="src/Command/MatrixCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
     </MissingThrowsDocblock>
@@ -36,6 +47,10 @@
     <InvalidArgument>
       <code><![CDATA[$payload]]></code>
     </InvalidArgument>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addArgument]]></code>
@@ -61,6 +76,10 @@
     </UnusedClass>
   </file>
   <file src="src/Command/WorkflowCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addOption]]></code>
@@ -75,6 +94,9 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Configuration/ComplianceConfiguration.php">
+    <LessSpecificReturnType>
+      <code><![CDATA[string]]></code>
+    </LessSpecificReturnType>
     <MissingThrowsDocblock>
       <code><![CDATA[throw new RuntimeException();]]></code>
     </MissingThrowsDocblock>
@@ -169,6 +191,161 @@
       <code><![CDATA[ConfigEvent]]></code>
     </UnusedClass>
   </file>
+  <file src="src/Event/GitHub/GitHubCreateEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubDeleteEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubDeploymentEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubDeploymentStatusEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubForkEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubGollumEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubIssueCommentEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubIssuesEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubLabelEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubMergeGroupEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubMilestoneEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPageBuildEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubProjectCardEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubProjectColumnEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubProjectEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPublicEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPullRequestCommentEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPullRequestEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPullRequestReviewCommentEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPullRequestReviewEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPullRequestTargetEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubPushEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubRegistryPackageEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubReleaseEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubRepositoryDispatchEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubScheduleEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubStatusEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubWatchEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubWorkflowCallEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubWorkflowDispatchEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Event/GitHub/GitHubWorkflowRunEvent.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function payload(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Event/MatrixEvent.php">
     <InvalidPropertyAssignmentValue>
       <code><![CDATA[$this->matrix]]></code>
@@ -181,11 +358,17 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Extension/ConfigExtension.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, object $service): Config]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Extension/ListenerProviderExtension.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, object $service): ListenerProvider]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[bind]]></code>
     </MissingThrowsDocblock>
@@ -194,17 +377,36 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Extension/SymfonyApplicationExtension.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, object $service): SymfonyApplication]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Factory/ComposerExecutableFinderFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, array $arguments = []): ComposerExecutableFinder]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[get]]></code>
       <code><![CDATA[get]]></code>
     </MissingThrowsDocblock>
   </file>
+  <file src="src/Factory/SymfonyApplicationFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, array $arguments = []): SymfonyApplication]]></code>
+    </MissingOverrideAttribute>
+    <MixedArgument>
+      <code><![CDATA[InstalledVersions::getPrettyVersion(Compliance::PACKAGE) ??
+            throw new RuntimeException('Unable to determine version!')]]></code>
+    </MixedArgument>
+  </file>
   <file src="src/Interface/Composer/DependencyInterface.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string;]]></code>
+      <code><![CDATA[public function jsonSerialize(): array;]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[name]]></code>
       <code><![CDATA[version]]></code>
@@ -239,9 +441,6 @@
     <MissingThrowsDocblock>
       <code><![CDATA[throw new RuntimeException('Could not get current working directory');]]></code>
     </MissingThrowsDocblock>
-    <PossiblyFalseArgument>
-      <code><![CDATA[tempnam(sys_get_temp_dir(), 'GITHUB_OUTPUT')]]></code>
-    </PossiblyFalseArgument>
     <UnnecessaryVarAnnotation>
       <code><![CDATA[string]]></code>
     </UnnecessaryVarAnnotation>
@@ -280,17 +479,12 @@
       <code><![CDATA[$contents['require']['php'] ?? '*']]></code>
       <code><![CDATA[$contents['require-dev'] ?? []]]></code>
       <code><![CDATA[$this->contents['license']]]></code>
-      <code><![CDATA[$this->contents['name']]]></code>
       <code><![CDATA[$this->contents['version'] ??
             InstalledVersions::getPrettyVersion($this->contents['name'])]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$dependency]]></code>
     </MixedAssignment>
-    <PossiblyNullArgument>
-      <code><![CDATA[$this->contents['version'] ??
-            InstalledVersions::getPrettyVersion($this->contents['name'])]]></code>
-    </PossiblyNullArgument>
     <PossiblyUnusedMethod>
       <code><![CDATA[getComposerJsonPath]]></code>
       <code><![CDATA[getContents]]></code>
@@ -320,14 +514,30 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/Service/Composer/DependencyName.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[throw new InvalidArgumentException('Name cannot be empty');]]></code>
     </MissingThrowsDocblock>
   </file>
   <file src="src/Service/Composer/DependencyVersion.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[throw new InvalidArgumentException('Version cannot be empty');]]></code>
     </MissingThrowsDocblock>
+  </file>
+  <file src="src/Service/Composer/Extension.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+      <code><![CDATA[public function name(): DependencyName]]></code>
+      <code><![CDATA[public function version(): DependencyVersion]]></code>
+    </MissingOverrideAttribute>
   </file>
   <file src="src/Service/Composer/ExtensionFinder.php">
     <MixedAssignment>
@@ -338,6 +548,11 @@
     </UnusedClass>
   </file>
   <file src="src/Service/Composer/Extensions.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function getIterator(): Generator]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[throw new InvalidArgumentException('Extensions cannot be empty');]]></code>
     </MissingThrowsDocblock>
@@ -345,12 +560,29 @@
       <code><![CDATA[$this->jsonSerialize()]]></code>
     </MixedArgumentTypeCoercion>
   </file>
+  <file src="src/Service/Composer/License.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Service/Composer/Package.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+      <code><![CDATA[public function name(): DependencyName]]></code>
+      <code><![CDATA[public function version(): DependencyVersion]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[encode]]></code>
     </MissingThrowsDocblock>
   </file>
   <file src="src/Service/Composer/Packages.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __toString(): string]]></code>
+      <code><![CDATA[public function getIterator(): Generator]]></code>
+      <code><![CDATA[public function jsonSerialize(): array]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[encode]]></code>
     </MissingThrowsDocblock>
@@ -359,6 +591,9 @@
     </UnusedClass>
   </file>
   <file src="src/Service/Composer/RequireDevList.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getIterator(): Generator]]></code>
+    </MissingOverrideAttribute>
     <MixedArgument>
       <code><![CDATA[$version]]></code>
     </MixedArgument>
@@ -370,6 +605,9 @@
     </MixedAssignment>
   </file>
   <file src="src/Service/Composer/RequireList.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getIterator(): Generator]]></code>
+    </MissingOverrideAttribute>
     <MixedArgument>
       <code><![CDATA[$version]]></code>
     </MixedArgument>
@@ -409,6 +647,9 @@
     </UnusedClass>
   </file>
   <file src="src/Service/ConfigPlatformPhp.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getVersion(): string]]></code>
+    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[ConfigPlatformPhp]]></code>
     </UnusedClass>
@@ -474,9 +715,6 @@
     <MixedReturnTypeCoercion>
       <code><![CDATA[Generator<SplFileInfo>]]></code>
     </MixedReturnTypeCoercion>
-    <PossiblyFalseArgument>
-      <code><![CDATA[scandir($path)]]></code>
-    </PossiblyFalseArgument>
     <PossiblyUnusedMethod>
       <code><![CDATA[allFiles]]></code>
       <code><![CDATA[append]]></code>
@@ -545,19 +783,21 @@
     </MixedArgumentTypeCoercion>
   </file>
   <file src="src/Service/Process.php">
-    <LessSpecificReturnStatement>
-      <code><![CDATA[[proc_close($process), ...$result]]]></code>
-    </LessSpecificReturnStatement>
     <MissingThrowsDocblock>
       <code><![CDATA[throw new FailedToExecuteCommandException(implode(' ', $command));]]></code>
       <code><![CDATA[throw new FailedToWriteToStdinException();]]></code>
       <code><![CDATA[throw new ProcOpenFunctionDoesNotExistException();]]></code>
     </MissingThrowsDocblock>
-    <MoreSpecificReturnType>
-      <code><![CDATA[array{int,string,string}]]></code>
-    </MoreSpecificReturnType>
+  </file>
+  <file src="src/Service/RequirePhp.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getVersion(): string]]></code>
+    </MissingOverrideAttribute>
   </file>
   <file src="src/ServiceProvider/ApplicationServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container): void]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[provide]]></code>
       <code><![CDATA[provide]]></code>
@@ -571,6 +811,9 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/ServiceProvider/ConfigServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container): void]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[alias]]></code>
       <code><![CDATA[alias]]></code>
@@ -579,6 +822,9 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/ServiceProvider/ConsoleServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container): void]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[alias]]></code>
       <code><![CDATA[alias]]></code>
@@ -591,6 +837,9 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/ServiceProvider/EventServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container): void]]></code>
+    </MissingOverrideAttribute>
     <MissingThrowsDocblock>
       <code><![CDATA[alias]]></code>
       <code><![CDATA[alias]]></code>
@@ -599,46 +848,71 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/Tool/AbstractTool.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[preg_replace('#([a-zA-Z])(?=[A-Z])#', '$1-', $this->name())]]></code>
-    </PossiblyNullArgument>
+    <MissingOverrideAttribute>
+      <code><![CDATA[abstract public function configuration(): array;]]></code>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function extensions(): array]]></code>
+      <code><![CDATA[public function isPresent(): bool]]></code>
+      <code><![CDATA[public function name(): string]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Tool/ComposerRequireChecker.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function configuration(): array]]></code>
+    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[ComposerRequireChecker]]></code>
     </UnusedClass>
   </file>
   <file src="src/Tool/Infection.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function configuration(): array]]></code>
+    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[Infection]]></code>
     </UnusedClass>
   </file>
   <file src="src/Tool/PHPBench.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function configuration(): array]]></code>
+    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[PHPBench]]></code>
     </UnusedClass>
   </file>
   <file src="src/Tool/PHPCS.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function configuration(): array]]></code>
+    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[PHPCS]]></code>
     </UnusedClass>
   </file>
+  <file src="src/Tool/PHPUnit.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function configuration(): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Tool/Psalm.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function command(): string]]></code>
+      <code><![CDATA[public function configuration(): array]]></code>
+    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[Psalm]]></code>
     </UnusedClass>
   </file>
-  <file src="tests/Unit/Service/ComposerTest.php">
-    <PossiblyFalseArgument>
-      <code><![CDATA[$root]]></code>
-      <code><![CDATA[$root]]></code>
-    </PossiblyFalseArgument>
-    <PossiblyFalseOperand>
-      <code><![CDATA[$root]]></code>
-      <code><![CDATA[$root]]></code>
-    </PossiblyFalseOperand>
+  <file src="tests/Unit/AbstractTestCase.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
   </file>
 </files>
