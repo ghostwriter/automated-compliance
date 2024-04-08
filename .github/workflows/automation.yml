@@ -101,7 +101,6 @@ jobs:
       - name: Run ${{ matrix.name }} command
         run: ${{ matrix.runCommand }}
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY || secrets.STRYKER_DASHBOARD_API_KEY }}
 
@@ -109,6 +108,5 @@ jobs:
         uses: codecov/codecov-action@v4
         if: ${{ matrix.name == 'PHPUNIT' && matrix.dependency == 'locked' }}
         with:
-          token: ${{ secrets.CODECOV_TOKEN || '63caea06-f036-4606-a791-ccbd81d86c51' }}
           directory: ${{ github.workspace }}/.cache/phpunit/
           verbose: true
