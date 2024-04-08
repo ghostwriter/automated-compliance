@@ -5,11 +5,12 @@ declare(strict_types=1);
 use Ghostwriter\Compliance\Compliance;
 use Ghostwriter\Compliance\Event\OutputEvent;
 use Ghostwriter\Compliance\Service\GithubActionOutput;
-use Ghostwriter\Compliance\Service\Process;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Ghostwriter\EventDispatcher\Interface\EventInterface;
+use Ghostwriter\Shell\Interface\ResultInterface;
+use Ghostwriter\Shell\Shell;
 
 function container(): ContainerInterface
 {
@@ -60,7 +61,7 @@ function error(string $message, ?string $file = null, ?int $line = null, ?int $c
         ->error($message, $file, $line, $col);
 }
 
-function execute(string ...$command): array
+function execute(string $command, string ...$arguments): ResultInterface
 {
-    return Process::execute($command);
+    return Shell::new()->execute($command, $arguments);
 }
