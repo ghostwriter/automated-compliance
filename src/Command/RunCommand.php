@@ -71,7 +71,7 @@ final class RunCommand extends Command
             'event',
             InputArgument::OPTIONAL,
             'The name of the event that triggered the workflow.',
-            $this->environmentVariables->get('GITHUB_EVENT_NAME')
+            $this->environmentVariables->get('GITHUB_EVENT_NAME', 'compliance.command.matrix')
         );
 
         // '/github/workflow/event.json'
@@ -79,7 +79,7 @@ final class RunCommand extends Command
             'payload',
             InputArgument::OPTIONAL,
             'The path to the file on the runner that contains the full event webhook payload.',
-            $this->environmentVariables->get('GITHUB_EVENT_PATH')
+            $this->environmentVariables->get('GITHUB_EVENT_PATH', 'tests/Fixture/payload.json')
         );
 
         $this->addOption(
