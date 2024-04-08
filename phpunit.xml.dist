@@ -4,11 +4,11 @@
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
     bootstrap="vendor/autoload.php"
     cacheDirectory=".cache/phpunit"
     cacheResult="false"
+    cacheResultFile=".cache/phpunit/phpunit.result.cache"
     colors="true"
     displayDetailsOnIncompleteTests="true"
     displayDetailsOnSkippedTests="true"
@@ -17,32 +17,32 @@
     displayDetailsOnTestsThatTriggerNotices="true"
     displayDetailsOnTestsThatTriggerWarnings="true"
     executionOrder="depends,defects"
+    failOnDeprecation="true"
+    failOnEmptyTestSuite="true"
+    failOnIncomplete="true"
+    failOnNotice="true"
+    failOnRisky="true"
+    failOnSkipped="true"
+    failOnWarning="true"
     requireCoverageMetadata="true"
+    stopOnFailure="true"
 >
     <coverage>
         <report>
-            <html outputDirectory=".cache/phpunit/coverage-html" />
-            <clover outputFile=".cache/phpunit/clover.xml" />
-            <text outputFile=".cache/phpunit/coverage.txt" />
+            <html outputDirectory=".cache/phpunit/coverage-html"/>
+            <clover outputFile=".cache/phpunit/clover.xml"/>
+            <text outputFile=".cache/phpunit/coverage.txt"/>
         </report>
     </coverage>
-    <logging>
-        <junit outputFile=".cache/phpunit/report.junit.xml" />
-    </logging>
-    <source restrictNotices="true" restrictWarnings="true" ignoreIndirectDeprecations="true">
+    <source restrictNotices="true" restrictWarnings="true">
         <include>
-            <directory suffix=".php">src</directory>
+            <directory>src</directory>
         </include>
     </source>
     <testsuites>
-        <testsuite name="Test Suite">
+        <testsuite name="default">
             <directory>tests</directory>
+            <exclude>tests/Fixture</exclude>
         </testsuite>
     </testsuites>
-    <php>
-        <env name="CI" value="false" />
-        <env name="GITHUB_EVENT_NAME" value="schedule" />
-        <env name="GITHUB_EVENT_PATH" value="/github/workflow/event.json" />
-        <env name="GITHUB_WORKSPACE" value="/home/runner/work/ghostwriter/compliance" />
-    </php>
 </phpunit>
