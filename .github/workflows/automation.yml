@@ -20,8 +20,6 @@ on:
         required: false
       INFECTION_DASHBOARD_API_KEY:
         required: false
-      CODECOV_TOKEN:
-        required: false # For public repositories, no token is needed
 
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 permissions:
@@ -109,7 +107,7 @@ jobs:
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
-        if: ${{ matrix.php == '8.3' && matrix.dependency == 'locked' }}
+        if: ${{ matrix.name == 'PHPUNIT' && matrix.dependency == 'locked' }}
         with:
           token: ${{ secrets.CODECOV_TOKEN || '63caea06-f036-4606-a791-ccbd81d86c51' }}
           directory: ${{ github.workspace }}/.cache/phpunit/
