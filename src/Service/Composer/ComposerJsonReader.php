@@ -6,6 +6,7 @@ namespace Ghostwriter\Compliance\Service\Composer;
 
 use Ghostwriter\Json\Json;
 use InvalidArgumentException;
+
 use function file_exists;
 use function file_get_contents;
 
