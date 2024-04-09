@@ -12,8 +12,7 @@ final readonly class ComposerCacheFilesDirectoryFinder
 {
     public function __construct(
         private ComposerExecutableFinder $composerExecutableFinder,
-    ) {
-    }
+    ) {}
 
     public function __invoke(): string
     {
