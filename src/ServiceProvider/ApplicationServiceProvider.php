@@ -12,8 +12,6 @@ use Ghostwriter\Compliance\ToolInterface;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ServiceProviderInterface;
 
-use const DIRECTORY_SEPARATOR;
-
 use function dirname;
 use function is_a;
 use function sprintf;
@@ -21,12 +19,13 @@ use function str_contains;
 use function str_ends_with;
 use function str_replace;
 
+use const DIRECTORY_SEPARATOR;
+
 final readonly class ApplicationServiceProvider implements ServiceProviderInterface
 {
     public function __construct(
         private Filesystem $filesystem,
-    ) {
-    }
+    ) {}
 
     public function __invoke(ContainerInterface $container): void
     {
