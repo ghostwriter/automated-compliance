@@ -7,6 +7,7 @@ namespace Ghostwriter\Compliance\Service\Composer;
 use InvalidArgumentException;
 use JsonSerializable;
 use Stringable;
+
 use function trim;
 
 final readonly class License implements JsonSerializable, Stringable
