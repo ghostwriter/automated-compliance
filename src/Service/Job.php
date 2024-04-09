@@ -29,8 +29,7 @@ final readonly class Job
         private PhpVersion $phpVersion,
         private OperatingSystem $operatingSystem,
         private bool $experimental,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array{
