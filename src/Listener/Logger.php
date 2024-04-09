@@ -22,8 +22,7 @@ final readonly class Logger implements EventListenerInterface
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle,
-    ) {
-    }
+    ) {}
 
     /**
      * @param GitHubEventInterface<bool> $event
