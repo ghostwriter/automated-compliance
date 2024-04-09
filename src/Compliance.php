@@ -21,15 +21,15 @@ final readonly class Compliance
      * @var string
      */
     public const string LOGO = <<<'CODE_SAMPLE'
-    <fg=red;bg=black;options=bold>
-      ____                      _ _
-     / ___|___  _ __ ___  _ __ | (_) __ _ _ __   ___ ___
-    | |   / _ \| '_ ` _ \| '_ \| | |/ _` | '_ \ / __/ _ \
-    | |__| (_) | | | | | | |_) | | | (_| | | | | (_|  __/
-     \____\___/|_| |_| |_| .__/|_|_|\__,_|_| |_|\___\___|
-                         |_|     %s
-    </>%s
-    CODE_SAMPLE;
+        <fg=red;bg=black;options=bold>
+          ____                      _ _
+         / ___|___  _ __ ___  _ __ | (_) __ _ _ __   ___ ___
+        | |   / _ \| '_ ` _ \| '_ \| | |/ _` | '_ \ / __/ _ \
+        | |__| (_) | | | | | | |_) | | | (_| | | | | (_|  __/
+         \____\___/|_| |_| |_| .__/|_|_|\__,_|_| |_|\___\___|
+                             |_|     %s
+        </>%s
+        CODE_SAMPLE;
 
     /**
      * @var string
@@ -43,7 +43,7 @@ final readonly class Compliance
 
     public static function main(): void
     {
-        (static function (Container $container) {
+        (static function (Container $container): void {
             $container->provide(ApplicationServiceProvider::class);
 
             $container->get(Application::class)->run(
