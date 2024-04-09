@@ -13,14 +13,14 @@ use Ghostwriter\Container\Interface\ExtensionInterface;
 use Ghostwriter\EventDispatcher\Interface\EventInterface;
 use Ghostwriter\EventDispatcher\ListenerProvider;
 
-use const DIRECTORY_SEPARATOR;
-
 use function dirname;
 use function is_a;
 use function sprintf;
 use function str_contains;
 use function str_ends_with;
 use function str_replace;
+
+use const DIRECTORY_SEPARATOR;
 
 /**
  * @implements ExtensionInterface<ListenerProvider>
@@ -30,8 +30,7 @@ final readonly class ListenerProviderExtension implements ExtensionInterface
     public function __construct(
         private EnvironmentVariables $environmentVariables,
         private Filesystem $filesystem,
-    ) {
-    }
+    ) {}
 
     /**
      * @param ListenerProvider $service
