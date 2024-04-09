@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Service;
 
 use Symfony\Component\Console\Output\OutputInterface;
+
 use function getenv;
 use function sprintf;
 use function strtr;
