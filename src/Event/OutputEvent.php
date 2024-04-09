@@ -8,8 +8,7 @@ final class OutputEvent extends AbstractEvent
 {
     public function __construct(
         private readonly array|string $message
-    ) {
-    }
+    ) {}
 
     public function getMessage(): array|string
     {
