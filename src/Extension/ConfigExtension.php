@@ -22,8 +22,7 @@ final readonly class ConfigExtension implements ExtensionInterface
 {
     public function __construct(
         private EnvironmentVariables $environmentVariables,
-    ) {
-    }
+    ) {}
 
     /**
      * @param Config $service
