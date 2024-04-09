@@ -8,7 +8,7 @@ enum OperatingSystem: string
 {
     case MACOS = 'macos';
     case UBUNTU = 'ubuntu';
-    case WINDOWS = 'windows';
+    // case WINDOWS = 'windows';
 
     public function toString(): string
     {
