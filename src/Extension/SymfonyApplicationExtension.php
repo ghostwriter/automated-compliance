@@ -9,7 +9,9 @@ use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ExtensionInterface;
 use Symfony\Component\Console\Application as SymfonyApplication;
 use Symfony\Component\Console\Command\Command;
+
 use const DIRECTORY_SEPARATOR;
+
 use function dirname;
 use function is_a;
 use function sprintf;
