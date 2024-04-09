@@ -8,6 +8,7 @@ use Ghostwriter\Compliance\Service\ComposerExecutableFinder;
 use Ghostwriter\Compliance\Service\WhereExecutableFinder;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\FactoryInterface;
+
 use const PHP_OS_FAMILY;
 
 /**
