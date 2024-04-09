@@ -19,8 +19,7 @@ final class GitHubWorkflowDispatchEvent implements GitHubEventInterface
 
     public function __construct(
         private string $content
-    ) {
-    }
+    ) {}
 
     public function payload(): string
     {
