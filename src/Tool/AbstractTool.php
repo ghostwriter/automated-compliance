@@ -7,6 +7,7 @@ namespace Ghostwriter\Compliance\Tool;
 use Ghostwriter\Compliance\EnvironmentVariables;
 use Ghostwriter\Compliance\Service\Filesystem;
 use Ghostwriter\Compliance\ToolInterface;
+
 use function in_array;
 use function mb_strtolower;
 use function preg_replace;
