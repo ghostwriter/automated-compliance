@@ -89,7 +89,6 @@
         "use-parent-dir": false
     },
     "scripts": {
-        "bench": "vendor/ghostwriter/coding-standard/tools/phpbench run --revs=10 --iterations=10 --report='extends:aggregate,cols:[benchmark,subject,revs,its,mem_peak,mode,rstdev]' --time-unit=milliseconds",
         "cache": [
             "rm -fr ./.cache"
         ],
@@ -99,12 +98,11 @@
             "@ecs",
             "@test"
         ],
-        "composer-normalize": "vendor/ghostwriter/coding-standard/tools/composer-normalize --no-check-lock",
+        "composer-normalize": "vendor/ghostwriter/coding-standard/tools/composer-normalize --no-cache --diff --no-check-lock --no-scripts --no-plugins",
         "composer-require-checker": "vendor/ghostwriter/coding-standard/tools/composer-require-checker check",
         "composer-unused": "vendor/ghostwriter/coding-standard/tools/composer-unused",
         "dev": [
             "@cache:clear",
-            "@composer update --no-plugins --no-scripts --no-progress --no-interaction --prefer-stable --with-dependencies",
             "@composer-normalize",
             "@psalm:baseline",
             "@check",
@@ -119,7 +117,6 @@
         "docker:run": "docker run -v $(PWD):/github/workspace -w=/github/workspace -e GITHUB_DEBUG=1 -e GITHUB_WORKSPACE=/github/workspace -e GITHUB_TOKEN=github-token -e SIGNING_SECRET_KEY=secret-key compliance",
         "ecs": "vendor/bin/ecs check --clear-cache --fix --no-interaction",
         "infection": "vendor/ghostwriter/coding-standard/tools/infection --ansi --verbose --threads=max --min-msi=0 --min-covered-msi=0",
-        "phpbench": "vendor/ghostwriter/coding-standard/tools/phpbench run",
         "phpunit": "vendor/ghostwriter/coding-standard/tools/phpunit --do-not-cache-result --colors=always",
         "phpunit:migrate": "@phpunit --migrate-configuration",
         "psalm": "vendor/ghostwriter/coding-standard/tools/psalm --no-cache",
