@@ -19,8 +19,7 @@ final class GitHubWorkflowCallEvent implements GitHubEventInterface
 
     public function __construct(
         private string $content
-    ) {
-    }
+    ) {}
 
     public function payload(): string
     {
