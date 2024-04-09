@@ -6,13 +6,13 @@ namespace Ghostwriter\Compliance;
 
 use Throwable;
 
-use const PHP_EOL;
-use const STDERR;
-
 use function dirname;
 use function file_exists;
 use function fwrite;
 use function sprintf;
+
+use const PHP_EOL;
+use const STDERR;
 
 /** @var ?string $_composer_autoload_path */
 (static function (string $composerAutoloadPath): void {
