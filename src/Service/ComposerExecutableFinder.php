@@ -13,8 +13,7 @@ final readonly class ComposerExecutableFinder
     public function __construct(
         private WhereExecutableFinder $whereExecutableFinder,
         private bool $isWindowsOsFamily,
-    ) {
-    }
+    ) {}
 
     public function __invoke(): string
     {
