@@ -345,16 +345,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/container.git",
-                "reference": "3ceb875087b9887158e7b2488a1600993ffb35a7"
+                "reference": "6087077fc7b9fef128c0c8fcd7a3fce7b7aa30bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/container/zipball/3ceb875087b9887158e7b2488a1600993ffb35a7",
-                "reference": "3ceb875087b9887158e7b2488a1600993ffb35a7",
+                "url": "https://api.github.com/repos/ghostwriter/container/zipball/6087077fc7b9fef128c0c8fcd7a3fce7b7aa30bc",
+                "reference": "6087077fc7b9fef128c0c8fcd7a3fce7b7aa30bc",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.3"
+                "php": ">=8.3"
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main",
@@ -395,7 +395,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-09T20:51:46+00:00"
+            "time": "2024-04-09T13:09:30+00:00"
         },
         {
             "name": "ghostwriter/event-dispatcher",
