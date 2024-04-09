@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Exception;
 
 use RuntimeException;
 
-final class FailedToWriteToStdinException extends RuntimeException
-{
-}
+final class FailedToWriteToStdinException extends RuntimeException {}
