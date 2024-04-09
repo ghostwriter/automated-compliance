@@ -12,7 +12,9 @@ use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ExtensionInterface;
 use Ghostwriter\EventDispatcher\Interface\EventInterface;
 use Ghostwriter\EventDispatcher\ListenerProvider;
+
 use const DIRECTORY_SEPARATOR;
+
 use function dirname;
 use function is_a;
 use function sprintf;
