@@ -18,8 +18,7 @@ abstract class AbstractTool implements ToolInterface
     public function __construct(
         private Filesystem $filesystem,
         private EnvironmentVariables $environmentVariables
-    ) {
-    }
+    ) {}
 
     public function command(): string
     {
