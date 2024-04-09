@@ -12,8 +12,7 @@ final readonly class OutputListener implements EventListenerInterface
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle,
-    ) {
-    }
+    ) {}
 
     public function __invoke(OutputEvent $outputEvent): void
     {
