@@ -10,8 +10,10 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RuntimeException;
 use SplFileInfo;
+
 use const DIRECTORY_SEPARATOR;
 use const FILE_APPEND;
+
 use function array_diff;
 use function array_merge;
 use function chgrp;
