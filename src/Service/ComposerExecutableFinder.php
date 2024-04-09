@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Service;
 
 use Ghostwriter\Compliance\Exception\FailedToFindComposerExecutableException;
+
 use function trim;
 
 final readonly class ComposerExecutableFinder
