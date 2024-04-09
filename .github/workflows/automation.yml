@@ -76,7 +76,7 @@ jobs:
         uses: docker://ghcr.io/ghostwriter/compliance:v1
 
   qa:
-    name: "${{ matrix.name }} on ${{ matrix.os }} with PHP ${{ matrix.php }} and Composer ${{ matrix.dependency }}"
+    name: "[${{ matrix.dependency }}][PHP-${{ matrix.php }}]${{ matrix.name }} on ${{ matrix.os }}"
     needs: [matrix]
     runs-on: ${{ matrix.os }}-latest
     continue-on-error: ${{ matrix.dependency == 'lowest' || matrix.experimental }}
