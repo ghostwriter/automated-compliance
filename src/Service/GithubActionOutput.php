@@ -34,8 +34,7 @@ final class GithubActionOutput
 
     public function __construct(
         private readonly OutputInterface $output
-    ) {
-    }
+    ) {}
 
     /**
      * Output a debug log using the Github annotations format.
