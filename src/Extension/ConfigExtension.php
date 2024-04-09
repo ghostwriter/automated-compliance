@@ -9,6 +9,7 @@ use Ghostwriter\Compliance\EnvironmentVariables;
 use Ghostwriter\Config\Config;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ExtensionInterface;
+
 use function chdir;
 use function error;
 use function error_get_last;
