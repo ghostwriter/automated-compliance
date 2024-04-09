@@ -8,8 +8,7 @@ final readonly class RequirePhp implements PhpVersionConstraintInterface
 {
     public function __construct(
         private string $version,
-    ) {
-    }
+    ) {}
 
     public function getVersion(): string
     {
