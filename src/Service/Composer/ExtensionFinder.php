@@ -10,8 +10,7 @@ final readonly class ExtensionFinder
 {
     public function __construct(
         private Composer $composer,
-    ) {
-    }
+    ) {}
 
     public function find(string $composerJsonPath): Extensions
     {
