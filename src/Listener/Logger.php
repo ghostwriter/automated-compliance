@@ -14,6 +14,7 @@ use Ghostwriter\Compliance\Event\GitHubEventInterface;
 use Ghostwriter\Compliance\Event\MatrixEvent;
 use Ghostwriter\Compliance\Interface\EventListenerInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+
 use function container;
 use function dispatch;
 
