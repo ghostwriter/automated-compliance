@@ -21,8 +21,7 @@ abstract class AbstractEvent implements EventInterface
         protected readonly EventDispatcherInterface $dispatcher,
         protected readonly InputInterface $input,
         protected readonly SymfonyStyle $symfonyStyle
-    ) {
-    }
+    ) {}
 
     /**
      * @param EventInterface<bool> $event
