@@ -17,8 +17,7 @@ final readonly class RequireList implements IteratorAggregate
      */
     public function __construct(
         private array $requireList,
-    ) {
-    }
+    ) {}
 
     public function getIterator(): Generator
     {
