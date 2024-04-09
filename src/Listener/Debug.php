@@ -16,8 +16,7 @@ final readonly class Debug implements EventListenerInterface
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle
-    ) {
-    }
+    ) {}
 
     /**
      * @param EventInterface<bool> $event
