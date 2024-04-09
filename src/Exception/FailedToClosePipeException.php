@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Exception;
 
 use RuntimeException;
 
-final class FailedToClosePipeException extends RuntimeException
-{
-}
+final class FailedToClosePipeException extends RuntimeException {}
