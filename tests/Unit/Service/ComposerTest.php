@@ -7,6 +7,7 @@ namespace Ghostwriter\ComplianceTests\Unit\Service;
 use Ghostwriter\Compliance\Service\Composer;
 use Ghostwriter\ComplianceTests\Unit\AbstractTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+
 use function getcwd;
 
 #[CoversClass(Composer::class)]
