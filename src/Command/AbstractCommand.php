@@ -11,6 +11,7 @@ use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Ghostwriter\EventDispatcher\Interface\EventInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Style\SymfonyStyle;
+
 use function mb_strtolower;
 use function sprintf;
 use function str_replace;
