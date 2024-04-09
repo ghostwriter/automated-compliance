@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Exception;
 
 use RuntimeException;
 
-final class FailedToExecuteCommandException extends RuntimeException
-{
-}
+final class FailedToExecuteCommandException extends RuntimeException {}
