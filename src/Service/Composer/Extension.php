@@ -13,8 +13,7 @@ final readonly class Extension implements DependencyInterface
     public function __construct(
         private DependencyName $name,
         private DependencyVersion $version
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {
