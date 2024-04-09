@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Service\GPG;
 
 use RuntimeException;
+
 use function file_exists;
 use function sprintf;
 
