@@ -20,8 +20,10 @@ use Ghostwriter\Compliance\ToolInterface;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
+
 use const FILE_APPEND;
 use const PHP_EOL;
+
 use function array_map;
 use function array_unique;
 use function chdir;
