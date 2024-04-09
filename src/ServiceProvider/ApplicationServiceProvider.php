@@ -11,7 +11,9 @@ use Ghostwriter\Compliance\Service\Filesystem;
 use Ghostwriter\Compliance\ToolInterface;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ServiceProviderInterface;
+
 use const DIRECTORY_SEPARATOR;
+
 use function dirname;
 use function is_a;
 use function sprintf;
