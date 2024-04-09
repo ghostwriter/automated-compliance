@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Service\Composer;
 
 use Ghostwriter\Compliance\Interface\Composer\DependencyInterface;
+
 use function mb_substr;
 
 final readonly class Extension implements DependencyInterface
