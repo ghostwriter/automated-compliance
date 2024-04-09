@@ -8,6 +8,7 @@ use Ghostwriter\Compliance\Exception\FailedToClosePipeException;
 use Ghostwriter\Compliance\Exception\FailedToExecuteCommandException;
 use Ghostwriter\Compliance\Exception\FailedToWriteToStdinException;
 use Ghostwriter\Compliance\Exception\ProcOpenFunctionDoesNotExistException;
+
 use function fclose;
 use function function_exists;
 use function fwrite;
