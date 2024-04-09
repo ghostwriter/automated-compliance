@@ -9,6 +9,7 @@ use Ghostwriter\Compliance\Option\PhpVersion;
 use Ghostwriter\Compliance\ToolInterface;
 use Ghostwriter\Config\Contract\ConfigInterface;
 use RuntimeException;
+
 use function array_key_exists;
 use function in_array;
 
