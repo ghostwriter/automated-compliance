@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance;
 
 use Throwable;
+
 use const PHP_EOL;
 use const STDERR;
+
 use function dirname;
 use function file_exists;
 use function fwrite;
