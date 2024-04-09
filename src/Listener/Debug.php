@@ -7,6 +7,7 @@ namespace Ghostwriter\Compliance\Listener;
 use Ghostwriter\Compliance\Interface\EventListenerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+
 use function mb_strrpos;
 use function mb_substr;
 use function sprintf;
