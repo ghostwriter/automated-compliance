@@ -12,8 +12,7 @@ final readonly class ComposerLock
     public function __construct(
         private string $path,
         private array $contents,
-    ) {
-    }
+    ) {}
 
     public function getComposerJsonPath(): string
     {
