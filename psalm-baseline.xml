@@ -397,10 +397,6 @@
     <MissingOverrideAttribute>
       <code><![CDATA[public function __invoke(ContainerInterface $container, array $arguments = []): SymfonyApplication]]></code>
     </MissingOverrideAttribute>
-    <MixedArgument>
-      <code><![CDATA[InstalledVersions::getPrettyVersion(Compliance::PACKAGE) ??
-            throw new RuntimeException('Unable to determine version!')]]></code>
-    </MixedArgument>
   </file>
   <file src="src/Interface/Composer/DependencyInterface.php">
     <MissingOverrideAttribute>
@@ -479,12 +475,17 @@
       <code><![CDATA[$contents['require']['php'] ?? '*']]></code>
       <code><![CDATA[$contents['require-dev'] ?? []]]></code>
       <code><![CDATA[$this->contents['license']]]></code>
+      <code><![CDATA[$this->contents['name']]]></code>
       <code><![CDATA[$this->contents['version'] ??
             InstalledVersions::getPrettyVersion($this->contents['name'])]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$dependency]]></code>
     </MixedAssignment>
+    <PossiblyNullArgument>
+      <code><![CDATA[$this->contents['version'] ??
+            InstalledVersions::getPrettyVersion($this->contents['name'])]]></code>
+    </PossiblyNullArgument>
     <PossiblyUnusedMethod>
       <code><![CDATA[getComposerJsonPath]]></code>
       <code><![CDATA[getContents]]></code>
