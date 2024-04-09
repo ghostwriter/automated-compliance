@@ -7,6 +7,7 @@ namespace Ghostwriter\Compliance\Service;
 use Ghostwriter\Compliance\Enum\ComposerDependency;
 use Ghostwriter\Compliance\Enum\OperatingSystem;
 use Ghostwriter\Compliance\Enum\PhpVersion;
+
 use function file_exists;
 use function getcwd;
 use function implode;
