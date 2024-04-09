@@ -14,8 +14,7 @@ final readonly class License implements JsonSerializable, Stringable
 {
     public function __construct(
         private string $content
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {
