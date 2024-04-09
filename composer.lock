@@ -2240,12 +2240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/coding-standard.git",
-                "reference": "81206e2964988bfb3e426172b44d8dac5e682a16"
+                "reference": "7fe550e87e153d134f55c87298bf12847e94897e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/81206e2964988bfb3e426172b44d8dac5e682a16",
-                "reference": "81206e2964988bfb3e426172b44d8dac5e682a16",
+                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/7fe550e87e153d134f55c87298bf12847e94897e",
+                "reference": "7fe550e87e153d134f55c87298bf12847e94897e",
                 "shasum": ""
             },
             "require": {
@@ -2255,12 +2255,9 @@
                 "mockery/mockery": "^1.6.11 || ^2.0.0",
                 "php": "^8.2",
                 "phpunit/phpunit": "^10.5.17 || ^11.0.9 || ^12.0.0",
-                "rector/rector": "^1.0.4",
-                "symplify/easy-coding-standard": "^12.1.14",
                 "vimeo/psalm": "^5.23.1 || ^6.0.0"
             },
             "suggest": {
-                "composer/composer": "Composer may be required to run the plugin",
                 "ghostwriter/mockery-rector": "Mockery Rector may be required to run the plugin",
                 "ghostwriter/psalm-plugin": "Psalm Plugin may be required to run the plugin",
                 "mockery/mockery": "Mockery may be required to run the plugin",
@@ -2312,7 +2309,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-08T21:00:24+00:00"
+            "time": "2024-04-08T23:16:54+00:00"
         },
         {
             "name": "ghostwriter/psalm-plugin",
@@ -5328,64 +5325,6 @@
                 }
             ],
             "time": "2024-02-22T20:27:20+00:00"
-        },
-        {
-            "name": "symplify/easy-coding-standard",
-            "version": "12.1.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
-                "reference": "e3c4a241ee36704f7cf920d5931f39693e64afd5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/e3c4a241ee36704f7cf920d5931f39693e64afd5",
-                "reference": "e3c4a241ee36704f7cf920d5931f39693e64afd5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "conflict": {
-                "friendsofphp/php-cs-fixer": "<3.46",
-                "phpcsstandards/php_codesniffer": "<3.8",
-                "symplify/coding-standard": "<12.1"
-            },
-            "bin": [
-                "bin/ecs"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer",
-            "keywords": [
-                "Code style",
-                "automation",
-                "fixer",
-                "static analysis"
-            ],
-            "support": {
-                "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
-                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.1.14"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/rectorphp",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/tomasvotruba",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-02-23T13:10:40+00:00"
         },
         {
             "name": "theseer/tokenizer",
