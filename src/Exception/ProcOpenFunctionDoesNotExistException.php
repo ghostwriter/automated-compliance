@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Exception;
 
 use RuntimeException;
 
-final class ProcOpenFunctionDoesNotExistException extends RuntimeException
-{
-}
+final class ProcOpenFunctionDoesNotExistException extends RuntimeException {}
