@@ -13,8 +13,7 @@ final class EnvironmentVariables
 {
     private function __construct(
         private array $variables = [],
-    ) {
-    }
+    ) {}
 
     public function get(string $name, null|string $default = null): string
     {
