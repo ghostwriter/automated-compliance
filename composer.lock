@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6346251274dfc37bd220ebe3dc14c44",
+    "content-hash": "dd913b0ee9e43fb3ac172201cf397195",
     "packages": [
         {
             "name": "composer/semver",
@@ -345,12 +345,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/container.git",
-                "reference": "6087077fc7b9fef128c0c8fcd7a3fce7b7aa30bc"
+                "reference": "0e64f73571acef7ff2ad0678c52e148036407144"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/container/zipball/6087077fc7b9fef128c0c8fcd7a3fce7b7aa30bc",
-                "reference": "6087077fc7b9fef128c0c8fcd7a3fce7b7aa30bc",
+                "url": "https://api.github.com/repos/ghostwriter/container/zipball/0e64f73571acef7ff2ad0678c52e148036407144",
+                "reference": "0e64f73571acef7ff2ad0678c52e148036407144",
                 "shasum": ""
             },
             "require": {
@@ -358,7 +358,7 @@
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main",
-                "ghostwriter/psalm-plugin": "^0.2.0"
+                "ghostwriter/psalm-plugin": "^0.2 || ^1.0"
             },
             "default-branch": true,
             "type": "library",
@@ -395,7 +395,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-09T13:09:30+00:00"
+            "time": "2024-04-10T15:11:03+00:00"
         },
         {
             "name": "ghostwriter/event-dispatcher",
@@ -583,12 +583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/shell.git",
-                "reference": "64a40885de5c142ac7448f448a700878420762f5"
+                "reference": "f10a5f4da58bce1985d58c76fd27af2620743b95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/shell/zipball/64a40885de5c142ac7448f448a700878420762f5",
-                "reference": "64a40885de5c142ac7448f448a700878420762f5",
+                "url": "https://api.github.com/repos/ghostwriter/shell/zipball/f10a5f4da58bce1985d58c76fd27af2620743b95",
+                "reference": "f10a5f4da58bce1985d58c76fd27af2620743b95",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-08T21:14:01+00:00"
+            "time": "2024-04-09T16:00:08+00:00"
         },
         {
             "name": "psr/container",
@@ -2240,12 +2240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/coding-standard.git",
-                "reference": "7fe550e87e153d134f55c87298bf12847e94897e"
+                "reference": "3c1edf708bd1ea7be65b081df98847949e715197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/7fe550e87e153d134f55c87298bf12847e94897e",
-                "reference": "7fe550e87e153d134f55c87298bf12847e94897e",
+                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/3c1edf708bd1ea7be65b081df98847949e715197",
+                "reference": "3c1edf708bd1ea7be65b081df98847949e715197",
                 "shasum": ""
             },
             "require": {
@@ -2309,7 +2309,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-08T23:16:54+00:00"
+            "time": "2024-04-10T00:24:37+00:00"
         },
         {
             "name": "ghostwriter/psalm-plugin",
