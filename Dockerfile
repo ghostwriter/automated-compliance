@@ -14,6 +14,7 @@ COPY functions.php /workspace/
 COPY composer.* /workspace/
 COPY bin /workspace/bin/
 COPY src /workspace/src/
+COPY tools /workspace/tools/
 
 RUN composer install --no-autoloader --no-cache --no-dev --no-interaction  --verbose \
 && composer dump-autoload --classmap-authoritative --no-cache --no-dev --no-interaction --verbose
