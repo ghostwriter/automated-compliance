@@ -8,7 +8,7 @@ final class Psalm extends AbstractTool
 {
     public function command(): string
     {
-        return $this->phive('psalm') . ' --shepherd --stats --output-format=github --no-cache';
+        return 'composer ghostwriter:psalm';
     }
 
     /**
