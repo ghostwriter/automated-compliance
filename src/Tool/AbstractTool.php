@@ -30,16 +30,6 @@ abstract class AbstractTool implements ToolInterface
         );
     }
 
-    public function bin(string $executable): string
-    {
-        return $this->environmentVariables->get('GITHUB_WORKSPACE') . '/vendor/bin/' . $executable;
-    }
-
-    public function phive(string $executable): string
-    {
-        return dirname(__FILE__, 3) . '/tools/' . $executable;
-    }
-
     public function extensions(): array
     {
         return ['pcov'];
