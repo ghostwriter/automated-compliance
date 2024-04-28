@@ -8,7 +8,7 @@ final class PHPUnit extends AbstractTool
 {
     public function command(): string
     {
-        return $this->phive('phpunit') . ' --do-not-cache-result --colors=always --stop-on-failure';
+        return 'composer ghostwriter:phpunit:test';
     }
 
     /**
