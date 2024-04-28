@@ -851,12 +851,10 @@
   <file src="src/Tool/AbstractTool.php">
     <MissingOverrideAttribute>
       <code><![CDATA[abstract public function configuration(): array;]]></code>
-      <code><![CDATA[public function bin(string $executable): string]]></code>
       <code><![CDATA[public function command(): string]]></code>
       <code><![CDATA[public function extensions(): array]]></code>
       <code><![CDATA[public function isPresent(): bool]]></code>
       <code><![CDATA[public function name(): string]]></code>
-      <code><![CDATA[public function phive(string $executable): string]]></code>
     </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
@@ -885,11 +883,6 @@
     <UnusedClass>
       <code><![CDATA[Psalm]]></code>
     </UnusedClass>
-  </file>
-  <file src="src/ToolInterface.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[bin]]></code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="tests/Unit/AbstractTestCase.php">
     <MissingOverrideAttribute>
