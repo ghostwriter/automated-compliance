@@ -8,7 +8,7 @@ final class Infection extends AbstractTool
 {
     public function command(): string
     {
-        return $this->phive('infection') . ' || true';
+        return 'composer ghostwriter:infection:run';
     }
 
     /**
