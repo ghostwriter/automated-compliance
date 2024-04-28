@@ -53,9 +53,7 @@
     },
     "require-dev": {
         "ghostwriter/coding-standard": "dev-main",
-        "ghostwriter/psalm-plugin": "^0.2 || ^1.0",
-        "rector/rector": "^1.0.4",
-        "vimeo/psalm": "^5.23.1"
+        "ghostwriter/psalm-plugin": "^0.2 || ^1.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -69,7 +67,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Ghostwriter\\ComplianceTests\\": "tests"
+            "Ghostwriter\\ComplianceTests\\": "tests",
+            "Tests\\": "tests"
         }
     },
     "bin": [
@@ -89,6 +88,12 @@
         "use-parent-dir": false
     },
     "scripts": {
+        "bin_ecs": "ecs check --clear-cache --no-interaction",
+        "bin_infection": "infection --ansi --verbose --threads=max --min-msi=0 --min-covered-msi=0",
+        "bin_phive": "phive",
+        "bin_phpunit": "phpunit --do-not-cache-result --colors=always",
+        "bin_psalm": "psalm --no-cache",
+        "bin_rector": "rector process --no-ansi --no-interaction --clear-cache",
         "cache": [
             "rm -fr ./.cache"
         ],
@@ -98,14 +103,10 @@
             "@ecs",
             "@test"
         ],
-        "composer-normalize": "vendor/ghostwriter/coding-standard/tools/composer-normalize --no-cache --diff --no-check-lock --no-scripts --no-plugins",
-        "composer-require-checker": "vendor/ghostwriter/coding-standard/tools/composer-require-checker check",
-        "composer-unused": "vendor/ghostwriter/coding-standard/tools/composer-unused",
         "dev": [
             "@cache:clear",
-            "@composer-normalize",
-            "@psalm:baseline",
             "@check",
+            "@psalm:update",
             "@psalm:security",
             "@psalm:dry-run"
         ],
@@ -115,18 +116,19 @@
         ],
         "docker:build": "docker buildx build --pull --tag compliance .",
         "docker:run": "docker run -v $(PWD):/github/workspace -w=/github/workspace -e GITHUB_DEBUG=1 -e GITHUB_WORKSPACE=/github/workspace -e GITHUB_TOKEN=github-token -e SIGNING_SECRET_KEY=secret-key compliance",
-        "ecs": "vendor/bin/ecs check --clear-cache --fix --no-interaction",
-        "infection": "vendor/ghostwriter/coding-standard/tools/infection --ansi --verbose --threads=max --min-msi=0 --min-covered-msi=0",
-        "phpunit": "vendor/ghostwriter/coding-standard/tools/phpunit --do-not-cache-result --colors=always",
-        "phpunit:migrate": "@phpunit --migrate-configuration",
-        "psalm": "vendor/ghostwriter/coding-standard/tools/psalm --no-cache",
-        "psalm:alter": "@psalm --no-diff --shepherd --stats --alter --allow-backwards-incompatible-changes=false",
+        "ecs": "@bin_ecs check --fix",
+        "infection": "@bin_infection",
+        "phpunit": "@bin_phpunit",
+        "phpunit:migrate": "@bin_phpunit --migrate-configuration",
+        "psalm": "@bin_psalm --show-info=true",
+        "psalm:alter": "@bin_psalm --alter --allow-backwards-incompatible-changes=false --safe-types",
         "psalm:baseline": "@psalm --no-diff --set-baseline=psalm-baseline.xml",
         "psalm:dry-run": "@psalm:alter --issues=all --dry-run",
-        "psalm:fix": "@psalm:alter --issues=MissingReturnType",
+        "psalm:fix": "@psalm:alter --issues=UnnecessaryVarAnnotation,MissingPureAnnotation,MissingImmutableAnnotation",
         "psalm:security": "@psalm --no-diff --taint-analysis",
         "psalm:shepherd": "@psalm --no-diff --shepherd --stats",
-        "rector": "vendor/bin/rector process --no-ansi --no-interaction --clear-cache",
+        "psalm:update": "@psalm --no-diff --update-baseline=psalm-baseline.xml",
+        "rector": "@bin_rector",
         "test": [
             "@phpunit",
             "@psalm:shepherd",
