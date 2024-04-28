@@ -12,6 +12,7 @@ use function in_array;
 use function mb_strtolower;
 use function preg_replace;
 use function str_replace;
+use function dirname;
 
 abstract class AbstractTool implements ToolInterface
 {
@@ -27,6 +28,16 @@ abstract class AbstractTool implements ToolInterface
             'php',
             mb_strtolower(preg_replace('#([a-zA-Z])(?=[A-Z])#', '$1-', $this->name()))
         );
+    }
+
+    public function bin(string $executable): string
+    {
+        return $this->environmentVariables->get('GITHUB_WORKSPACE') . '/vendor/bin/' . $executable;
+    }
+
+    public function phive(string $executable): string
+    {
+        return dirname(__FILE__, 3) . '/tools/' . $executable;
     }
 
     public function extensions(): array
