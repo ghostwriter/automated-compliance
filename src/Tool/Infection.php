@@ -8,7 +8,7 @@ final class Infection extends AbstractTool
 {
     public function command(): string
     {
-        return './vendor/ghostwriter/coding-standard/tools/infection || true';
+        return $this->phive('infection') . ' || true';
     }
 
     /**
