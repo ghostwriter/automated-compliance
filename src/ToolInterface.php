@@ -23,4 +23,8 @@ interface ToolInterface
     public function name(): string;
 
     // public function package(): string;
+
+    public function bin(string $executable): string;
+
+    public function phive(string $executable): string;
 }
