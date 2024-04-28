@@ -37,6 +37,8 @@ abstract class AbstractTool implements ToolInterface
 
     public function phive(string $executable): string
     {
+        return $executable;
+
         return dirname(__FILE__, 3) . '/tools/' . $executable;
     }
 
