@@ -7,7 +7,6 @@ namespace Ghostwriter\Compliance\Listener;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Event\OutputEvent;
 use Ghostwriter\Compliance\Event\GitHubEventInterface;
 use Ghostwriter\Compliance\Interface\EventListenerInterface;
 
