@@ -12,7 +12,6 @@ use function in_array;
 use function mb_strtolower;
 use function preg_replace;
 use function str_replace;
-use function dirname;
 
 abstract class AbstractTool implements ToolInterface
 {
