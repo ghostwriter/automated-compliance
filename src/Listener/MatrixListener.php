@@ -20,6 +20,7 @@ use Ghostwriter\Compliance\ToolInterface;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
+use Throwable;
 
 use function array_map;
 use function array_unique;
@@ -149,6 +150,11 @@ final readonly class MatrixListener implements EventListenerInterface
 
     public function write(string $message): int
     {
-        return dispatchOutputEvent($message)->isPropagationStopped() ? Command::FAILURE : Command::SUCCESS;
+        try {
+            dispatchOutputEvent($message);
+            return Command::SUCCESS;
+        } catch (Throwable $exception) {
+            return Command::FAILURE;
+        }
     }
 }
