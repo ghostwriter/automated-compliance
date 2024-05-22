@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ghostwriter\Compliance\Listener;
+
+use Ghostwriter\Compliance\Event\MatrixEvent;
+use Ghostwriter\Compliance\Event\OutputEvent;
+use Ghostwriter\Compliance\Interface\EventListenerInterface;
+
+final readonly class GitHubListener implements EventListenerInterface
+{
+    public function __construct(
+        private ContainerInterface $container,
+        private EventDispatcherInterface $dispatcher,
+    ) {}
+
+    public function __invoke(OutputEvent $outputEvent): void
+    {
+        $this->dispatcher->dispatch($this->container->build(MatrixEvent::class));
+    }
+}
