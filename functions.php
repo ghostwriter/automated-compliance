@@ -8,7 +8,6 @@ use Ghostwriter\Compliance\Service\GithubActionOutput;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
-use Ghostwriter\EventDispatcher\Interface\EventInterface;
 use Ghostwriter\Shell\Interface\ResultInterface;
 use Ghostwriter\Shell\Shell;
 
@@ -17,7 +16,7 @@ function container(): ContainerInterface
     return Container::getInstance();
 }
 
-function dispatch(EventInterface $event): EventInterface
+function dispatch(object $event): object
 {
     return \container()
         ->get(EventDispatcherInterface::class)
