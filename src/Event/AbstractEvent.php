@@ -5,45 +5,33 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Event;
 
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
-use Ghostwriter\EventDispatcher\Interface\EventInterface;
-use Ghostwriter\EventDispatcher\Trait\EventTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-/**
- * @implements EventInterface<bool>
- */
-abstract class AbstractEvent implements EventInterface
+abstract class AbstractEvent
 {
-    use EventTrait;
-
     public function __construct(
         protected readonly EventDispatcherInterface $dispatcher,
         protected readonly InputInterface $input,
         protected readonly SymfonyStyle $symfonyStyle
     ) {}
 
-    /**
-     * @param EventInterface<bool> $event
-     *
-     * @return EventInterface<bool>
-     */
-    public function dispatch(EventInterface $event): EventInterface
+    public function dispatch(object $event): object
     {
         return $this->dispatcher->dispatch($event);
     }
 
-    public function getDispatcher(): EventDispatcherInterface
+    public function dispatcher(): EventDispatcherInterface
     {
         return $this->dispatcher;
     }
 
-    public function getInput(): InputInterface
+    public function input(): InputInterface
     {
         return $this->input;
     }
 
-    public function getOutput(): SymfonyStyle
+    public function output(): SymfonyStyle
     {
         return $this->symfonyStyle;
     }
