@@ -45,11 +45,11 @@
         "ghostwriter/collection": "^2.0.0",
         "ghostwriter/config": "^0.4.1",
         "ghostwriter/container": "^3.0.2 || dev-main as 3.0.2.1",
-        "ghostwriter/event-dispatcher": "^4.0.0",
+        "ghostwriter/event-dispatcher": "^5.0.0",
         "ghostwriter/json": "^3.0.0",
         "ghostwriter/option": "^1.5.1",
         "ghostwriter/shell": "dev-main",
-        "symfony/console": "^7.0.6"
+        "symfony/console": "^7.0.7"
     },
     "require-dev": {
         "ghostwriter/coding-standard": "dev-main",
@@ -116,7 +116,8 @@
         ],
         "docker:build": "docker buildx build --pull --tag compliance .",
         "docker:run": "docker run -v $(PWD):/github/workspace -w=/github/workspace -e GITHUB_DEBUG=1 -e GITHUB_WORKSPACE=/github/workspace -e GITHUB_TOKEN=github-token -e SIGNING_SECRET_KEY=secret-key compliance",
-        "ecs": "@bin_ecs check --fix",
+        "ecs": "@bin_ecs --fix",
+        "git:submodule:update": "git submodule update --depth=1 --init --recursive --recommend-shallow --remote",
         "infection": "@bin_infection",
         "phpunit": "@bin_phpunit",
         "phpunit:migrate": "@bin_phpunit --migrate-configuration",
