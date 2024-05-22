@@ -125,6 +125,10 @@ final class RunCommand extends Command
 
         $eventName = $input->getArgument('event');
 
+        $this->symfonyStyle->info(sprintf('GitHub Event: <comment>%s</comment>', $eventName));
+
+
+
         try {
             $this->dispatcher
                 ->dispatch(
