@@ -37,9 +37,6 @@
     </UnusedClass>
   </file>
   <file src="src/Command/RunCommand.php">
-    <InvalidArgument>
-      <code><![CDATA[$payload]]></code>
-    </InvalidArgument>
     <MissingOverrideAttribute>
       <code><![CDATA[protected function configure(): void]]></code>
       <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
@@ -49,24 +46,24 @@
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addOption]]></code>
-      <code><![CDATA[dispatch]]></code>
+      <code><![CDATA[getArgument]]></code>
       <code><![CDATA[getArgument]]></code>
       <code><![CDATA[getArgument]]></code>
       <code><![CDATA[parent::__construct('run')]]></code>
     </MissingThrowsDocblock>
     <MixedArgument>
       <code><![CDATA[$eventName]]></code>
+      <code><![CDATA[$eventName]]></code>
+      <code><![CDATA[$input->getArgument('payload')]]></code>
       <code><![CDATA[$input->getArgument('payload')]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$eventName]]></code>
     </MixedAssignment>
     <UndefinedInterfaceMethod>
+      <code><![CDATA[info]]></code>
       <code><![CDATA[writeln]]></code>
     </UndefinedInterfaceMethod>
-    <UndefinedMethod>
-      <code><![CDATA[isPropagationStopped]]></code>
-    </UndefinedMethod>
     <UnusedClass>
       <code><![CDATA[RunCommand]]></code>
     </UnusedClass>
@@ -512,6 +509,19 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Listener/GitHubListener.php">
+    <MissingThrowsDocblock>
+      <code><![CDATA[build]]></code>
+      <code><![CDATA[build]]></code>
+      <code><![CDATA[dispatch]]></code>
+    </MissingThrowsDocblock>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedParam>
+      <code><![CDATA[$outputEvent]]></code>
+    </UnusedParam>
   </file>
   <file src="src/Listener/Logger.php">
     <MissingThrowsDocblock>
