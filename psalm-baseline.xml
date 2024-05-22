@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.23.1@8471a896ccea3526b26d082f4461eeea467f10a4">
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
   <file src="src/Command/AbstractCommand.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public static function getDefaultName(): string]]></code>
     </MissingOverrideAttribute>
     <MissingThrowsDocblock>
-      <code><![CDATA[build]]></code>
-      <code><![CDATA[build]]></code>
-      <code><![CDATA[dispatch]]></code>
-      <code><![CDATA[dispatch]]></code>
       <code><![CDATA[parent::__construct(static::getDefaultName())]]></code>
     </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
       <code><![CDATA[write]]></code>
     </PossiblyUnusedMethod>
-    <PossiblyUnusedProperty>
-      <code><![CDATA[$symfonyStyle]]></code>
-    </PossiblyUnusedProperty>
   </file>
   <file src="src/Command/CheckCommand.php">
     <MissingOverrideAttribute>
@@ -71,6 +64,9 @@
     <UndefinedInterfaceMethod>
       <code><![CDATA[writeln]]></code>
     </UndefinedInterfaceMethod>
+    <UndefinedMethod>
+      <code><![CDATA[isPropagationStopped]]></code>
+    </UndefinedMethod>
     <UnusedClass>
       <code><![CDATA[RunCommand]]></code>
     </UnusedClass>
@@ -171,19 +167,16 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Event/AbstractEvent.php">
-    <MissingTemplateParam>
-      <code><![CDATA[EventTrait]]></code>
-    </MissingTemplateParam>
     <MissingThrowsDocblock>
       <code><![CDATA[dispatch]]></code>
     </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
-      <code><![CDATA[getDispatcher]]></code>
-      <code><![CDATA[getOutput]]></code>
+      <code><![CDATA[dispatcher]]></code>
+      <code><![CDATA[output]]></code>
     </PossiblyUnusedMethod>
     <PossiblyUnusedReturnValue>
-      <code><![CDATA[EventInterface<bool>]]></code>
+      <code><![CDATA[object]]></code>
     </PossiblyUnusedReturnValue>
   </file>
   <file src="src/Event/ConfigEvent.php">
@@ -195,156 +188,249 @@
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubDeleteEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubDeploymentEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubDeploymentStatusEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubForkEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubGollumEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubIssueCommentEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubIssuesEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubLabelEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubMergeGroupEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubMilestoneEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPageBuildEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubProjectCardEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubProjectColumnEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubProjectEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPublicEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPullRequestCommentEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPullRequestEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPullRequestReviewCommentEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPullRequestReviewEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPullRequestTargetEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubPushEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubRegistryPackageEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubReleaseEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubRepositoryDispatchEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubScheduleEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubStatusEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubWatchEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubWorkflowCallEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubWorkflowDispatchEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/GitHub/GitHubWorkflowRunEvent.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function payload(): string]]></code>
     </MissingOverrideAttribute>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Event/MatrixEvent.php">
     <InvalidPropertyAssignmentValue>
@@ -356,6 +442,13 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[exclude]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Event/OutputEvent.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[OutputEvent]]></code>
+      <code><![CDATA[OutputEvent]]></code>
+      <code><![CDATA[OutputEvent]]></code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="src/Extension/ConfigExtension.php">
     <MissingOverrideAttribute>
@@ -369,12 +462,12 @@
     <MissingOverrideAttribute>
       <code><![CDATA[public function __invoke(ContainerInterface $container, object $service): ListenerProvider]]></code>
     </MissingOverrideAttribute>
-    <MissingThrowsDocblock>
-      <code><![CDATA[bind]]></code>
-    </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
+    <UnusedProperty>
+      <code><![CDATA[$filesystem]]></code>
+    </UnusedProperty>
   </file>
   <file src="src/Extension/SymfonyApplicationExtension.php">
     <MissingOverrideAttribute>
@@ -400,7 +493,6 @@
   </file>
   <file src="src/Interface/Composer/DependencyInterface.php">
     <MissingOverrideAttribute>
-      <code><![CDATA[public function __toString(): string;]]></code>
       <code><![CDATA[public function jsonSerialize(): array;]]></code>
     </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
@@ -412,9 +504,6 @@
     <MissingThrowsDocblock>
       <code><![CDATA[getArgument]]></code>
     </MissingThrowsDocblock>
-    <UnusedClass>
-      <code><![CDATA[CheckListener]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Listener/Debug.php">
     <PossiblyFalseOperand>
@@ -429,6 +518,9 @@
       <code><![CDATA[get]]></code>
       <code><![CDATA[get]]></code>
     </MissingThrowsDocblock>
+    <TooManyTemplateParams>
+      <code><![CDATA[GitHubEventInterface<bool>]]></code>
+    </TooManyTemplateParams>
     <UnusedClass>
       <code><![CDATA[Logger]]></code>
     </UnusedClass>
@@ -437,17 +529,21 @@
     <MissingThrowsDocblock>
       <code><![CDATA[throw new RuntimeException('Could not get current working directory');]]></code>
     </MissingThrowsDocblock>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[write]]></code>
+    </PossiblyUnusedMethod>
     <UnnecessaryVarAnnotation>
       <code><![CDATA[string]]></code>
     </UnnecessaryVarAnnotation>
-    <UnusedClass>
-      <code><![CDATA[MatrixListener]]></code>
-    </UnusedClass>
+    <UnusedProperty>
+      <code><![CDATA[$composerCacheFilesDirectoryFinder]]></code>
+    </UnusedProperty>
   </file>
   <file src="src/Listener/OutputListener.php">
-    <UnusedClass>
-      <code><![CDATA[OutputListener]]></code>
-    </UnusedClass>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="src/Service/Composer.php">
     <PossiblyUnusedMethod>
@@ -534,7 +630,6 @@
   </file>
   <file src="src/Service/Composer/Extension.php">
     <MissingOverrideAttribute>
-      <code><![CDATA[public function __toString(): string]]></code>
       <code><![CDATA[public function jsonSerialize(): array]]></code>
       <code><![CDATA[public function name(): DependencyName]]></code>
       <code><![CDATA[public function version(): DependencyVersion]]></code>
@@ -569,7 +664,6 @@
   </file>
   <file src="src/Service/Composer/Package.php">
     <MissingOverrideAttribute>
-      <code><![CDATA[public function __toString(): string]]></code>
       <code><![CDATA[public function jsonSerialize(): array]]></code>
       <code><![CDATA[public function name(): DependencyName]]></code>
       <code><![CDATA[public function version(): DependencyVersion]]></code>
@@ -632,10 +726,29 @@
       <code><![CDATA[throw new FailedToFindComposerExecutableException($stderr);]]></code>
     </MissingThrowsDocblock>
   </file>
+  <file src="src/Service/ComposerFile.php">
+    <MissingClassConstType>
+      <code><![CDATA[JSON = 'composer.json']]></code>
+      <code><![CDATA[LOCK = 'composer.lock']]></code>
+    </MissingClassConstType>
+  </file>
   <file src="src/Service/ComposerFileField.php">
+    <MissingClassConstType>
+      <code><![CDATA[DESCRIPTION = 'description']]></code>
+      <code><![CDATA[LICENSE = 'license']]></code>
+      <code><![CDATA[NAME = 'name']]></code>
+      <code><![CDATA[REQUIRE = 'require']]></code>
+      <code><![CDATA[VERSION = 'version']]></code>
+    </MissingClassConstType>
     <UnusedClass>
       <code><![CDATA[ComposerFileField]]></code>
     </UnusedClass>
+  </file>
+  <file src="src/Service/ComposerFileType.php">
+    <MissingClassConstType>
+      <code><![CDATA[JSON = 'json']]></code>
+      <code><![CDATA[LOCK = 'lock']]></code>
+    </MissingClassConstType>
   </file>
   <file src="src/Service/ComposerJsonFile.php">
     <UnusedClass>
@@ -771,6 +884,20 @@
     </UnusedClass>
   </file>
   <file src="src/Service/GithubActionOutput.php">
+    <MissingClassConstType>
+      <code><![CDATA[ESCAPED_DATA = [
+        '%' => '%25',
+        "\r" => '%0D',
+        "\n" => '%0A',
+    ]]]></code>
+      <code><![CDATA[ESCAPED_PROPERTIES = [
+        '%' => '%25',
+        "\r" => '%0D',
+        "\n" => '%0A',
+        ':' => '%3A',
+        ',' => '%2C',
+    ]]]></code>
+    </MissingClassConstType>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[! $file]]></code>
     </RiskyTruthyFalsyComparison>
@@ -782,6 +909,12 @@
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$extensions]]></code>
     </MixedArgumentTypeCoercion>
+  </file>
+  <file src="src/Service/PhpVersionConstraintInterface.php">
+    <MissingClassConstType>
+      <code><![CDATA[LATEST = 'latest']]></code>
+      <code><![CDATA[SUPPORTED = ['7.4', '8.0', '8.1']]]></code>
+    </MissingClassConstType>
   </file>
   <file src="src/Service/Process.php">
     <MissingThrowsDocblock>
@@ -883,10 +1016,5 @@
     <UnusedClass>
       <code><![CDATA[Psalm]]></code>
     </UnusedClass>
-  </file>
-  <file src="tests/Unit/AbstractTestCase.php">
-    <MissingOverrideAttribute>
-      <code><![CDATA[protected function setUp(): void]]></code>
-    </MissingOverrideAttribute>
   </file>
 </files>
