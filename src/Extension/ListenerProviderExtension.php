@@ -13,6 +13,7 @@ use Ghostwriter\Compliance\Event\WorkflowEvent;
 use Ghostwriter\Compliance\Listener\CheckListener;
 use Ghostwriter\Compliance\Listener\Debug;
 use Ghostwriter\Compliance\Listener\Logger;
+use Ghostwriter\Compliance\Listener\GitHubListener;
 use Ghostwriter\Compliance\Listener\MatrixListener;
 use Ghostwriter\Compliance\Listener\OutputListener;
 use Ghostwriter\Compliance\Service\Filesystem;
@@ -33,7 +34,7 @@ final readonly class ListenerProviderExtension implements ExtensionInterface
         ],
         CheckEvent::class => [CheckListener::class],
         MatrixEvent::class => [MatrixListener::class],
-        GitHubEventInterface::class => [MatrixListener::class],
+        GitHubEventInterface::class => [GitHubListener::class],
         OutputEvent::class => [OutputListener::class],
         WorkflowEvent::class => [],
     ];
