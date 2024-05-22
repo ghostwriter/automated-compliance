@@ -118,7 +118,7 @@ final class RunCommand extends Command
 
         $payload = (new SplFileInfo($input->getArgument('payload')))->getRealPath();
         if ($payload === false) {
-            $output->writeln(sprintf('GitHub Payload: <error>%s File does not exist.</error>', $payload));
+            $output->writeln(sprintf('GitHub Payload: <error>%s File does not exist.</error>', $input->getArgument('payload')));
 
             return Command::INVALID;
         }
