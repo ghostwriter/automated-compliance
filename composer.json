@@ -45,7 +45,7 @@
         "ghostwriter/collection": "^2.0.0",
         "ghostwriter/config": "^0.4.1",
         "ghostwriter/container": "^3.0.2 || dev-main as 3.0.2.1",
-        "ghostwriter/event-dispatcher": "^4.0.0",
+        "ghostwriter/event-dispatcher": "^5.0.0",
         "ghostwriter/json": "^3.0.0",
         "ghostwriter/option": "^1.5.1",
         "ghostwriter/shell": "dev-main",
