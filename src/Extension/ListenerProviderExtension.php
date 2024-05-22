@@ -6,6 +6,7 @@ namespace Ghostwriter\Compliance\Extension;
 
 use Ghostwriter\Compliance\EnvironmentVariables;
 use Ghostwriter\Compliance\Event\CheckEvent;
+use Ghostwriter\Compliance\Event\GitHubEventInterface;
 use Ghostwriter\Compliance\Event\MatrixEvent;
 use Ghostwriter\Compliance\Event\OutputEvent;
 use Ghostwriter\Compliance\Event\WorkflowEvent;
@@ -32,6 +33,7 @@ final readonly class ListenerProviderExtension implements ExtensionInterface
         ],
         CheckEvent::class => [CheckListener::class],
         MatrixEvent::class => [MatrixListener::class],
+        GitHubEventInterface::class => [MatrixListener::class],
         OutputEvent::class => [OutputListener::class],
         WorkflowEvent::class => [],
     ];
