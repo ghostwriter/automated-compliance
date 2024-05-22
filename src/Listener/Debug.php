@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Listener;
 
 use Ghostwriter\Compliance\Interface\EventListenerInterface;
-use Ghostwriter\EventDispatcher\Interface\EventInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function mb_strrpos;
@@ -18,10 +17,7 @@ final readonly class Debug implements EventListenerInterface
         private SymfonyStyle $symfonyStyle
     ) {}
 
-    /**
-     * @param EventInterface<bool> $event
-     */
-    public function __invoke(EventInterface $event): void
+    public function __invoke(object $event): void
     {
         $eventName = mb_substr($event::class, mb_strrpos($event::class, '\\') + 1);
 
