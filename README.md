@@ -133,17 +133,21 @@ docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance check {job}
 FROM ghcr.io/ghostwriter/compliance:v1
 ```
 
-## Supported Tools
+## Supported Tools ?!
 
 ``` php
-Ghostwriter\Compliance\Tool\ComposerRequireChecker;
-Ghostwriter\Compliance\Tool\ECS;
+Ghostwriter\Compliance\Tool\Caddy;
+Ghostwriter\Compliance\Tool\Composer;
+Ghostwriter\Compliance\Tool\Docker;
+Ghostwriter\Compliance\Tool\Git;
 Ghostwriter\Compliance\Tool\Infection;
-Ghostwriter\Compliance\Tool\PHPBench;
-Ghostwriter\Compliance\Tool\PHPCS;
+Ghostwriter\Compliance\Tool\Memcached;
 Ghostwriter\Compliance\Tool\PHPUnit;
+Ghostwriter\Compliance\Tool\PgSQL;
+Ghostwriter\Compliance\Tool\PgSQLDump;
 Ghostwriter\Compliance\Tool\Psalm;
-Ghostwriter\Compliance\Tool\Rector;
+Ghostwriter\Compliance\Tool\Redis;
+Ghostwriter\Compliance\Tool\Supervisord;
 ```
 
 ## Testing
