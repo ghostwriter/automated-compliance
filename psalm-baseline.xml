@@ -168,7 +168,6 @@
       <code><![CDATA[dispatch]]></code>
     </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
       <code><![CDATA[dispatcher]]></code>
       <code><![CDATA[output]]></code>
     </PossiblyUnusedMethod>
@@ -430,6 +429,10 @@
     </TooManyTemplateParams>
   </file>
   <file src="src/Event/MatrixEvent.php">
+    <InaccessibleProperty>
+      <code><![CDATA[$this->matrix]]></code>
+      <code><![CDATA[$this->matrix]]></code>
+    </InaccessibleProperty>
     <InvalidPropertyAssignmentValue>
       <code><![CDATA[$this->matrix]]></code>
     </InvalidPropertyAssignmentValue>
@@ -441,11 +444,9 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Event/OutputEvent.php">
-    <PropertyNotSetInConstructor>
-      <code><![CDATA[OutputEvent]]></code>
-      <code><![CDATA[OutputEvent]]></code>
-      <code><![CDATA[OutputEvent]]></code>
-    </PropertyNotSetInConstructor>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="src/Extension/ConfigExtension.php">
     <MissingOverrideAttribute>
@@ -496,11 +497,6 @@
       <code><![CDATA[name]]></code>
       <code><![CDATA[version]]></code>
     </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Listener/CheckListener.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[getArgument]]></code>
-    </MissingThrowsDocblock>
   </file>
   <file src="src/Listener/Debug.php">
     <PossiblyFalseOperand>
@@ -736,29 +732,10 @@
       <code><![CDATA[throw new FailedToFindComposerExecutableException($stderr);]]></code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Service/ComposerFile.php">
-    <MissingClassConstType>
-      <code><![CDATA[JSON = 'composer.json']]></code>
-      <code><![CDATA[LOCK = 'composer.lock']]></code>
-    </MissingClassConstType>
-  </file>
   <file src="src/Service/ComposerFileField.php">
-    <MissingClassConstType>
-      <code><![CDATA[DESCRIPTION = 'description']]></code>
-      <code><![CDATA[LICENSE = 'license']]></code>
-      <code><![CDATA[NAME = 'name']]></code>
-      <code><![CDATA[REQUIRE = 'require']]></code>
-      <code><![CDATA[VERSION = 'version']]></code>
-    </MissingClassConstType>
     <UnusedClass>
       <code><![CDATA[ComposerFileField]]></code>
     </UnusedClass>
-  </file>
-  <file src="src/Service/ComposerFileType.php">
-    <MissingClassConstType>
-      <code><![CDATA[JSON = 'json']]></code>
-      <code><![CDATA[LOCK = 'lock']]></code>
-    </MissingClassConstType>
   </file>
   <file src="src/Service/ComposerJsonFile.php">
     <UnusedClass>
@@ -894,20 +871,6 @@
     </UnusedClass>
   </file>
   <file src="src/Service/GithubActionOutput.php">
-    <MissingClassConstType>
-      <code><![CDATA[ESCAPED_DATA = [
-        '%' => '%25',
-        "\r" => '%0D',
-        "\n" => '%0A',
-    ]]]></code>
-      <code><![CDATA[ESCAPED_PROPERTIES = [
-        '%' => '%25',
-        "\r" => '%0D',
-        "\n" => '%0A',
-        ':' => '%3A',
-        ',' => '%2C',
-    ]]]></code>
-    </MissingClassConstType>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[! $file]]></code>
     </RiskyTruthyFalsyComparison>
@@ -919,12 +882,6 @@
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$extensions]]></code>
     </MixedArgumentTypeCoercion>
-  </file>
-  <file src="src/Service/PhpVersionConstraintInterface.php">
-    <MissingClassConstType>
-      <code><![CDATA[LATEST = 'latest']]></code>
-      <code><![CDATA[SUPPORTED = ['7.4', '8.0', '8.1']]]></code>
-    </MissingClassConstType>
   </file>
   <file src="src/Service/Process.php">
     <MissingThrowsDocblock>
