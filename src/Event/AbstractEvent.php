@@ -8,12 +8,12 @@ use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-abstract class AbstractEvent
+abstract readonly class AbstractEvent
 {
     public function __construct(
-        protected readonly EventDispatcherInterface $dispatcher,
-        protected readonly InputInterface $input,
-        protected readonly SymfonyStyle $symfonyStyle
+        protected EventDispatcherInterface $dispatcher,
+        protected InputInterface $input,
+        protected SymfonyStyle $symfonyStyle
     ) {}
 
     public function dispatch(object $event): object
