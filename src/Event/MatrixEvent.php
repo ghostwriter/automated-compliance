@@ -7,7 +7,7 @@ namespace Ghostwriter\Compliance\Event;
 use Ghostwriter\Compliance\Service\Job;
 use Ghostwriter\Json\Json;
 
-final class MatrixEvent extends AbstractEvent
+final readonly class MatrixEvent extends AbstractEvent
 {
     /**
      * @var array{
