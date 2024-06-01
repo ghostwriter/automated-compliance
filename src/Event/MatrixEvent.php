@@ -17,13 +17,7 @@ final readonly class MatrixEvent extends AbstractEvent
         protected EventDispatcherInterface $dispatcher,
         protected InputInterface $input,
         protected SymfonyStyle $symfonyStyle
-    ) {
-        parent::__construct(
-            $dispatcher,
-            $input,
-            $symfonyStyle
-        );
-    }
+    ) {}
 
     public function exclude(array $matrices): void
     {
