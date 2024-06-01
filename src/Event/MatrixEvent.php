@@ -5,11 +5,25 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Event;
 
 use Ghostwriter\Compliance\Service\Job;
+use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Throwable;
 
 final readonly class MatrixEvent extends AbstractEvent
 {
-    private Martix $matrix;
+    public function __construct(
+        private Martix $matrix,
+        protected EventDispatcherInterface $dispatcher,
+        protected InputInterface $input,
+        protected SymfonyStyle $symfonyStyle
+    ) {
+        parent::__construct(
+            $dispatcher,
+            $input,
+            $symfonyStyle
+        );
+    }
 
     public function exclude(array $matrices): void
     {
