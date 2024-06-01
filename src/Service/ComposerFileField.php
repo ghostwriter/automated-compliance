@@ -9,25 +9,25 @@ final readonly class ComposerFileField
     /**
      * @var string
      */
-    public const DESCRIPTION = 'description';
+    public const string DESCRIPTION = 'description';
 
     /**
      * @var string
      */
-    public const LICENSE = 'license';
+    public const string LICENSE = 'license';
 
     /**
      * @var string
      */
-    public const NAME = 'name';
+    public const string NAME = 'name';
 
     /**
      * @var string
      */
-    public const REQUIRE = 'require';
+    public const string REQUIRE = 'require';
 
     /**
      * @var string
      */
-    public const VERSION = 'version';
+    public const string VERSION = 'version';
 }
