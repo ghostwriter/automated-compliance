@@ -9,10 +9,10 @@ interface ComposerFileType
     /**
      * @var string
      */
-    public const JSON = 'json';
+    public const string JSON = 'json';
 
     /**
      * @var string
      */
-    public const LOCK = 'lock';
+    public const string LOCK = 'lock';
 }
