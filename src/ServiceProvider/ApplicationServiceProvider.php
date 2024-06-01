@@ -11,6 +11,8 @@ use Ghostwriter\Compliance\Service\Filesystem;
 use Ghostwriter\Compliance\ToolInterface;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ServiceProviderInterface;
+use Ghostwriter\Json\Interface\JsonInterface;
+use Ghostwriter\Json\Json;
 
 use function dirname;
 use function is_a;
@@ -31,6 +33,7 @@ final readonly class ApplicationServiceProvider implements ServiceProviderInterf
     {
         $container->set(EnvironmentVariables::class, EnvironmentVariables::new());
 
+        $container->alias(JsonInterface::class, Json::class);
         $container->provide(EventServiceProvider::class);
         $container->provide(ConsoleServiceProvider::class);
         $container->provide(ConfigServiceProvider::class);
