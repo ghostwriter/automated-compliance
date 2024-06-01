@@ -10,18 +10,22 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 use function getcwd;
 
+use const DIRECTORY_SEPARATOR;
+
 #[CoversClass(Composer::class)]
 final class ComposerTest extends AbstractTestCase
 {
     public function testGetJsonFilePath(): void
     {
         $root = getcwd();
-        self::assertSame((new Composer())->getJsonFilePath($root), $root . '/composer.json');
+
+        self::assertSame((new Composer())->getJsonFilePath($root), $root . DIRECTORY_SEPARATOR . 'composer.json');
     }
 
     public function testGetLockFilePath(): void
     {
         $root = getcwd();
-        self::assertSame((new Composer())->getLockFilePath($root), $root . '/composer.lock');
+
+        self::assertSame((new Composer())->getLockFilePath($root), $root . DIRECTORY_SEPARATOR . 'composer.lock');
     }
 }
