@@ -5,49 +5,27 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Event;
 
 use Ghostwriter\Compliance\Service\Job;
-use Ghostwriter\Json\Json;
+use Throwable;
 
 final readonly class MatrixEvent extends AbstractEvent
 {
-    /**
-     * @var array{
-     *     exclude:array<array-key,string>,
-     *     include:array<array-key,array{
-     *     name:string,
-     *     command:string,
-     *     extensions:array<string>,
-     *     os:string,
-     *     php:string,
-     *     dependency:string,
-     *     experimental:bool
-     * }>,
-     * }
-     */
-    private array $matrix = [
-        'include' => [],
-        'exclude' => [],
-    ];
+    private Martix $matrix;
 
     public function exclude(array $matrices): void
     {
-        /** @var string $matrix */
-        foreach ($matrices as $matrix) {
-            $this->matrix['exclude'][] = $matrix;
-        }
+        $this->matrix->exclude($matrices);
     }
 
+    /**
+     * @throws Throwable
+     */
     public function getMatrix(): string
     {
-        $matrix = $this->matrix['include'];
-        if ($matrix === []) {
-            $this->include(Job::noop());
-        }
-
-        return (new Json())->encode($this->matrix);
+        return $this->matrix->toString();
     }
 
     public function include(Job $job): void
     {
-        $this->matrix['include'][] = $job->toArray();
+        $this->matrix->include($job);
     }
 }
