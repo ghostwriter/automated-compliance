@@ -15,7 +15,7 @@ final class GithubActionOutput
     /**
      * @see https://github.com/actions/toolkit/blob/457303960f03375db6f033e214b9f90d79c3fe5c/packages/core/src/command.ts#L80-L85
      */
-    public const ESCAPED_DATA = [
+    public const array ESCAPED_DATA = [
         '%' => '%25',
         "\r" => '%0D',
         "\n" => '%0A',
@@ -24,7 +24,7 @@ final class GithubActionOutput
     /**
      * @see https://github.com/actions/toolkit/blob/457303960f03375db6f033e214b9f90d79c3fe5c/packages/core/src/command.ts#L87-L94
      */
-    public const ESCAPED_PROPERTIES = [
+    public const array ESCAPED_PROPERTIES = [
         '%' => '%25',
         "\r" => '%0D',
         "\n" => '%0A',
