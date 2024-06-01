@@ -6,9 +6,9 @@ namespace Ghostwriter\Compliance\Service;
 
 interface PhpVersionConstraintInterface
 {
-    public const LATEST = 'latest';
+    public const string LATEST = 'latest';
 
-    public const SUPPORTED = ['7.4', '8.0', '8.1'];
+    public const array SUPPORTED = ['7.4', '8.0', '8.1'];
 
     public function getVersion(): string;
 }
