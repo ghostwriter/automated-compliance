@@ -428,18 +428,20 @@
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/MatrixEvent.php">
-    <InaccessibleProperty>
-      <code><![CDATA[$this->matrix]]></code>
-      <code><![CDATA[$this->matrix]]></code>
-    </InaccessibleProperty>
-    <InvalidPropertyAssignmentValue>
-      <code><![CDATA[$this->matrix]]></code>
-    </InvalidPropertyAssignmentValue>
-    <MissingThrowsDocblock>
-      <code><![CDATA[encode]]></code>
-    </MissingThrowsDocblock>
+  <file src="src/Event/Martix.php">
     <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <PropertyTypeCoercion>
+      <code><![CDATA[$this->include]]></code>
+    </PropertyTypeCoercion>
+  </file>
+  <file src="src/Event/MatrixEvent.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$matrices]]></code>
+    </MixedArgumentTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
       <code><![CDATA[exclude]]></code>
     </PossiblyUnusedMethod>
   </file>
@@ -533,6 +535,7 @@
   </file>
   <file src="src/Listener/MatrixListener.php">
     <MissingThrowsDocblock>
+      <code><![CDATA[getMatrix]]></code>
       <code><![CDATA[throw new RuntimeException('Could not get current working directory');]]></code>
     </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
@@ -900,6 +903,8 @@
       <code><![CDATA[public function __invoke(ContainerInterface $container): void]]></code>
     </MissingOverrideAttribute>
     <MissingThrowsDocblock>
+      <code><![CDATA[alias]]></code>
+      <code><![CDATA[alias]]></code>
       <code><![CDATA[provide]]></code>
       <code><![CDATA[provide]]></code>
       <code><![CDATA[provide]]></code>
