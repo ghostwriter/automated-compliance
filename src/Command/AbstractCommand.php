@@ -48,7 +48,7 @@ abstract class AbstractCommand extends Command
     {
         try {
             $this->dispatcher->dispatch(
-                new OutputEvent([
+                OutputEvent::new([
                     '::echo::on',
                     sprintf('::group::%s %s', Compliance::NAME, Compliance::BLACK_LIVES_MATTER),
                     $message,
