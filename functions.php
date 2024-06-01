@@ -25,7 +25,7 @@ function dispatch(object $event): object
 
 function dispatchOutputEvent(string $message): OutputEvent
 {
-    return \dispatch(new OutputEvent(
+    return \dispatch(OutputEvent::new(
         [
             '::echo::on',
             \sprintf('::group::%s %s', Compliance::NAME, Compliance::BLACK_LIVES_MATTER),
