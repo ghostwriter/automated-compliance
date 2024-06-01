@@ -9,10 +9,10 @@ interface ComposerFile
     /**
      * @var string
      */
-    public const JSON = 'composer.json';
+    public const string JSON = 'composer.json';
 
     /**
      * @var string
      */
-    public const LOCK = 'composer.lock';
+    public const string LOCK = 'composer.lock';
 }
