@@ -11,14 +11,14 @@ use Ghostwriter\Compliance\Service\Composer\ComposerLockReader;
 use Ghostwriter\Compliance\Service\Composer\RequireDevList;
 use Ghostwriter\Compliance\Service\Composer\RequireList;
 
+use const DIRECTORY_SEPARATOR;
+use const PATHINFO_EXTENSION;
+
 use function basename;
 use function getenv;
 use function mb_substr;
 use function pathinfo;
 use function trim;
-
-use const DIRECTORY_SEPARATOR;
-use const PATHINFO_EXTENSION;
 
 final readonly class Composer
 {
