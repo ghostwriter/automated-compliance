@@ -22,6 +22,9 @@ use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Throwable;
 
+use const FILE_APPEND;
+use const PHP_EOL;
+
 use function array_map;
 use function array_unique;
 use function chdir;
@@ -32,9 +35,6 @@ use function iterator_to_array;
 use function sprintf;
 use function sys_get_temp_dir;
 use function tempnam;
-
-use const FILE_APPEND;
-use const PHP_EOL;
 
 final readonly class MatrixListener implements EventListenerInterface
 {
