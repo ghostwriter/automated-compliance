@@ -14,14 +14,14 @@ use Ghostwriter\Container\Interface\ServiceProviderInterface;
 use Ghostwriter\Json\Interface\JsonInterface;
 use Ghostwriter\Json\Json;
 
+use const DIRECTORY_SEPARATOR;
+
 use function dirname;
 use function is_a;
 use function sprintf;
 use function str_contains;
 use function str_ends_with;
 use function str_replace;
-
-use const DIRECTORY_SEPARATOR;
 
 final readonly class ApplicationServiceProvider implements ServiceProviderInterface
 {
