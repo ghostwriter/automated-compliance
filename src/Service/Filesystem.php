@@ -11,6 +11,9 @@ use RecursiveIteratorIterator;
 use RuntimeException;
 use SplFileInfo;
 
+use const DIRECTORY_SEPARATOR;
+use const FILE_APPEND;
+
 use function array_diff;
 use function array_merge;
 use function chgrp;
@@ -29,9 +32,6 @@ use function rmdir;
 use function scandir;
 use function sprintf;
 use function unlink;
-
-use const DIRECTORY_SEPARATOR;
-use const FILE_APPEND;
 
 final readonly class Filesystem
 {
