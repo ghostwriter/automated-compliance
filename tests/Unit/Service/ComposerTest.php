@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Tests\Unit\Service;
 
 use Ghostwriter\Compliance\Service\Composer;
-use Tests\Unit\AbstractTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-
-use function getcwd;
+use Tests\Unit\AbstractTestCase;
 
 use const DIRECTORY_SEPARATOR;
+
+use function getcwd;
 
 #[CoversClass(Composer::class)]
 final class ComposerTest extends AbstractTestCase
