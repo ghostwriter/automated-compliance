@@ -30,6 +30,11 @@ final class Martix
         }
     }
 
+    public function include(Job $job): void
+    {
+        $this->include[] = $job->toArray();
+    }
+
     /**
      * @throws Throwable
      */
@@ -43,10 +48,5 @@ final class Martix
             'include' => $this->include,
             'exclude' => $this->exclude,
         ]);
-    }
-
-    public function include(Job $job): void
-    {
-        $this->include[] = $job->toArray();
     }
 }
