@@ -21,6 +21,11 @@ final readonly class OutputEvent extends AbstractEvent
         parent::__construct($dispatcher, $input, $symfonyStyle);
     }
 
+    public function getMessage(): array|string
+    {
+        return $this->message;
+    }
+
     /**
      * @throws Throwable
      */
@@ -29,10 +34,5 @@ final readonly class OutputEvent extends AbstractEvent
         $container = Container::getInstance();
 
         return $container->build(self::class, [$message]);
-    }
-
-    public function getMessage(): array|string
-    {
-        return $this->message;
     }
 }
