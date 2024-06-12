@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
-      codecov: ${{ secrets.CODECOV_TOKEN }}
+      codecov: ${{ env.CODECOV_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
