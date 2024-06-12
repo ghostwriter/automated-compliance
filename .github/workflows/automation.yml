@@ -131,8 +131,8 @@ jobs:
         uses: codecov/codecov-action@v4
         if: ${{ matrix.name == 'PHPUnit' }}
         env:
-          CODECOV_TOKEN: ${{ steps.matrix.outputs.codecov }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           directory: ${{ github.workspace }}/.cache/phpunit/
-          token: ${{ steps.matrix.outputs.codecov }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
