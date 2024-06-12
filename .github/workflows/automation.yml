@@ -127,6 +127,8 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         if: ${{ matrix.name == 'PHPUnit' }}
+        env:
+          CODECOV_TOKEN: ${{ steps.matrix.outputs.codecov }}
         with:
           directory: ${{ github.workspace }}/.cache/phpunit/
           token: ${{ steps.matrix.outputs.codecov }}
