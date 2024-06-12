@@ -60,6 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+      codecov: ${{ secrets.CODECOV_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -128,5 +129,5 @@ jobs:
         if: ${{ matrix.name == 'PHPUnit' }}
         with:
           directory: ${{ github.workspace }}/.cache/phpunit/
-          token: 63caea06-f036-4606-a791-ccbd81d86c51
+          token: ${{ steps.matrix.outputs.codecov }}
           verbose: true
