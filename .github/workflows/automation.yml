@@ -16,10 +16,13 @@ on:
       - completed
   workflow_call:
     secrets:
+      CODECOV_TOKEN:
+        required: false
       GPG_PRIVATE_KEY:
         required: false
       INFECTION_DASHBOARD_API_KEY:
         required: false
+      
 
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 # values: read, write, none
