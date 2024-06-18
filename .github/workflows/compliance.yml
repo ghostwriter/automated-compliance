@@ -7,9 +7,9 @@ on:
       # Default branch
       - "main"
       # Release branches
-      ## 1.2.x - eg. Semantic Versioning
+      ## 1.2.x - e.g. Semantic Versioning
       - "[0-9]+.[0-9]+.x"
-      ## v1 - eg. GitHub Actions Versioning
+      ## v1 - e.g. GitHub Actions Versioning
       - "v[0-9]+"
   # Scheduled workflow
   schedule:
