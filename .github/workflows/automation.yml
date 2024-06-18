@@ -22,7 +22,7 @@ on:
         required: false
       INFECTION_DASHBOARD_API_KEY:
         required: false
-      
+
 
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 # values: read, write, none
@@ -106,10 +106,14 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/php.json"
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+      - name: Setup Cache Directory
+        id: composer-cache
+        run: echo "directory=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
       - name: Cache composer dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ matrix.composerCacheFilesDirectory }}
+          path: ${{ steps.composer-cache.outputs.directory || matrix.composerCacheFilesDirectory }}
           key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ matrix.dependency }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ matrix.dependency }}-
 
