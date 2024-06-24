@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7909da7ed1acefba2be5d10d7f9fe07f",
+    "content-hash": "eceda3d67836bb7c2f4aea7941d0e25f",
     "packages": [
         {
             "name": "composer/semver",
@@ -162,24 +162,24 @@
         },
         {
             "name": "ghostwriter/clock",
-            "version": "2.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/clock.git",
-                "reference": "60617f8b14533d6c37e3ba16ec2e6d61e5617884"
+                "reference": "906ded66d7dda723531aa7b0d3554f9026304d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/clock/zipball/60617f8b14533d6c37e3ba16ec2e6d61e5617884",
-                "reference": "60617f8b14533d6c37e3ba16ec2e6d61e5617884",
+                "url": "https://api.github.com/repos/ghostwriter/clock/zipball/906ded66d7dda723531aa7b0d3554f9026304d3b",
+                "reference": "906ded66d7dda723531aa7b0d3554f9026304d3b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2"
+                "php": ">=8.3"
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main",
-                "ghostwriter/psalm-plugin": "^0.2 || ^0.3 || ^1.0"
+                "ghostwriter/psalm-plugin": "^0.2.0"
             },
             "type": "library",
             "autoload": {
@@ -210,6 +210,7 @@
                 "forum": "https://github.com/ghostwriter/clock/discussions",
                 "issues": "https://github.com/ghostwriter/clock/issues",
                 "rss": "https://github.com/ghostwriter/clock/releases.atom",
+                "security": "https://github.com/ghostwriter/clock/security/advisories/new",
                 "source": "https://github.com/ghostwriter/clock"
             },
             "funding": [
@@ -218,7 +219,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-16T06:50:14+00:00"
+            "time": "2024-06-21T23:42:37+00:00"
         },
         {
             "name": "ghostwriter/collection",
