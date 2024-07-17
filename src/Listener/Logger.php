@@ -4,41 +4,37 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Listener;
 
-use Ghostwriter\Compliance\Event\GitHub\GitHubPullRequestEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubPushEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubScheduleEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowCallEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowDispatchEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowRunEvent;
-use Ghostwriter\Compliance\Event\GitHubEventInterface;
 use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Interface\EventListenerInterface;
+use Ghostwriter\Compliance\Interface\Event\GitHubEventInterface;
+use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
+use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function container;
-use function dispatch;
-
-final readonly class Logger implements EventListenerInterface
+final readonly class Logger implements ListenerInterface
 {
     public function __construct(
+        private EventDispatcherInterface $eventDispatcher,
         private SymfonyStyle $symfonyStyle,
-    ) {}
+    ) {
+    }
 
-    /**
-     * @param GitHubEventInterface<bool> $event
-     */
-    public function __invoke(GitHubEventInterface $event): void
+    public function __invoke(GitHubEventInterface $gitHubEvent): void
     {
-        $this->symfonyStyle->info('Event Class: ' . $event::class);
-        $this->symfonyStyle->info('Event Payload: ' . $event->payload());
+        $this->symfonyStyle->info('Event Class: ' . $gitHubEvent::class);
+        $this->symfonyStyle->info('Event Payload: ' . $gitHubEvent->payload());
 
         $stop = match (true) {
             //            $event instanceof GitHubPullRequestEvent,
-            $event instanceof GitHubWorkflowCallEvent,
-            $event instanceof GitHubWorkflowDispatchEvent,
-            $event instanceof GitHubScheduleEvent,
-            $event instanceof GitHubWorkflowRunEvent,
-            $event instanceof GitHubPushEvent => false,
+            $gitHubEvent instanceof GitHubWorkflowCallEvent,
+            $gitHubEvent instanceof GitHubWorkflowDispatchEvent,
+            $gitHubEvent instanceof GitHubScheduleEvent,
+            $gitHubEvent instanceof GitHubWorkflowRunEvent,
+            $gitHubEvent instanceof GitHubPushEvent => false,
             default => true,
         };
 
@@ -46,7 +42,7 @@ final readonly class Logger implements EventListenerInterface
             return;
         }
 
-        dispatch(container()->get(MatrixEvent::class));
+        $this->eventDispatcher->dispatch(MatrixEvent::new());
 
         //        $this->symfonyStyle->info(sprintf(
         //            '<fg=white;bg=black;options=bold>Event Class:</> <info>%s</info>',
