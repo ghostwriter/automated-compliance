@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Interface\Composer;
 
-use Ghostwriter\Compliance\Service\Composer\DependencyName;
-use Ghostwriter\Compliance\Service\Composer\DependencyVersion;
+use Ghostwriter\Compliance\Value\Composer\DependencyName;
+use Ghostwriter\Compliance\Value\Composer\DependencyVersion;
 use JsonSerializable;
 use Stringable;
 
