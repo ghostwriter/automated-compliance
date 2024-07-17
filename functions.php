@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Ghostwriter\Compliance\Compliance;
 use Ghostwriter\Compliance\Event\OutputEvent;
-use Ghostwriter\Compliance\Service\GithubActionOutput;
+use Ghostwriter\Compliance\Value\GithubActionOutput;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
