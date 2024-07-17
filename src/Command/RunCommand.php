@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Command;
 
 use Ghostwriter\Compliance\Compliance;
-use Ghostwriter\Compliance\EnvironmentVariables;
+use Ghostwriter\Compliance\Event\CopyWorkflowEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubCreateEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubDeleteEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubDeploymentEvent;
@@ -38,9 +38,10 @@ use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowCallEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowDispatchEvent;
 use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowRunEvent;
 use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Event\WorkflowEvent;
+use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
+use Override;
 use RuntimeException;
 use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
@@ -51,19 +52,23 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\StyleInterface;
 use Throwable;
 
+use const PHP_EOL;
+
+use function getcwd;
 use function sprintf;
 
 final class RunCommand extends Command
 {
     public function __construct(
         private readonly ContainerInterface $container,
-        private readonly EventDispatcherInterface $dispatcher,
+        private readonly EventDispatcherInterface $eventDispatcher,
         private readonly EnvironmentVariables $environmentVariables,
         private readonly StyleInterface $symfonyStyle,
     ) {
         parent::__construct('run');
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Generates a Job matrix for Github Actions.');
@@ -96,7 +101,7 @@ final class RunCommand extends Command
             'workspace',
             InputArgument::OPTIONAL,
             'The default working directory on the GitHub runner.',
-            $this->environmentVariables->get('GITHUB_WORKSPACE')
+            $this->environmentVariables->get('GITHUB_WORKSPACE', getcwd())
         );
 
         // GITHUB_ENV	The path on the runner to the file that sets variables from workflow commands.
@@ -110,6 +115,7 @@ final class RunCommand extends Command
      *
      * @return int 0 if everything went fine, or an exit code
      */
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->symfonyStyle->writeln(sprintf(Compliance::LOGO, Compliance::BLACK_LIVES_MATTER, ''));
@@ -130,7 +136,7 @@ final class RunCommand extends Command
         $this->symfonyStyle->info(sprintf('GitHub Event: <comment>%s</comment>', $eventName));
 
         try {
-            $this->dispatcher
+            $this->eventDispatcher
                 ->dispatch(
                     match ($eventName) {
                         default => throw new RuntimeException(sprintf(
@@ -138,7 +144,7 @@ final class RunCommand extends Command
                             $eventName
                         )),
                         'compliance.command.matrix' => $this->container->get(MatrixEvent::class),
-                        'compliance.command.workflow' => $this->container->get(WorkflowEvent::class),
+                        'compliance.command.workflow' => $this->container->get(CopyWorkflowEvent::class),
                         'create' => new GitHubCreateEvent($payload),
                         'delete' => new GitHubDeleteEvent($payload),
                         'deployment_status' => new GitHubDeploymentStatusEvent($payload),
@@ -172,8 +178,16 @@ final class RunCommand extends Command
                         'workflow_run' => new GitHubWorkflowRunEvent($payload),
                     }
                 );
-        } catch (Throwable $e) {
-            $this->symfonyStyle->error($e->getMessage());
+        } catch (Throwable $throwable) {
+            $this->symfonyStyle->error(
+                sprintf(
+                    '[%s] %s%s%s' . PHP_EOL,
+                    $throwable::class,
+                    $throwable->getMessage(),
+                    PHP_EOL . PHP_EOL,
+                    $throwable->getTraceAsString(),
+                )
+            );
 
             return Command::FAILURE;
         }
