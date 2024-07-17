@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Listener;
 
-use Ghostwriter\Compliance\Interface\EventListenerInterface;
+use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function mb_strrpos;
 use function mb_substr;
 use function sprintf;
 
-final readonly class Debug implements EventListenerInterface
+final readonly class Debug implements ListenerInterface
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle
-    ) {}
+    ) {
+    }
 
     public function __invoke(object $event): void
     {
