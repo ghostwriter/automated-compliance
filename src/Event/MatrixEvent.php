@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Event;
 
-use Ghostwriter\Compliance\Service\Job;
-use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
+use Ghostwriter\Compliance\Value\GitHub\Action\Job;
+use Ghostwriter\Compliance\Value\GitHub\Action\Matrix;
+use Ghostwriter\Container\Container;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Style\StyleInterface;
 use Throwable;
 
 final readonly class MatrixEvent extends AbstractEvent
 {
     public function __construct(
-        private Martix $matrix,
-        protected EventDispatcherInterface $dispatcher,
+        private Matrix $matrix,
         protected InputInterface $input,
-        protected SymfonyStyle $symfonyStyle
-    ) {}
+        protected StyleInterface $style
+    ) {
+    }
 
     public function exclude(array $matrices): void
     {
@@ -35,5 +36,10 @@ final readonly class MatrixEvent extends AbstractEvent
     public function include(Job $job): void
     {
         $this->matrix->include($job);
+    }
+
+    public static function new(): self
+    {
+        return Container::getInstance()->get(self::class);
     }
 }
