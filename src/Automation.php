@@ -100,6 +100,9 @@ final readonly class Automation
         return $self;
     }
 
+    /**
+     * @return array<ComposerStrategy|OperatingSystem|PhpVersion|Tool>
+     */
     public function toArray(): array
     {
         return [...$this->composerStrategies, ...$this->operatingSystems, ...$this->phpVersions, ...$this->tools];
