@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Service;
 
-use Ghostwriter\Compliance\Service\Composer;
+use Ghostwriter\Compliance\Value\Composer\Composer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\Unit\AbstractTestCase;
 
