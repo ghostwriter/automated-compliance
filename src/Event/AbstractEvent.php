@@ -4,26 +4,15 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Event;
 
-use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Style\StyleInterface;
 
 abstract readonly class AbstractEvent
 {
     public function __construct(
-        protected EventDispatcherInterface $dispatcher,
         protected InputInterface $input,
-        protected SymfonyStyle $symfonyStyle
-    ) {}
-
-    public function dispatch(object $event): object
-    {
-        return $this->dispatcher->dispatch($event);
-    }
-
-    public function dispatcher(): EventDispatcherInterface
-    {
-        return $this->dispatcher;
+        protected StyleInterface $style
+    ) {
     }
 
     public function input(): InputInterface
@@ -31,8 +20,8 @@ abstract readonly class AbstractEvent
         return $this->input;
     }
 
-    public function output(): SymfonyStyle
+    public function output(): StyleInterface
     {
-        return $this->symfonyStyle;
+        return $this->style;
     }
 }
