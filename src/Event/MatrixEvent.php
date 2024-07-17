@@ -7,16 +7,12 @@ namespace Ghostwriter\Compliance\Event;
 use Ghostwriter\Compliance\Value\GitHub\Action\Job;
 use Ghostwriter\Compliance\Value\GitHub\Action\Matrix;
 use Ghostwriter\Container\Container;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Style\StyleInterface;
 use Throwable;
 
-final readonly class MatrixEvent extends AbstractEvent
+final readonly class MatrixEvent
 {
     public function __construct(
         private Matrix $matrix,
-        protected InputInterface $input,
-        protected StyleInterface $style
     ) {
     }
 
