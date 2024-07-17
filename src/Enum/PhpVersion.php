@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Enum;
 
+use const PHP_MAJOR_VERSION;
+use const PHP_MINOR_VERSION;
+
+use function array_filter;
+
 enum PhpVersion: int
 {
+    case PHP_54 = 50400;
+    case PHP_70 = 70000;
+    case PHP_71 = 70100;
     case PHP_72 = 70200;
     case PHP_73 = 70300;
     case PHP_74 = 70400;
@@ -14,10 +22,14 @@ enum PhpVersion: int
     case PHP_82 = 80200;
     case PHP_83 = 80300;
     case PHP_84 = 80400;
+    // case PHP_90 = 90000;
 
     public function toString(): string
     {
         return match ($this) {
+            self::PHP_54 => '5.4',
+            self::PHP_70 => '7.0',
+            self::PHP_71 => '7.1',
             self::PHP_72 => '7.2',
             self::PHP_73 => '7.3',
             self::PHP_74 => '7.4',
@@ -26,10 +38,21 @@ enum PhpVersion: int
             self::PHP_82 => '8.2',
             self::PHP_83 => '8.3',
             self::PHP_84 => '8.4',
+            // self::PHP_90 => '9.0',
         };
     }
 
+    public static function current(): self
+    {
+        return self::from(PHP_MAJOR_VERSION * 10000 + PHP_MINOR_VERSION * 100);
+    }
+
     public static function experimental(): self
+    {
+        return self::PHP_84;
+    }
+
+    public static function highest(): self
     {
         return self::PHP_84;
     }
@@ -42,5 +65,20 @@ enum PhpVersion: int
     public static function latest(): self
     {
         return self::PHP_83;
+    }
+
+    public static function lowest(): self
+    {
+        return self::PHP_54;
+    }
+
+    public static function supported(): array
+    {
+        return array_filter(
+            self::cases(),
+            static fn (self $phpVersion): bool =>
+            ($phpVersion->value >= self::lowest()->value && $phpVersion->value <= self::highest()->value)
+            && $phpVersion->value <= self::current()->value
+        );
     }
 }
