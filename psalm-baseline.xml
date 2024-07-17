@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
   <file src="src/Automation.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[[...$this->composerStrategies, ...$this->operatingSystems, ...$this->phpVersions, ...$this->tools]]]></code>
+      <code><![CDATA[array<ComposerStrategy|OperatingSystem|PhpVersion|Tool>]]></code>
+    </MixedReturnTypeCoercion>
     <PossiblyUnusedMethod>
       <code><![CDATA[composerStrategies]]></code>
       <code><![CDATA[new]]></code>
@@ -251,6 +255,53 @@
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
+  <file src="src/Event/Listener/CheckListener.php">
+    <MixedArgument>
+      <code><![CDATA[$checkEvent->input()->getArgument('job')]]></code>
+    </MixedArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Event/Listener/CopyWorkflowListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Event/Listener/Debug.php">
+    <PossiblyFalseOperand>
+      <code><![CDATA[mb_strrpos($event::class, '\\')]]></code>
+    </PossiblyFalseOperand>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Event/Listener/GitHubListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedParam>
+      <code><![CDATA[$gitHubEvent]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Event/Listener/Logger.php">
+    <MissingThrowsDocblock>
+      <code><![CDATA[dispatch]]></code>
+    </MissingThrowsDocblock>
+    <UnusedClass>
+      <code><![CDATA[Logger]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Event/Listener/MatrixListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Event/Listener/OutputListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="src/Event/MatrixEvent.php">
     <MissingThrowsDocblock>
       <code><![CDATA[get]]></code>
@@ -277,65 +328,6 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[name]]></code>
       <code><![CDATA[version]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Listener/CheckListener.php">
-    <MixedArgument>
-      <code><![CDATA[$checkEvent->input()->getArgument('job')]]></code>
-    </MixedArgument>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Listener/CopyWorkflowListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Listener/Debug.php">
-    <PossiblyFalseOperand>
-      <code><![CDATA[mb_strrpos($event::class, '\\')]]></code>
-    </PossiblyFalseOperand>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Listener/GitHubListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-    <UnusedParam>
-      <code><![CDATA[$gitHubEvent]]></code>
-    </UnusedParam>
-  </file>
-  <file src="src/Listener/Logger.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[dispatch]]></code>
-    </MissingThrowsDocblock>
-    <UnusedClass>
-      <code><![CDATA[Logger]]></code>
-    </UnusedClass>
-  </file>
-  <file src="src/Listener/MatrixListener.php">
-    <ArgumentTypeCoercion>
-      <code><![CDATA[$toolEnum->toString()]]></code>
-    </ArgumentTypeCoercion>
-    <MissingThrowsDocblock>
-      <code><![CDATA[$this->composerCacheFilesDirectoryFinder]]></code>
-      <code><![CDATA[getMatrix]]></code>
-      <code><![CDATA[throw new RuntimeException('Could not get current working directory');]]></code>
-    </MissingThrowsDocblock>
-    <MixedAssignment>
-      <code><![CDATA[$automation]]></code>
-    </MixedAssignment>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-      <code><![CDATA[write]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Listener/OutputListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Service/Extension/ConfigExtension.php">
