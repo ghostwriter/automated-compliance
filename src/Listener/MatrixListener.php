@@ -5,18 +5,21 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Listener;
 
 use Composer\Semver\Semver;
-use Ghostwriter\Compliance\Enum\ComposerDependency;
+use Ghostwriter\Compliance\Automation;
+use Ghostwriter\Compliance\Enum\ComposerStrategy;
 use Ghostwriter\Compliance\Enum\OperatingSystem;
 use Ghostwriter\Compliance\Enum\PhpVersion;
-use Ghostwriter\Compliance\EnvironmentVariables;
+use Ghostwriter\Compliance\Enum\Tool;
 use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Interface\EventListenerInterface;
-use Ghostwriter\Compliance\Service\Composer;
-use Ghostwriter\Compliance\Service\Composer\Extension;
-use Ghostwriter\Compliance\Service\ComposerCacheFilesDirectoryFinder;
-use Ghostwriter\Compliance\Service\Job;
+use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
+use Ghostwriter\Compliance\Interface\ToolInterface;
 use Ghostwriter\Compliance\Tool\PHPUnit;
-use Ghostwriter\Compliance\ToolInterface;
+use Ghostwriter\Compliance\Tool\Psalm;
+use Ghostwriter\Compliance\Value\Composer\Composer;
+use Ghostwriter\Compliance\Value\Composer\Extension;
+use Ghostwriter\Compliance\Value\EnvironmentVariables;
+use Ghostwriter\Compliance\Value\GitHub\Action\Job;
+use Ghostwriter\Compliance\Value\Shell\ComposerCacheFilesDirectoryFinder;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
@@ -36,15 +39,17 @@ use function sprintf;
 use function sys_get_temp_dir;
 use function tempnam;
 
-final readonly class MatrixListener implements EventListenerInterface
+final readonly class MatrixListener implements ListenerInterface
 {
     public function __construct(
-        // remove the damn container im using it to get the tools that were tagged
+        private Automation $automation,
+        // TODO: remove the damn container im using it to get the tools that were tagged
         private ContainerInterface $container,
         private Composer $composer,
         private ComposerCacheFilesDirectoryFinder $composerCacheFilesDirectoryFinder,
         private EnvironmentVariables $environmentVariables,
-    ) {}
+    ) {
+    }
 
     public function __invoke(MatrixEvent $generateMatrixEvent): void
     {
@@ -56,31 +61,53 @@ final readonly class MatrixListener implements EventListenerInterface
 
         chdir($root);
 
-        $composerCacheFilesDirectory = '/home/runner/.cache/composer/files';
-
-        //TODO: fix this ^^^^^
-
-        // print_r([
-        //     $composerCacheFilesDirectory,
-        //     ($this->composerCacheFilesDirectoryFinder)()
-        // ]);
+        $composerCacheFilesDirectory = ($this->composerCacheFilesDirectoryFinder)();
 
         $composerJsonPath = $this->composer->getJsonFilePath($root);
         $composerLockPath = $this->composer->getLockFilePath($root);
-
         $composerJson = $this->composer->readJsonFile($root);
 
-        $phpVersionConstraint = $composerJson->getPhpVersionConstraint();
-
-        /** @var string $constraints */
-        $constraints = $phpVersionConstraint->getVersion();
+        $constraints = $composerJson->getPhpVersionConstraint()
+            ->getVersion();
 
         $requiredPhpExtensions = array_map(
-            static fn (Extension $extension) => (string) $extension,
+            static fn (Extension $extension): string => (string) $extension,
             iterator_to_array($composerJson->getRequiredPhpExtensions())
         );
 
-        foreach ($this->container->tagged(ToolInterface::class) as $tool) {
+        $composerStrategies = [];
+        $operatingSystems = [];
+        $phpVersions = [];
+        $tools = [];
+
+        foreach ($this->automation->toArray() as $automation) {
+            if ($automation instanceof ComposerStrategy) {
+                $composerStrategies[] = $automation;
+                continue;
+            }
+
+            if ($automation instanceof Tool) {
+                $tools[] = $automation;
+                continue;
+            }
+
+            if ($automation instanceof PhpVersion) {
+                $phpVersions[] = $automation;
+                continue;
+            }
+
+            if ($automation instanceof OperatingSystem) {
+                $operatingSystems[] = $automation;
+            }
+        }
+
+        foreach ($tools as $toolEnum) {
+            $tool = $this->container->get($toolEnum->toString());
+
+            if (! $tool instanceof ToolInterface) {
+                continue;
+            }
+
             if (! $tool->isPresent()) {
                 continue;
             }
@@ -91,7 +118,13 @@ final readonly class MatrixListener implements EventListenerInterface
 
             $extensions = array_unique([...$requiredPhpExtensions, ...$tool->extensions()]);
 
-            if (! $tool instanceof PHPUnit) {
+            if (
+                ! match (true) {
+                    $tool instanceof Psalm,
+                    $tool instanceof PHPUnit => true,
+                    default => false,
+                }
+            ) {
                 $generateMatrixEvent->include(
                     Job::new(
                         $name,
@@ -106,7 +139,7 @@ final readonly class MatrixListener implements EventListenerInterface
                 continue;
             }
 
-            foreach (PhpVersion::cases() as $phpVersion) {
+            foreach ($phpVersions as $phpVersion) {
                 $isPhpVersionExperimental = PhpVersion::isExperimental($phpVersion);
                 if ($isPhpVersionExperimental) {
                     continue;
@@ -116,10 +149,10 @@ final readonly class MatrixListener implements EventListenerInterface
                     continue;
                 }
 
-                foreach (ComposerDependency::cases() as $composerDependency) {
-                    $isComposerDependencyExperimental = ComposerDependency::isExperimental($composerDependency);
+                foreach ($composerStrategies as $composerStrategy) {
+                    $isComposerDependencyExperimental = ComposerStrategy::isExperimental($composerStrategy);
 
-                    foreach (OperatingSystem::cases() as $operatingSystem) {
+                    foreach ($operatingSystems as $operatingSystem) {
                         $generateMatrixEvent->include(
                             Job::new(
                                 $name,
@@ -129,7 +162,7 @@ final readonly class MatrixListener implements EventListenerInterface
                                 $composerJsonPath,
                                 $composerLockPath,
                                 $phpVersion,
-                                $composerDependency,
+                                $composerStrategy,
                                 $operatingSystem,
                                 $isComposerDependencyExperimental,
                             )
@@ -153,7 +186,7 @@ final readonly class MatrixListener implements EventListenerInterface
         try {
             dispatchOutputEvent($message);
             return Command::SUCCESS;
-        } catch (Throwable $exception) {
+        } catch (Throwable) {
             return Command::FAILURE;
         }
     }
