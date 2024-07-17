@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance;
 
-use Ghostwriter\Compliance\ServiceProvider\ApplicationServiceProvider;
+use Ghostwriter\Compliance\Service\Factory\ComplianceFactory;
+use Ghostwriter\Container\Attribute\Factory;
 use Ghostwriter\Container\Container;
+use Ghostwriter\Container\Interface\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 
+#[Factory(ComplianceFactory::class)]
 final readonly class Compliance
 {
     /**
@@ -41,15 +45,28 @@ final readonly class Compliance
      */
     public const string PACKAGE = 'ghostwriter/compliance';
 
-    public static function main(): void
-    {
-        (static function (Container $container): void {
-            $container->provide(ApplicationServiceProvider::class);
+    public function __construct(
+        private Application $application,
+        private ContainerInterface $container,
+    ) {
+    }
 
-            $container->get(Application::class)->run(
-                $container->get(InputInterface::class),
-                $container->get(OutputInterface::class)
-            );
-        })(Container::getInstance());
+    /**
+     * @throws Throwable
+     */
+    public function run(): int
+    {
+        return $this->application->run(
+            $this->container->get(InputInterface::class),
+            $this->container->get(OutputInterface::class)
+        );
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public static function new(): self
+    {
+        return Container::getInstance()->get(self::class);
     }
 }
