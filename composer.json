@@ -41,18 +41,18 @@
         "ext-pcov": "*",
         "composer-plugin-api": "^2.6.0",
         "composer-runtime-api": "^2.2.2",
-        "composer/semver": "^3.4.0",
+        "composer/semver": "^3.4.2",
         "ghostwriter/case-converter": "^1.0.0",
-        "ghostwriter/clock": "^2.0.0",
+        "ghostwriter/clock": "^3.0.0",
         "ghostwriter/collection": "^2.0.0",
         "ghostwriter/config": "^0.4.1",
-        "ghostwriter/container": "^3.0.3",
-        "ghostwriter/event-dispatcher": "^5.0.0",
+        "ghostwriter/container": "^4.0.2",
+        "ghostwriter/event-dispatcher": "^5.0.2",
         "ghostwriter/filesystem": "dev-main",
         "ghostwriter/json": "^3.0.0",
         "ghostwriter/option": "^1.5.1",
-        "ghostwriter/shell": "dev-main",
-        "symfony/console": "^7.1.1"
+        "ghostwriter/shell": "^0.1.0",
+        "symfony/console": "^7.1.2"
     },
     "require-dev": {
         "ghostwriter/coding-standard": "dev-main"
@@ -82,6 +82,9 @@
         "classmap-authoritative": false,
         "discard-changes": true,
         "optimize-autoloader": true,
+        "platform": {
+            "php": "8.3.999"
+        },
         "preferred-install": "dist",
         "prepend-autoloader": true,
         "process-timeout": 5000,
