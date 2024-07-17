@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Tool;
 
-use Ghostwriter\Compliance\EnvironmentVariables;
-use Ghostwriter\Compliance\Service\Filesystem;
-use Ghostwriter\Compliance\ToolInterface;
+use Ghostwriter\Compliance\Interface\ToolInterface;
+use Ghostwriter\Compliance\Value\EnvironmentVariables;
+use Ghostwriter\Filesystem\Interface\FilesystemInterface;
+use Override;
 
 use function in_array;
 use function mb_strtolower;
@@ -16,24 +17,28 @@ use function str_replace;
 abstract class AbstractTool implements ToolInterface
 {
     public function __construct(
-        private Filesystem $filesystem,
-        private EnvironmentVariables $environmentVariables
-    ) {}
+        private readonly FilesystemInterface $filesystem,
+        private readonly EnvironmentVariables $environmentVariables
+    ) {
+    }
 
+    #[Override]
     public function command(): string
     {
         return 'composer ' . str_replace(
             'p-h-p-',
             'php',
-            mb_strtolower(preg_replace('#([a-zA-Z])(?=[A-Z])#', '$1-', $this->name()))
+            mb_strtolower((string) preg_replace('#([a-zA-Z])(?=[A-Z])#', '$1-', $this->name()))
         );
     }
 
+    #[Override]
     public function extensions(): array
     {
         return ['pcov'];
     }
 
+    #[Override]
     public function isPresent(): bool
     {
         $configuration = $this->configuration();
@@ -53,10 +58,12 @@ abstract class AbstractTool implements ToolInterface
         return false;
     }
 
+    #[Override]
     public function name(): string
     {
         return str_replace(__NAMESPACE__ . '\\', '', static::class);
     }
 
+    #[Override]
     abstract public function configuration(): array;
 }
