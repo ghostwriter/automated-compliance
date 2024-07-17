@@ -4,18 +4,41 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance;
 
+use ErrorException;
 use Throwable;
 
+use const E_ALL;
+use const E_DEPRECATED;
+use const E_NOTICE;
+use const E_STRICT;
+use const E_USER_DEPRECATED;
 use const PHP_EOL;
 use const STDERR;
 
 use function dirname;
+use function error_reporting;
 use function file_exists;
 use function fwrite;
+use function restore_error_handler;
+use function set_error_handler;
 use function sprintf;
 
 /** @var ?string $_composer_autoload_path */
 (static function (string $composerAutoloadPath): void {
+    set_error_handler(
+        // Convert PHP errors to exceptions,
+        static function (int $severity, string $message, string $file, int $line): void {
+            if ((error_reporting() & $severity) === 0) {
+                // Error not in mask
+                return;
+            }
+
+            throw new ErrorException($message, 0, $severity, $file, $line);
+        },
+        // reports all errors except E_USER_DEPRECATED, E_DEPRECATED, E_STRICT, and E_NOTICE
+        E_ALL & ~E_USER_DEPRECATED & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE
+    );
+
     if (! file_exists($composerAutoloadPath)) {
         fwrite(
             STDERR,
@@ -29,16 +52,31 @@ use function sprintf;
 
     try {
         /** #BlackLivesMatter */
-        Compliance::main();
+        $exitCode = Compliance::new()->run();
     } catch (Throwable $throwable) {
-        fwrite(STDERR, sprintf(
-            '[%s] %s%s%s' . PHP_EOL,
-            $throwable::class,
-            $throwable->getMessage(),
-            PHP_EOL,
-            $throwable->getTraceAsString(),
-        ));
+        fwrite(
+            STDERR,
+            sprintf(
+                '[%s] %s%s%s' . PHP_EOL,
+                $throwable::class,
+                $throwable->getMessage(),
+                PHP_EOL . PHP_EOL,
+                $throwable->getTraceAsString(),
+            )
+        );
 
-        exit(2);
+        $exitCode = $throwable->getCode();
+    } finally {
+        restore_error_handler();
+        //    000: Success.
+        //    126: Permission denied or command not executable.
+        //    127: Command not found.
+        //    128: Invalid argument to command.
+        //    130: Command terminated by Ctrl+C (SIGINT).
+        //    137: Command terminated by Ctrl+C (SIGKILL).
+        //    139: Segmentation fault (core dumped).
+        //    141: Memory access violation.
+        //    255: Generic error indicating unspecified problem.
+        exit($exitCode ?? 255);
     }
 })($_composer_autoload_path ?? dirname(__DIR__) . '/vendor/autoload.php');
