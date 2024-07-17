@@ -97,21 +97,39 @@ You can install the package via composer:
 composer require ghostwriter/compliance --dev
 ```
 
+```bash
+Compliance - Automatically configure and execute multiple CI/CD & QA Tests via GitHub Actions. 1.x-dev
+
+Usage:
+  command [options] [arguments]
+
+Options:
+  -h, --help            Display help for the given command. When no command is given display help for the list command
+  -q, --quiet           Do not output any message
+  -V, --version         Display this application version
+      --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction  Do not ask any interactive question
+  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+Available commands:
+  help        Display help for a command
+  list        List commands
+  matrix      Generates a job matrix for Github Actions.
+  workflow    Creates a "automation.yml" workflow file.
+```
+
 ## Usage
 
+Generates `automation.php` configuration file, if it does not exist,
+and determines the job matrix for GitHub Actions.
+
 ```bash
-# Determine CI Jobs for GitHub Actions
-# compliance matrix (old)
-compliance run matrix
-compliance run check
-compliance run workflow
+vendor/bin/compliance matrix
+```
 
-# --workspace|w : Specify the workspace directory
-# --debug|d : Enable debug mode
-# --help|h : Display this help message
-
-# Executes a specific Job
-compliance check {job}
+Generate `.github/workflows/automation.yml` workflow file for your project.
+```bash
+vendor/bin/compliance workflow
 ```
 
 ## Docker
@@ -119,14 +137,12 @@ compliance check {job}
 ``` bash
 # Install from the command line:
 
-docker pull ghcr.io/ghostwriter/compliance:v2
+docker pull ghcr.io/ghostwriter/compliance:v1
 
 # Usage from the command line:
 
 docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance workflow
-docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance config
 docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance matrix
-docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance check {job}
 
 # Use as base image in Dockerfile:
 
@@ -136,18 +152,27 @@ FROM ghcr.io/ghostwriter/compliance:v1
 ## Supported Tools ?!
 
 ``` php
-Ghostwriter\Compliance\Tool\Caddy;
-Ghostwriter\Compliance\Tool\Composer;
-Ghostwriter\Compliance\Tool\Docker;
-Ghostwriter\Compliance\Tool\Git;
-Ghostwriter\Compliance\Tool\Infection;
-Ghostwriter\Compliance\Tool\Memcached;
-Ghostwriter\Compliance\Tool\PHPUnit;
-Ghostwriter\Compliance\Tool\PgSQL;
-Ghostwriter\Compliance\Tool\PgSQLDump;
-Ghostwriter\Compliance\Tool\Psalm;
-Ghostwriter\Compliance\Tool\Redis;
-Ghostwriter\Compliance\Tool\Supervisord;
+
+<?php
+
+declare(strict_types=1);
+
+use Ghostwriter\Compliance\Automation;
+use Ghostwriter\Compliance\Enum\ComposerStrategy;
+use Ghostwriter\Compliance\Enum\OperatingSystem;
+use Ghostwriter\Compliance\Enum\PhpVersion;
+use Ghostwriter\Compliance\Enum\Tool;
+use Ghostwriter\Compliance\Tool\Infection;
+use Ghostwriter\Compliance\Tool\PHPUnit;
+use Ghostwriter\Compliance\Tool\Psalm;
+
+return Automation::new()
+    ->composerStrategies(...ComposerStrategy::cases()) // ComposerStrategy::LATEST, ComposerStrategy::LOCKED, ComposerStrategy::LOWEST
+    ->operatingSystems(...OperatingSystem::cases()) // OperatingSystem::UBUNTU, OperatingSystem::MACOS, OperatingSystem::WINDOWS
+    ->phpVersions(...PhpVersion::cases()) // PhpVersion::PHP_54 - PhpVersion::PHP_84
+    ->tools(...Tool::cases()) // Tool::Infection, Tool::PHPUnit, Tool::Psalm
+    ->skip(OperatingSystem::WINDOWS) // Skip one or more: Composer Strategy, Operating System, PHP Version, or Tool 
+;
 ```
 
 ## Testing
