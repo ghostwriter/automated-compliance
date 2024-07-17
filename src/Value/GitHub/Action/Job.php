@@ -83,6 +83,9 @@ final readonly class Job
         ];
     }
 
+    /**
+     * @param array<string> $extensions
+     */
     public static function new(
         string $name,
         string $command,
