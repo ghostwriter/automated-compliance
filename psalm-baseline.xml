@@ -16,6 +16,9 @@
   </file>
   <file src="src/Command/AbstractCommand.php">
     <MissingThrowsDocblock>
+      <code><![CDATA[dispatch]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
       <code><![CDATA[parent::__construct(static::getDefaultName())]]></code>
     </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
@@ -26,17 +29,11 @@
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
     </MissingThrowsDocblock>
-    <UnusedClass>
-      <code><![CDATA[CheckCommand]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Command/MatrixCommand.php">
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
     </MissingThrowsDocblock>
-    <UnusedClass>
-      <code><![CDATA[MatrixCommand]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Command/RunCommand.php">
     <MissingThrowsDocblock>
@@ -58,13 +55,13 @@
     <MixedAssignment>
       <code><![CDATA[$eventName]]></code>
     </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
     <UndefinedInterfaceMethod>
       <code><![CDATA[info]]></code>
       <code><![CDATA[writeln]]></code>
     </UndefinedInterfaceMethod>
-    <UnusedClass>
-      <code><![CDATA[RunCommand]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Command/WorkflowCommand.php">
     <MissingThrowsDocblock>
@@ -74,9 +71,6 @@
       <code><![CDATA[throw new RuntimeException('Cannot determine the current working directory.');]]></code>
       <code><![CDATA[throw new RuntimeException('The "workflow" argument is missing.');]]></code>
     </MissingThrowsDocblock>
-    <UnusedClass>
-      <code><![CDATA[WorkflowCommand]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Compliance.php">
     <PossiblyUnusedMethod>
@@ -84,225 +78,225 @@
       <code><![CDATA[run]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="src/Container/Extension/ConfigExtension.php">
+    <ImplementedReturnTypeMismatch>
+      <code><![CDATA[Config]]></code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$service]]></code>
+    </MoreSpecificImplementedParamType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Container/Extension/ListenerProviderExtension.php">
+    <ImplementedReturnTypeMismatch>
+      <code><![CDATA[ListenerProvider]]></code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$service]]></code>
+    </MoreSpecificImplementedParamType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Container/Extension/SymfonyApplicationExtension.php">
+    <ImplementedReturnTypeMismatch>
+      <code><![CDATA[SymfonyApplication]]></code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$service]]></code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/Container/Factory/AutomationFactory.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Enum/ComposerStrategy.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[isLatest]]></code>
+      <code><![CDATA[isLocked]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Enum/OperatingSystem.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[isMacos]]></code>
+      <code><![CDATA[isWindows]]></code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="src/Enum/PhpVersion.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[supported]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Event/AbstractEvent.php">
+  <file src="src/EventDispatcher/Event/AbstractEvent.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
       <code><![CDATA[output]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Event/ConfigEvent.php">
+  <file src="src/EventDispatcher/Event/ConfigEvent.php">
     <UnusedClass>
       <code><![CDATA[ConfigEvent]]></code>
     </UnusedClass>
   </file>
-  <file src="src/Event/GitHub/GitHubCreateEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubCreateEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubDeleteEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubDeleteEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubDeploymentEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubDeploymentEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubDeploymentStatusEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubDeploymentStatusEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubForkEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubForkEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubGollumEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubGollumEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubIssueCommentEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubIssueCommentEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubIssuesEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubIssuesEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubLabelEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubLabelEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubMergeGroupEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubMergeGroupEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubMilestoneEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubMilestoneEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPageBuildEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPageBuildEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubProjectCardEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubProjectCardEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubProjectColumnEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubProjectColumnEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubProjectEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubProjectEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPublicEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPublicEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPullRequestCommentEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPullRequestCommentEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPullRequestEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPullRequestEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPullRequestReviewCommentEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPullRequestReviewCommentEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPullRequestReviewEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPullRequestReviewEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPullRequestTargetEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPullRequestTargetEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubPushEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubPushEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubRegistryPackageEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubRegistryPackageEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubReleaseEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubReleaseEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubRepositoryDispatchEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubRepositoryDispatchEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubScheduleEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubScheduleEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubStatusEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubStatusEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubWatchEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubWatchEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubWorkflowCallEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubWorkflowCallEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubWorkflowDispatchEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubWorkflowDispatchEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/GitHub/GitHubWorkflowRunEvent.php">
+  <file src="src/EventDispatcher/Event/GitHub/GitHubWorkflowRunEvent.php">
     <TooManyTemplateParams>
       <code><![CDATA[GitHubEventInterface]]></code>
     </TooManyTemplateParams>
   </file>
-  <file src="src/Event/Listener/CheckListener.php">
-    <MixedArgument>
-      <code><![CDATA[$checkEvent->input()->getArgument('job')]]></code>
-    </MixedArgument>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Event/Listener/CopyWorkflowListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Event/Listener/Debug.php">
-    <PossiblyFalseOperand>
-      <code><![CDATA[mb_strrpos($event::class, '\\')]]></code>
-    </PossiblyFalseOperand>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Event/Listener/GitHubListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-    <UnusedParam>
-      <code><![CDATA[$gitHubEvent]]></code>
-    </UnusedParam>
-  </file>
-  <file src="src/Event/Listener/Logger.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[dispatch]]></code>
-    </MissingThrowsDocblock>
-    <UnusedClass>
-      <code><![CDATA[Logger]]></code>
-    </UnusedClass>
-  </file>
-  <file src="src/Event/Listener/MatrixListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Event/Listener/OutputListener.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Event/MatrixEvent.php">
+  <file src="src/EventDispatcher/Event/MatrixEvent.php">
     <MissingThrowsDocblock>
       <code><![CDATA[get]]></code>
       <code><![CDATA[get]]></code>
@@ -316,7 +310,54 @@
       <code><![CDATA[exclude]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Event/OutputEvent.php">
+  <file src="src/EventDispatcher/Event/OutputEvent.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/EventDispatcher/Listener/CheckListener.php">
+    <MixedArgument>
+      <code><![CDATA[$checkEvent->input()->getArgument('job')]]></code>
+    </MixedArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/EventDispatcher/Listener/CopyWorkflowListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/EventDispatcher/Listener/Debug.php">
+    <PossiblyFalseOperand>
+      <code><![CDATA[mb_strrpos($event::class, '\\')]]></code>
+    </PossiblyFalseOperand>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/EventDispatcher/Listener/GitHubListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedParam>
+      <code><![CDATA[$gitHubEvent]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/EventDispatcher/Listener/Logger.php">
+    <MissingThrowsDocblock>
+      <code><![CDATA[dispatch]]></code>
+    </MissingThrowsDocblock>
+    <UnusedClass>
+      <code><![CDATA[Logger]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/EventDispatcher/Listener/MatrixListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/EventDispatcher/Listener/OutputListener.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
@@ -330,45 +371,10 @@
       <code><![CDATA[version]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Service/Extension/ConfigExtension.php">
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[Config]]></code>
-    </ImplementedReturnTypeMismatch>
-    <MoreSpecificImplementedParamType>
-      <code><![CDATA[$service]]></code>
-    </MoreSpecificImplementedParamType>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Service/Extension/ListenerProviderExtension.php">
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[ListenerProvider]]></code>
-    </ImplementedReturnTypeMismatch>
-    <MoreSpecificImplementedParamType>
-      <code><![CDATA[$service]]></code>
-    </MoreSpecificImplementedParamType>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Service/Extension/SymfonyApplicationExtension.php">
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[SymfonyApplication]]></code>
-    </ImplementedReturnTypeMismatch>
-    <MoreSpecificImplementedParamType>
-      <code><![CDATA[$service]]></code>
-    </MoreSpecificImplementedParamType>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Service/Factory/AutomationFactory.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[__construct]]></code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="src/ServiceProvider.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$tool->value]]></code>
+    </ArgumentTypeCoercion>
     <MissingThrowsDocblock>
       <code><![CDATA[Shell::new()]]></code>
       <code><![CDATA[Shell::new()]]></code>
@@ -377,6 +383,9 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
+    <UnusedProperty>
+      <code><![CDATA[$filesystem]]></code>
+    </UnusedProperty>
   </file>
   <file src="src/Tool/AbstractTool.php">
     <PossiblyUnusedMethod>
