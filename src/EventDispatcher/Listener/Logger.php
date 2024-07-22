@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event\Listener;
+namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
-use Ghostwriter\Compliance\Event\GitHub\GitHubPushEvent;
-use Ghostwriter\Compliance\Event\GitHub\GitHubScheduleEvent;
-use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowCallEvent;
-use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowDispatchEvent;
-use Ghostwriter\Compliance\Event\GitHub\GitHubWorkflowRunEvent;
-use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Interface\Event\GitHubEventInterface;
-use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHub\GitHubPushEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHub\GitHubScheduleEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHub\GitHubWorkflowCallEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHub\GitHubWorkflowDispatchEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHub\GitHubWorkflowRunEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHubEventInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\MatrixEvent;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
