@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Service\Extension;
+namespace Ghostwriter\Compliance\Container\Extension;
 
 use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Config\Config;
