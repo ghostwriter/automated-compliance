@@ -1,6 +1,16 @@
 name: Automation
 
 on:
+  pull_request:
+  push:
+    branches:
+      # Default branch
+      - "main"
+      # Release branches
+      ## 1.2.x - e.g. Semantic Versioning
+      - "[0-9]+.[0-9]+.x"
+      ## v1 - e.g. GitHub Actions Versioning
+      - "v[0-9]+"
   schedule:
     - cron: "0 * * * *" # Runs hourly
   workflow_dispatch:
@@ -74,7 +84,7 @@ jobs:
         uses: docker://ghcr.io/ghostwriter/compliance:v1
 
   qa:
-    name: "[PHP${{ matrix.php }}][${{ matrix.dependency }}] ${{ matrix.name }} on ${{ matrix.os }}"
+    name: "[PHP${{ matrix.php }}][${{ matrix.dependency }}]${{ matrix.name }} on ${{ matrix.os }}"
     needs: [matrix]
     runs-on: ${{ matrix.os }}-latest
     continue-on-error: ${{ matrix.dependency == 'lowest' || matrix.experimental }}
@@ -117,7 +127,11 @@ jobs:
 
       - name: Install ${{ matrix.dependency }} dependencies
         working-directory: ${{ github.workspace }}
-        run: composer config --no-plugins allow-plugins.ghostwriter/coding-standard true; ${{ matrix.installCommand }}
+        run: |
+          composer config --global github-oauth.github.com ${{secrets.GITHUB_TOKEN}};
+          composer config --no-plugins allow-plugins.ghostwriter/coding-standard true;
+          ${{ matrix.installCommand }};
+          composer config --global --auth --unset github-oauth.github.com
 
       - name: Run ${{ matrix.name }} command
         run: ${{ matrix.runCommand }}
