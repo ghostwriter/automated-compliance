@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fa27a0a1232bbd06742f9a269f5c196",
+    "content-hash": "c2122c37ce2bb05fbea7d5b0ed12936f",
     "packages": [
         {
             "name": "composer/semver",
@@ -466,12 +466,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/filesystem.git",
-                "reference": "1c6bcb450711138f5fd92d00f52fce57a51869e2"
+                "reference": "a10a8e11f0024cab409072c7bf552a84c51faa42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/filesystem/zipball/1c6bcb450711138f5fd92d00f52fce57a51869e2",
-                "reference": "1c6bcb450711138f5fd92d00f52fce57a51869e2",
+                "url": "https://api.github.com/repos/ghostwriter/filesystem/zipball/a10a8e11f0024cab409072c7bf552a84c51faa42",
+                "reference": "a10a8e11f0024cab409072c7bf552a84c51faa42",
                 "shasum": ""
             },
             "require": {
@@ -510,6 +510,7 @@
                 "forum": "https://github.com/ghostwriter/filesystem/discussions",
                 "issues": "https://github.com/ghostwriter/filesystem/issues",
                 "rss": "https://github.com/ghostwriter/filesystem/releases.atom",
+                "security": "https://github.com/ghostwriter/filesystem/security/advisories/new",
                 "source": "https://github.com/ghostwriter/filesystem"
             },
             "funding": [
@@ -518,7 +519,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-11T15:04:20+00:00"
+            "time": "2024-07-18T21:46:58+00:00"
         },
         {
             "name": "ghostwriter/json",
@@ -700,6 +701,67 @@
                 }
             ],
             "time": "2024-06-22T22:15:04+00:00"
+        },
+        {
+            "name": "ghostwriter/uuid",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostwriter/uuid.git",
+                "reference": "bece9c34ccf981fc65150cde0087cd5af57c6603"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostwriter/uuid/zipball/bece9c34ccf981fc65150cde0087cd5af57c6603",
+                "reference": "bece9c34ccf981fc65150cde0087cd5af57c6603",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=8.3"
+            },
+            "require-dev": {
+                "ghostwriter/coding-standard": "dev-main"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ghostwriter\\Uuid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nathanael Esayeas",
+                    "email": "nathanael.esayeas@protonmail.com",
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Version 7 UUIDs using a Unix timestamp for PHP",
+            "homepage": "https://github.com/ghostwriter/uuid",
+            "keywords": [
+                "ghostwriter",
+                "uuid"
+            ],
+            "support": {
+                "docs": "https://github.com/ghostwriter/uuid",
+                "forum": "https://github.com/ghostwriter/uuid/discussions",
+                "issues": "https://github.com/ghostwriter/uuid/issues",
+                "rss": "https://github.com/ghostwriter/uuid/releases.atom",
+                "security": "https://github.com/ghostwriter/uuid/security/advisories/new",
+                "source": "https://github.com/ghostwriter/uuid"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/ghostwriter",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-07-21T21:08:22+00:00"
         },
         {
             "name": "psr/container",
@@ -1959,12 +2021,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/coding-standard.git",
-                "reference": "f16dad3926b3d9c564c42aee97d53600b6dd05ee"
+                "reference": "35fb09c303c8a890cf12849ce525ec569e3c52dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/f16dad3926b3d9c564c42aee97d53600b6dd05ee",
-                "reference": "f16dad3926b3d9c564c42aee97d53600b6dd05ee",
+                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/35fb09c303c8a890cf12849ce525ec569e3c52dd",
+                "reference": "35fb09c303c8a890cf12849ce525ec569e3c52dd",
                 "shasum": ""
             },
             "require": {
@@ -2030,7 +2092,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-12T15:18:17+00:00"
+            "time": "2024-07-21T07:39:26+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -2792,16 +2854,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.2.7",
+            "version": "11.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "15c7e69dec4a8f246840859e6b430bd2abeb5039"
+                "reference": "a7a29e8d3113806f18f99d670f580a30e8ffff39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/15c7e69dec4a8f246840859e6b430bd2abeb5039",
-                "reference": "15c7e69dec4a8f246840859e6b430bd2abeb5039",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a7a29e8d3113806f18f99d670f580a30e8ffff39",
+                "reference": "a7a29e8d3113806f18f99d670f580a30e8ffff39",
                 "shasum": ""
             },
             "require": {
@@ -2872,7 +2934,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.2.7"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.2.8"
             },
             "funding": [
                 {
@@ -2888,7 +2950,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-10T11:50:09+00:00"
+            "time": "2024-07-18T14:56:37+00:00"
         },
         {
             "name": "psr/log",
