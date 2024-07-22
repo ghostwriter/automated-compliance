@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event\Listener;
+namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
-use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function mb_strrpos;
