@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event\Listener;
+namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
-use Ghostwriter\Compliance\Event\CheckEvent;
-use Ghostwriter\Compliance\Event\OutputEvent;
-use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\CheckEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\OutputEvent;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Throwable;
 
