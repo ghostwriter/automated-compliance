@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Interface\Event\Listener;
+namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
 interface ListenerInterface
 {
