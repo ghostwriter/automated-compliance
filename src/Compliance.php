@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance;
 
-use Ghostwriter\Compliance\Service\Factory\ComplianceFactory;
+use Ghostwriter\Compliance\Container\Factory\ComplianceFactory;
 use Ghostwriter\Container\Attribute\Factory;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
