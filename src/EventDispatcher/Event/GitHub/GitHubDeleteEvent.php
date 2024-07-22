@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event\GitHub;
+namespace Ghostwriter\Compliance\EventDispatcher\Event\GitHub;
 
-use Ghostwriter\Compliance\Interface\Event\GitHubEventInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHubEventInterface;
 use Override;
 
 /**
