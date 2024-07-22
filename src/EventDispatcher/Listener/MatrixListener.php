@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event\Listener;
+namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
 use Composer\Semver\Semver;
 use Ghostwriter\Compliance\Automation;
@@ -10,8 +10,7 @@ use Ghostwriter\Compliance\Enum\ComposerStrategy;
 use Ghostwriter\Compliance\Enum\OperatingSystem;
 use Ghostwriter\Compliance\Enum\PhpVersion;
 use Ghostwriter\Compliance\Enum\Tool;
-use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\MatrixEvent;
 use Ghostwriter\Compliance\Interface\ToolInterface;
 use Ghostwriter\Compliance\Tool\PHPUnit;
 use Ghostwriter\Compliance\Tool\Psalm;
@@ -157,11 +156,11 @@ final readonly class MatrixListener implements ListenerInterface
                         continue;
                     }
 
-                    $isComposerDependencyExperimental = ComposerStrategy::isExperimental($composerStrategy);
+                    $isComposerDependencyLowest = $composerStrategy->isLowest();
                     foreach ($operatingSystems as $operatingSystem) {
                         if (
                             $tool instanceof Psalm
-                            && $operatingSystem !== OperatingSystem::UBUNTU
+                            && ! $operatingSystem->isUbuntu()
                         ) {
                             continue;
                         }
@@ -177,7 +176,7 @@ final readonly class MatrixListener implements ListenerInterface
                                 $phpVersion,
                                 $composerStrategy,
                                 $operatingSystem,
-                                $isComposerDependencyExperimental,
+                                $isComposerDependencyLowest,
                             )
                         );
                     }
