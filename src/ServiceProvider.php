@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance;
 
+use Ghostwriter\Compliance\Container\Extension\ConfigExtension;
+use Ghostwriter\Compliance\Container\Extension\ListenerProviderExtension;
+use Ghostwriter\Compliance\Container\Extension\SymfonyApplicationExtension;
+use Ghostwriter\Compliance\Container\Factory\SymfonyApplicationFactory;
+use Ghostwriter\Compliance\Enum\Tool;
 use Ghostwriter\Compliance\Interface\ToolInterface;
-use Ghostwriter\Compliance\Service\Extension\ConfigExtension;
-use Ghostwriter\Compliance\Service\Extension\ListenerProviderExtension;
-use Ghostwriter\Compliance\Service\Extension\SymfonyApplicationExtension;
-use Ghostwriter\Compliance\Service\Factory\SymfonyApplicationFactory;
 use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Config\Config;
 use Ghostwriter\Config\ConfigFactory;
@@ -40,13 +41,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\StyleInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use const DIRECTORY_SEPARATOR;
-
 use function getcwd;
-use function is_a;
-use function sprintf;
-use function str_contains;
-use function str_ends_with;
 
 final readonly class ServiceProvider implements ServiceProviderInterface
 {
@@ -104,25 +99,8 @@ final readonly class ServiceProvider implements ServiceProviderInterface
             $container->factory($service, $factory);
         }
 
-        // Tag the CLI tools we support.
-        $namespace = __NAMESPACE__ . '\\Tool\\';
-        foreach ($this->filesystem->findIn(__DIR__ . DIRECTORY_SEPARATOR . 'Tool') as $file) {
-            $path = $file->getPathname();
-
-            if (! str_ends_with($path, '.php')) {
-                continue;
-            }
-
-            if (str_contains($path, 'Abstract')) {
-                continue;
-            }
-
-            $service = sprintf('%s%s', $namespace, $file->getBasename('.php'));
-            if (! is_a($service, ToolInterface::class, true)) {
-                continue;
-            }
-
-            $container->tag($service, [ToolInterface::class]);
+        foreach (Tool::cases() as $tool) {
+            $container->tag($tool->value, [ToolInterface::class]);
         }
     }
 }
