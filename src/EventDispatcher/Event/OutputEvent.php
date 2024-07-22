@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event;
+namespace Ghostwriter\Compliance\EventDispatcher\Event;
 
 use Ghostwriter\Container\Container;
 use Symfony\Component\Console\Input\InputInterface;
