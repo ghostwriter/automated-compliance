@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Command;
 
-use Ghostwriter\Compliance\Event\CheckEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\CheckEvent;
 use Override;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
