@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Interface\Event;
+namespace Ghostwriter\Compliance\EventDispatcher\Event;
 
 interface GitHubEventInterface
 {
