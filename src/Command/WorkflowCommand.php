@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Command;
 
-use Ghostwriter\Compliance\Event\CopyWorkflowEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\CopyWorkflowEvent;
 use Override;
 use RuntimeException;
 use Symfony\Component\Console\Attribute\AsCommand;
