@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Event\Listener;
+namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
-use Ghostwriter\Compliance\Event\OutputEvent;
-use Ghostwriter\Compliance\Interface\Event\Listener\ListenerInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\OutputEvent;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class OutputListener implements ListenerInterface
