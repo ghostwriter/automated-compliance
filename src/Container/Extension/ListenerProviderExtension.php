@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Service\Extension;
+namespace Ghostwriter\Compliance\Container\Extension;
 
-use Ghostwriter\Compliance\Event\CheckEvent;
-use Ghostwriter\Compliance\Event\CopyWorkflowEvent;
-use Ghostwriter\Compliance\Event\Listener\CheckListener;
-use Ghostwriter\Compliance\Event\Listener\CopyWorkflowListener;
-use Ghostwriter\Compliance\Event\Listener\Debug;
-use Ghostwriter\Compliance\Event\Listener\GitHubListener;
-use Ghostwriter\Compliance\Event\Listener\MatrixListener;
-use Ghostwriter\Compliance\Event\Listener\OutputListener;
-use Ghostwriter\Compliance\Event\MatrixEvent;
-use Ghostwriter\Compliance\Event\OutputEvent;
-use Ghostwriter\Compliance\Interface\Event\GitHubEventInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\CheckEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\CopyWorkflowEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\GitHubEventInterface;
+use Ghostwriter\Compliance\EventDispatcher\Event\MatrixEvent;
+use Ghostwriter\Compliance\EventDispatcher\Event\OutputEvent;
+use Ghostwriter\Compliance\EventDispatcher\Listener\CheckListener;
+use Ghostwriter\Compliance\EventDispatcher\Listener\CopyWorkflowListener;
+use Ghostwriter\Compliance\EventDispatcher\Listener\Debug;
+use Ghostwriter\Compliance\EventDispatcher\Listener\GitHubListener;
+use Ghostwriter\Compliance\EventDispatcher\Listener\MatrixListener;
+use Ghostwriter\Compliance\EventDispatcher\Listener\OutputListener;
 use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ExtensionInterface;
@@ -44,7 +44,6 @@ final readonly class ListenerProviderExtension implements ExtensionInterface
 
     public function __construct(
         private EnvironmentVariables $environmentVariables,
-        //        private Filesystem $filesystem,
     ) {
     }
 
