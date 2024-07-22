@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Service\Factory;
+namespace Ghostwriter\Compliance\Container\Factory;
 
 use Ghostwriter\Compliance\Automation;
 use Ghostwriter\Container\Interface\ContainerInterface;
