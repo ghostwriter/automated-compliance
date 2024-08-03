@@ -62,7 +62,7 @@ jobs:
   matrix:
     name: Generate job matrix
     concurrency:
-      group: ${{ github.event_name }}-${{ github.workflow }}
+      group: ${{ github.ref }}-${{ github.event_name }}-${{ github.workflow }}
       cancel-in-progress: true
     runs-on: ubuntu-latest
     outputs:
