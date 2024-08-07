@@ -6,9 +6,9 @@ namespace Ghostwriter\Compliance\Enum;
 
 enum OperatingSystem: string
 {
-    // case MACOS = 'macos';
+    case MACOS = 'macos';
     case UBUNTU = 'ubuntu';
-    // case WINDOWS = 'windows';
+    case WINDOWS = 'windows';
 
     public function isMacos(): bool
     {
