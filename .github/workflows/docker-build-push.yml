@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/delete-package-versions@v5
         with: 
-          package-name: 'php'
+          package-name: 'compliance'
           package-type: 'container'
           min-versions-to-keep: 30
           delete-only-untagged-versions: 'true'
