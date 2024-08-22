@@ -23,6 +23,19 @@ env:
   DOCKER_IMAGE: "ghcr.io/${{ github.repository_owner }}/compliance"
 
 jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/delete-package-versions@v5
+        with: 
+          package-name: 'php'
+          package-type: 'container'
+          min-versions-to-keep: 30
+          delete-only-untagged-versions: 'true'
+
   builder:
     runs-on: ubuntu-latest
     steps:
