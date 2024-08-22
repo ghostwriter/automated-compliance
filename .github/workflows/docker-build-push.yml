@@ -10,6 +10,8 @@ on:
       - "[0-9]+.[0-9]+.[0-9]+"
       - 'v[0-9]+.[0-9]+.[0-9]+'
   workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *" # Runs hourly
 
 concurrency:
   group: ${{ github.head_ref || github.ref }}
