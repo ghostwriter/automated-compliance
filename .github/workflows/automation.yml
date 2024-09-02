@@ -99,8 +99,11 @@ jobs:
 
       - name: Setup PHP ${{ matrix.php }} with ${{ join(matrix.extensions, ', ') }} extensions.
         uses: shivammathur/setup-php@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           coverage: pcov
+          tools: psalm,phpunit,infection
           ini-values: assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
           php-version: ${{ matrix.php }}
           extensions: :php-psr,pcntl, ${{ join(matrix.extensions, ', ') }}
