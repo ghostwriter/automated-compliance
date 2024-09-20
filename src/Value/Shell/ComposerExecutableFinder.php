@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Value\Shell;
 
+use Throwable;
+
 final readonly class ComposerExecutableFinder
 {
     public function __construct(
@@ -11,6 +13,9 @@ final readonly class ComposerExecutableFinder
     ) {
     }
 
+    /**
+     * @throws Throwable
+     */
     public function __invoke(): string
     {
         return ($this->whereExecutableFinder)('composer');
