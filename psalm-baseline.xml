@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+  <file src="bin/compliance.php">
+    <InvalidArgument>
+      <code><![CDATA[static function (int $severity, string $message, string $file, int $line): void {
+            if ((\error_reporting() & $severity) === 0) {
+                // Error not in mask
+                return;
+            }
+
+            throw new ErrorException($message, 0, $severity, $file, $line);
+        }]]></code>
+    </InvalidArgument>
+  </file>
   <file src="src/Automation.php">
     <MixedReturnTypeCoercion>
       <code><![CDATA[[...$this->composerStrategies, ...$this->operatingSystems, ...$this->phpVersions, ...$this->tools]]]></code>
@@ -14,7 +26,7 @@
       <code><![CDATA[tools]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Command/AbstractCommand.php">
+  <file src="src/Console/Command/AbstractCommand.php">
     <MissingThrowsDocblock>
       <code><![CDATA[dispatch]]></code>
       <code><![CDATA[get]]></code>
@@ -25,22 +37,26 @@
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Command/CheckCommand.php">
+  <file src="src/Console/Command/CheckCommand.php">
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Command/MatrixCommand.php">
+  <file src="src/Console/Command/MatrixCommand.php">
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Command/RunCommand.php">
+  <file src="src/Console/Command/RunCommand.php">
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addOption]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[get]]></code>
       <code><![CDATA[getArgument]]></code>
       <code><![CDATA[getArgument]]></code>
       <code><![CDATA[getArgument]]></code>
@@ -63,7 +79,7 @@
       <code><![CDATA[writeln]]></code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Command/WorkflowCommand.php">
+  <file src="src/Console/Command/WorkflowCommand.php">
     <MissingThrowsDocblock>
       <code><![CDATA[addArgument]]></code>
       <code><![CDATA[addOption]]></code>
@@ -72,16 +88,7 @@
       <code><![CDATA[throw new RuntimeException('The "workflow" argument is missing.');]]></code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Compliance.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[new]]></code>
-      <code><![CDATA[run]]></code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="src/Container/Extension/ConfigExtension.php">
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[Config]]></code>
-    </ImplementedReturnTypeMismatch>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$service]]></code>
     </MoreSpecificImplementedParamType>
@@ -93,6 +100,9 @@
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[ListenerProvider]]></code>
     </ImplementedReturnTypeMismatch>
+    <MissingThrowsDocblock>
+      <code><![CDATA[get]]></code>
+    </MissingThrowsDocblock>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$service]]></code>
     </MoreSpecificImplementedParamType>
@@ -121,7 +131,6 @@
   </file>
   <file src="src/Enum/OperatingSystem.php">
     <PossiblyUnusedMethod>
-      <code><![CDATA[isMacos]]></code>
       <code><![CDATA[isWindows]]></code>
     </PossiblyUnusedMethod>
   </file>
@@ -330,7 +339,7 @@
   </file>
   <file src="src/EventDispatcher/Listener/Debug.php">
     <PossiblyFalseOperand>
-      <code><![CDATA[mb_strrpos($event::class, '\\')]]></code>
+      <code><![CDATA[\mb_strrpos($event::class, '\\')]]></code>
     </PossiblyFalseOperand>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
@@ -388,6 +397,9 @@
     </UnusedProperty>
   </file>
   <file src="src/Tool/AbstractTool.php">
+    <MissingThrowsDocblock>
+      <code><![CDATA[get]]></code>
+    </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
@@ -405,7 +417,7 @@
       <code><![CDATA[readLockFile]]></code>
     </PossiblyUnusedMethod>
     <RiskyTruthyFalsyComparison>
-      <code><![CDATA[getenv('COMPOSER')]]></code>
+      <code><![CDATA[\getenv('COMPOSER')]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Value/Composer/ComposerFileField.php">
@@ -508,15 +520,7 @@
       <code><![CDATA[$this->jsonSerialize()]]></code>
     </MixedArgumentTypeCoercion>
   </file>
-  <file src="src/Value/Composer/Package.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[encode]]></code>
-    </MissingThrowsDocblock>
-  </file>
   <file src="src/Value/Composer/Packages.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[encode]]></code>
-    </MissingThrowsDocblock>
     <UnusedClass>
       <code><![CDATA[Packages]]></code>
     </UnusedClass>
@@ -549,12 +553,12 @@
     </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[match (true) {
-            array_key_exists($name, $this->variables) => $this->variables[$name],
+            \array_key_exists($name, $this->variables) => $this->variables[$name],
             $default !== null => $default,
             default => throw new VariableNotFoundException($name),
         }]]></code>
       <code><![CDATA[match (true) {
-            array_key_exists($name, $this->variables) => $this->variables[$name],
+            \array_key_exists($name, $this->variables) => $this->variables[$name],
             $default !== null => $default,
             default => throw new VariableNotFoundException($name),
         }]]></code>
@@ -570,9 +574,6 @@
     </UnusedClass>
   </file>
   <file src="src/Value/GPG/GnuPG2.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[throw new RuntimeException(sprintf('GnuPG binary "%s" does not exist', $binary));]]></code>
-    </MissingThrowsDocblock>
     <UnusedClass>
       <code><![CDATA[GnuPG2]]></code>
     </UnusedClass>
@@ -616,9 +617,6 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Value/Shell/ComposerExecutableFinder.php">
-    <MissingThrowsDocblock>
-      <code><![CDATA[$this->whereExecutableFinder]]></code>
-    </MissingThrowsDocblock>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
