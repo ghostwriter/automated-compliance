@@ -6,8 +6,7 @@ namespace Ghostwriter\Compliance\Value\Shell;
 
 use Ghostwriter\Compliance\Exception\FailedToFindComposerCacheFilesDirectoryException;
 use Ghostwriter\Shell\Interface\ShellInterface;
-
-use function trim;
+use Throwable;
 
 final readonly class ComposerCacheFilesDirectoryFinder
 {
@@ -18,6 +17,7 @@ final readonly class ComposerCacheFilesDirectoryFinder
     }
 
     /**
+     * @throws Throwable
      * @throws FailedToFindComposerCacheFilesDirectoryException
      */
     public function __invoke(): string
@@ -27,7 +27,7 @@ final readonly class ComposerCacheFilesDirectoryFinder
             ['config', 'cache-files-dir', '--no-interaction']
         );
 
-        $output = trim($result->stdout());
+        $output = \trim($result->stdout());
         if ($output === '' || $result->exitCode() !== 0) {
             throw new FailedToFindComposerCacheFilesDirectoryException($result->stderr());
         }
