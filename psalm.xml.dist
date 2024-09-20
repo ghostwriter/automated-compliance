@@ -16,7 +16,6 @@
     findUnusedCode="true"
     findUnusedPsalmSuppress="true"
     findUnusedVariablesAndParams="true"
-    hideAllErrorsExceptPassedFiles="false"
     limitMethodComplexity="true"
     memoizeMethodCallResults="true"
     restrictReturnTypes="true"
@@ -28,12 +27,12 @@
     usePhpDocPropertiesWithoutMagicCall="true"
 >
     <projectFiles>
-        <directory name="src"/>
-        <directory name="tests"/>
+        <directory name="bin" resolveSymlinks="true" useStrictTypes="true"/>
+        <directory name="src" resolveSymlinks="true" useStrictTypes="true" />
+        <directory name="tests" resolveSymlinks="true" useStrictTypes="true" />
         <ignoreFiles allowMissingFiles="true">
-            <directory name=".cache"/>
-            <directory name="tests/Fixture"/>
-            <directory name="vendor"/>
+            <directory name=".cache" resolveSymlinks="true" useStrictTypes="true"/>
+            <directory name="vendor" resolveSymlinks="true" useStrictTypes="true"/>
         </ignoreFiles>
     </projectFiles>
     <plugins>
