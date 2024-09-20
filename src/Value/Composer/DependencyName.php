@@ -9,15 +9,12 @@ use JsonSerializable;
 use Override;
 use Stringable;
 
-use function str_starts_with;
-use function trim;
-
 final readonly class DependencyName implements JsonSerializable, Stringable
 {
     public function __construct(
         private string $content
     ) {
-        if (trim($content) === '') {
+        if (\trim($content) === '') {
             throw new InvalidArgumentException('Name cannot be empty');
         }
     }
@@ -30,7 +27,7 @@ final readonly class DependencyName implements JsonSerializable, Stringable
 
     public function isPhpExtension(): bool
     {
-        return str_starts_with($this->content, 'ext-');
+        return \str_starts_with($this->content, 'ext-');
     }
 
     #[Override]
