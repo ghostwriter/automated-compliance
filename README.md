@@ -1,12 +1,12 @@
-# Compliance
+# Automation
 
-[![Automation](https://github.com/ghostwriter/compliance/actions/workflows/automation.yml/badge.svg)](https://github.com/ghostwriter/compliance/actions/workflows/automation.yml)
-[![Supported PHP Version](https://badgen.net/packagist/php/ghostwriter/compliance?color=8892bf)](https://www.php.net/supported-versions)
-[![Type Coverage](https://shepherd.dev/github/ghostwriter/compliance/coverage.svg)](https://shepherd.dev/github/ghostwriter/compliance)
-[![Latest Version on Packagist](https://badgen.net/packagist/v/ghostwriter/compliance)](https://packagist.org/packages/ghostwriter/compliance)
-[![Downloads](https://badgen.net/packagist/dt/ghostwriter/compliance?color=blue)](https://packagist.org/packages/ghostwriter/compliance)
+[![Automation](https://github.com/ghostwriter/automation/actions/workflows/automation.yml/badge.svg)](https://github.com/ghostwriter/automation/actions/workflows/automation.yml)
+[![Supported PHP Version](https://badgen.net/packagist/php/ghostwriter/automation?color=8892bf)](https://www.php.net/supported-versions)
+[![Type Coverage](https://shepherd.dev/github/ghostwriter/automation/coverage.svg)](https://shepherd.dev/github/ghostwriter/automation)
+[![Latest Version on Packagist](https://badgen.net/packagist/v/ghostwriter/automation)](https://packagist.org/packages/ghostwriter/automation)
+[![Downloads](https://badgen.net/packagist/dt/ghostwriter/automation?color=blue)](https://packagist.org/packages/ghostwriter/automation)
 
-`Compliance` - `CI/CD` & `QA Testing`  Test Automation for `PHP` via `GitHub Actions`.
+`Automation` - `CI/CD` & `QA Testing`  Test Automation for `PHP` via `GitHub Actions`.
 
 > [!CAUTION]
 >
@@ -21,10 +21,10 @@
 
 - all tools should have a matching composer script name, i have already hardcoded
   the composer script for now, but this should be configurable (kebab case)
-  - the command will be `composer compliance:composer-require-checker`
-    - or `composer compliance:phpunit`
-      - I like the `compliance:` prefix, that way if you have a `phpunit` script,
-      - it will not cause a conflict with the `compliance:phpunit` script
+  - the command will be `composer automation:composer-require-checker`
+    - or `composer automation:phpunit`
+      - I like the `automation:` prefix, that way if you have a `phpunit` script,
+      - it will not cause a conflict with the `automation:phpunit` script
 
 - I will import the release automation into this project
 - we will import the `composer.json` and `composer.lock` validation into this project
@@ -53,10 +53,10 @@
 ```json
 {
     "scripts": {
-        "compliance:composer-require-checker": [
+        "automation:composer-require-checker": [
             "composer-require-checker check --config-file=composer-require-checker.json"
         ],
-        "compliance:phpunit": [
+        "automation:phpunit": [
               "@phpunit --configuration=phpunit.xml --coverage-clover=coverage.xml"
         ]
     }
@@ -66,8 +66,8 @@
 ## Workflow
 
 ```yml
-# .github/workflows/compliance.yml
-name: Compliance
+# .github/workflows/automation.yml
+name: Automation
 
 on:
   pull_request:
@@ -82,7 +82,7 @@ on:
 
 jobs:
   automation:
-    uses: ghostwriter/compliance/.github/workflows/automation.yml@v1
+    uses: ghostwriter/automation/.github/workflows/automation.yml@v1
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -94,11 +94,11 @@ jobs:
 You can install the package via composer:
 
 ``` bash
-composer require ghostwriter/compliance --dev
+composer require ghostwriter/automation --dev
 ```
 
 ```bash
-Compliance - Automatically configure and execute multiple CI/CD & QA Tests via GitHub Actions. 1.x-dev
+Automation - Automatically configure and execute multiple CI/CD & QA Tests via GitHub Actions. 1.x-dev
 
 Usage:
   command [options] [arguments]
@@ -124,12 +124,12 @@ Generates `automation.php` configuration file, if it does not exist,
 and determines the job matrix for GitHub Actions.
 
 ```bash
-vendor/bin/compliance matrix
+vendor/bin/automation matrix
 ```
 
 Generate `.github/workflows/automation.yml` workflow file for your project.
 ```bash
-vendor/bin/compliance workflow
+vendor/bin/automation workflow
 ```
 
 ## Docker
@@ -137,16 +137,16 @@ vendor/bin/compliance workflow
 ``` bash
 # Install from the command line:
 
-docker pull ghcr.io/ghostwriter/compliance:v1
+docker pull ghcr.io/ghostwriter/automation:v1
 
 # Usage from the command line:
 
-docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance workflow
-docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance matrix
+docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/automation workflow
+docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/automation matrix
 
 # Use as base image in Dockerfile:
 
-FROM ghcr.io/ghostwriter/compliance:v1
+FROM ghcr.io/ghostwriter/automation:v1
 ```
 
 ## Supported Tools ?!
@@ -157,14 +157,14 @@ FROM ghcr.io/ghostwriter/compliance:v1
 
 declare(strict_types=1);
 
-use Ghostwriter\Compliance\Automation;
-use Ghostwriter\Compliance\Enum\ComposerStrategy;
-use Ghostwriter\Compliance\Enum\OperatingSystem;
-use Ghostwriter\Compliance\Enum\PhpVersion;
-use Ghostwriter\Compliance\Enum\Tool;
-use Ghostwriter\Compliance\Tool\Infection;
-use Ghostwriter\Compliance\Tool\PHPUnit;
-use Ghostwriter\Compliance\Tool\Psalm;
+use Ghostwriter\Automation\Automation;
+use Ghostwriter\Automation\Enum\ComposerStrategy;
+use Ghostwriter\Automation\Enum\OperatingSystem;
+use Ghostwriter\Automation\Enum\PhpVersion;
+use Ghostwriter\Automation\Enum\Tool;
+use Ghostwriter\Automation\Tool\Infection;
+use Ghostwriter\Automation\Tool\PHPUnit;
+use Ghostwriter\Automation\Tool\Psalm;
 
 return Automation::new()
     ->composerStrategies(...ComposerStrategy::cases()) // ComposerStrategy::LATEST, ComposerStrategy::LOCKED, ComposerStrategy::LOWEST
@@ -200,7 +200,7 @@ If you discover any security related issues, please email `nathanael.esayeas@pro
 - [`mlocati/docker-php-extension-installer`](https://github.com/mlocati/docker-php-extension-installer)
 - [`shivammathur/setup-php`](https://github.com/shivammathur/setup-php)
 - [`symfony`](https://github.com/symfony)
-- [All Contributors](https://github.com/ghostwriter/compliance/contributors)
+- [All Contributors](https://github.com/ghostwriter/automation/contributors)
 
 ## License
 
