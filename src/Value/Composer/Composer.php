@@ -7,12 +7,6 @@ namespace Ghostwriter\Compliance\Value\Composer;
 use const DIRECTORY_SEPARATOR;
 use const PATHINFO_EXTENSION;
 
-use function basename;
-use function getenv;
-use function mb_substr;
-use function pathinfo;
-use function trim;
-
 final readonly class Composer
 {
     public function __construct(
@@ -26,7 +20,7 @@ final readonly class Composer
      */
     public function getJsonFilePath(string $root): string
     {
-        return $root . DIRECTORY_SEPARATOR . basename(trim(getenv('COMPOSER') ?: ComposerFile::JSON));
+        return $root . DIRECTORY_SEPARATOR . \basename(\trim(\getenv('COMPOSER') ?: ComposerFile::JSON));
     }
 
     /**
@@ -36,8 +30,8 @@ final readonly class Composer
     {
         $composerJsonPath = $this->getJsonFilePath($root);
 
-        return pathinfo($composerJsonPath, PATHINFO_EXTENSION) === ComposerFileType::JSON
-            ? mb_substr($composerJsonPath, 0, -4) . 'lock'
+        return \pathinfo($composerJsonPath, PATHINFO_EXTENSION) === ComposerFileType::JSON
+            ? \mb_substr($composerJsonPath, 0, -4) . 'lock'
             : $composerJsonPath . '.lock';
     }
 
