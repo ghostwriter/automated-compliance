@@ -7,24 +7,29 @@ namespace Tests\Unit\Service;
 use Ghostwriter\Compliance\Value\Composer\Composer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\Unit\AbstractTestCase;
+use Throwable;
 
 use const DIRECTORY_SEPARATOR;
-
-use function getcwd;
 
 #[CoversClass(Composer::class)]
 final class ComposerTest extends AbstractTestCase
 {
+    /**
+     * @throws Throwable
+     */
     public function testGetJsonFilePath(): void
     {
-        $root = getcwd();
+        $root = \getcwd();
 
         self::assertSame((new Composer())->getJsonFilePath($root), $root . DIRECTORY_SEPARATOR . 'composer.json');
     }
 
+    /**
+     * @throws Throwable
+     */
     public function testGetLockFilePath(): void
     {
-        $root = getcwd();
+        $root = \getcwd();
 
         self::assertSame((new Composer())->getLockFilePath($root), $root . DIRECTORY_SEPARATOR . 'composer.lock');
     }
