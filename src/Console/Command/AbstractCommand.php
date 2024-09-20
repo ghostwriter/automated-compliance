@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Command;
+namespace Ghostwriter\Compliance\Console\Command;
 
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
 use Override;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Style\SymfonyStyle;
-
-use function mb_strtolower;
-use function str_replace;
 
 abstract class AbstractCommand extends Command
 {
@@ -38,6 +35,6 @@ abstract class AbstractCommand extends Command
     #[Override]
     public static function getDefaultName(): string
     {
-        return mb_strtolower(str_replace([__NAMESPACE__ . '\\', 'Command'], '', static::class));
+        return \mb_strtolower(\str_replace([__NAMESPACE__ . '\\', 'Command'], '', static::class));
     }
 }
