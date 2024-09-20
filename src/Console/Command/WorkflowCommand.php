@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Command;
+namespace Ghostwriter\Compliance\Console\Command;
 
 use Ghostwriter\Compliance\EventDispatcher\Event\CopyWorkflowEvent;
 use Override;
@@ -16,10 +16,6 @@ use Throwable;
 
 use const DIRECTORY_SEPARATOR;
 use const PHP_EOL;
-
-use function getcwd;
-use function is_string;
-use function sprintf;
 
 #[AsCommand(name: 'workflow', description: 'Creates a "automation.yml" workflow file.',)]
 final class WorkflowCommand extends AbstractCommand
@@ -50,7 +46,7 @@ final class WorkflowCommand extends AbstractCommand
     #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $cwd = getcwd();
+        $cwd = \getcwd();
 
         if ($cwd === false) {
             throw new RuntimeException('Cannot determine the current working directory.');
@@ -58,7 +54,7 @@ final class WorkflowCommand extends AbstractCommand
 
         $workflow = $input->getArgument('workflow');
 
-        if (! is_string($workflow)) {
+        if (! \is_string($workflow)) {
             throw new RuntimeException('The "workflow" argument is missing.');
         }
 
@@ -71,7 +67,7 @@ final class WorkflowCommand extends AbstractCommand
             );
         } catch (Throwable $throwable) {
             $this->symfonyStyle->error(
-                sprintf(
+                \sprintf(
                     '[%s] %s%s%s' . PHP_EOL,
                     $throwable::class,
                     $throwable->getMessage(),
