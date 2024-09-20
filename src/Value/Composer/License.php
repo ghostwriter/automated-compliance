@@ -9,8 +9,6 @@ use JsonSerializable;
 use Override;
 use Stringable;
 
-use function trim;
-
 final readonly class License implements JsonSerializable, Stringable
 {
     public function __construct(
@@ -34,7 +32,7 @@ final readonly class License implements JsonSerializable, Stringable
     {
         return match (true) {
             $content === null => throw new InvalidArgumentException('License cannot be null'),
-            trim($content) === '' => throw new InvalidArgumentException('License cannot be empty'),
+            \trim($content) === '' => throw new InvalidArgumentException('License cannot be empty'),
             default => new self($content)
         };
     }
