@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
-  <file src="bin/compliance.php">
-    <InvalidArgument>
-      <code><![CDATA[static function (int $severity, string $message, string $file, int $line): void {
-            if ((\error_reporting() & $severity) === 0) {
-                // Error not in mask
-                return;
-            }
-
-            throw new ErrorException($message, 0, $severity, $file, $line);
-        }]]></code>
-    </InvalidArgument>
-  </file>
   <file src="src/Automation.php">
     <MixedReturnTypeCoercion>
       <code><![CDATA[[...$this->composerStrategies, ...$this->operatingSystems, ...$this->phpVersions, ...$this->tools]]]></code>
@@ -24,6 +12,12 @@
       <code><![CDATA[phpVersions]]></code>
       <code><![CDATA[skip]]></code>
       <code><![CDATA[tools]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Compliance.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[new]]></code>
+      <code><![CDATA[run]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Console/Command/AbstractCommand.php">
@@ -89,6 +83,9 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/Container/Extension/ConfigExtension.php">
+    <ImplementedReturnTypeMismatch>
+      <code><![CDATA[Config]]></code>
+    </ImplementedReturnTypeMismatch>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$service]]></code>
     </MoreSpecificImplementedParamType>
