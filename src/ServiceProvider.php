@@ -41,8 +41,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\StyleInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function getcwd;
-
 final readonly class ServiceProvider implements ServiceProviderInterface
 {
     public const array ALIASES = [
@@ -81,7 +79,7 @@ final readonly class ServiceProvider implements ServiceProviderInterface
         $_ENV['GITHUB_EVENT_NAME'] ??= 'push';
         $_ENV['GITHUB_EVENT_PATH'] ??= 'tests/Fixture/payload.json';
         $_ENV['GITHUB_TOKEN'] ??= 'github-token';
-        $_ENV['GITHUB_WORKSPACE'] ??= getcwd();
+        $_ENV['GITHUB_WORKSPACE'] ??= \getcwd();
         $_ENV['RUNNER_DEBUG'] ??= 1;
 
         $container->set(EnvironmentVariables::class, EnvironmentVariables::new());
