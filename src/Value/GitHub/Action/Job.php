@@ -8,11 +8,6 @@ use Ghostwriter\Compliance\Enum\ComposerStrategy;
 use Ghostwriter\Compliance\Enum\OperatingSystem;
 use Ghostwriter\Compliance\Enum\PhpVersion;
 
-use function file_exists;
-use function getcwd;
-use function implode;
-use function sprintf;
-
 final readonly class Job
 {
     /**
@@ -60,11 +55,11 @@ final readonly class Job
             $composerOptions[] = '--prefer-stable';
         }
 
-        if (! file_exists($this->composerLockPath)) {
+        if (! \file_exists($this->composerLockPath)) {
             $composerCommand = 'update';
         }
 
-        $validateCommand = file_exists($this->composerJsonPath) ?
+        $validateCommand = \file_exists($this->composerJsonPath) ?
             // 'composer validate --no-check-publish --no-check-lock --no-interaction --ansi --strict' :
             'composer validate --no-check-publish --no-check-lock --no-interaction --ansi --strict || exit 0;' :
             'echo "composer.json does not exist" && exit 1;';
@@ -79,7 +74,7 @@ final readonly class Job
             'experimental' => $this->experimental,
             'extensions' => $this->extensions,
             'validateCommand' => $validateCommand,
-            'installCommand' => sprintf('composer %s %s', $composerCommand, implode(' ', $composerOptions)),
+            'installCommand' => \sprintf('composer %s %s', $composerCommand, \implode(' ', $composerOptions)),
         ];
     }
 
@@ -115,10 +110,10 @@ final readonly class Job
     public static function noop(): self
     {
         $name = 'Noop';
-        $currentDirectory = getcwd() ?: '.';
+        $currentDirectory = \getcwd() ?: '.';
         return new self(
             name: $name,
-            command: sprintf('echo "%s"', $name),
+            command: \sprintf('echo "%s"', $name),
             extensions: [],
             composerCacheFilesDirectory: '/home/runner/.cache/composer/files',
             composerJsonPath: $currentDirectory,
