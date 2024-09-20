@@ -20,6 +20,7 @@ if (! \function_exists('container')) {
         return Container::getInstance();
     }
 }
+
 if (! \function_exists('dispatch')) {
     /**
      * @template T of object
@@ -29,7 +30,6 @@ if (! \function_exists('dispatch')) {
      * @throws \Throwable
      *
      * @return T
-     *
      */
     function dispatch(object $event): object
     {
@@ -38,6 +38,7 @@ if (! \function_exists('dispatch')) {
             ->dispatch($event);
     }
 }
+
 if (! \function_exists('dispatchOutputEvent')) {
     /**
      * @throws \Throwable
@@ -56,6 +57,7 @@ if (! \function_exists('dispatchOutputEvent')) {
     }
 
 }
+
 if (! \function_exists('githubActionOutput')) {
     /**
      * @throws \Throwable
@@ -67,6 +69,7 @@ if (! \function_exists('githubActionOutput')) {
     }
 
 }
+
 if (! \function_exists('debug')) {
     /**
      * @throws \Throwable
@@ -78,6 +81,7 @@ if (! \function_exists('debug')) {
     }
 
 }
+
 if (! \function_exists('warning')) {
     /**
      * @throws \Throwable
@@ -89,6 +93,7 @@ if (! \function_exists('warning')) {
     }
 
 }
+
 if (! \function_exists('error')) {
     /**
      * @throws \Throwable
@@ -100,6 +105,7 @@ if (! \function_exists('error')) {
     }
 
 }
+
 if (! \function_exists('execute')) {
     /**
      * @throws \Throwable
