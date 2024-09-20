@@ -22,9 +22,6 @@ use Ghostwriter\EventDispatcher\Interface\ExceptionInterface;
 use Ghostwriter\EventDispatcher\ListenerProvider;
 use Override;
 
-use function array_key_exists;
-use function spl_object_id;
-
 /**
  * @implements ExtensionInterface<ListenerProvider>
  */
@@ -58,8 +55,8 @@ final readonly class ListenerProviderExtension implements ExtensionInterface
         /** @var array<int,bool> $cache */
         static $cache = [];
 
-        $objectId = spl_object_id($this);
-        if (array_key_exists($objectId, $cache)) {
+        $objectId = \spl_object_id($this);
+        if (\array_key_exists($objectId, $cache)) {
             return $service;
         }
 
