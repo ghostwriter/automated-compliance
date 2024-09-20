@@ -1,5 +1,5 @@
 {
-    "name": "ghostwriter/compliance",
+    "name": "ghostwriter/automation",
     "description": "Compliance - CI/CD & QA Test Automation for PHP via GitHub Actions.",
     "license": "BSD-3-Clause",
     "type": "project",
