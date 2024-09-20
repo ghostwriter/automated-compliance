@@ -6,10 +6,6 @@ namespace Ghostwriter\Compliance\EventDispatcher\Listener;
 
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function mb_strrpos;
-use function mb_substr;
-use function sprintf;
-
 final readonly class Debug implements ListenerInterface
 {
     public function __construct(
@@ -19,16 +15,16 @@ final readonly class Debug implements ListenerInterface
 
     public function __invoke(object $event): void
     {
-        $eventName = mb_substr($event::class, mb_strrpos($event::class, '\\') + 1);
+        $eventName = \mb_substr($event::class, \mb_strrpos($event::class, '\\') + 1);
 
-        $this->symfonyStyle->title(sprintf(
+        $this->symfonyStyle->title(\sprintf(
             '<fg=white;bg=black;options=bold>DEBUG START:</> <info>%s</info>',
             $eventName
         ));
 
         $this->symfonyStyle->table(['name', 'class'], [[$eventName, $event::class]]);
 
-        $this->symfonyStyle->title(sprintf(
+        $this->symfonyStyle->title(\sprintf(
             '<fg=white;bg=black;options=bold>DEBUG END:  </> <info>%s</info>',
             $eventName
         ));
