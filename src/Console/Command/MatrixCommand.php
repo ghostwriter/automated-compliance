@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Command;
+namespace Ghostwriter\Compliance\Console\Command;
 
 use Ghostwriter\Compliance\EventDispatcher\Event\MatrixEvent;
 use Override;
