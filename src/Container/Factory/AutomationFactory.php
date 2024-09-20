@@ -14,9 +14,6 @@ use Throwable;
 
 use const DIRECTORY_SEPARATOR;
 
-use function is_file;
-use function sprintf;
-
 /**
  * @implements FactoryInterface<Automation>
  */
@@ -56,7 +53,7 @@ final readonly class AutomationFactory implements FactoryInterface
 
         $automationFile = $currentWorkingDirectory . DIRECTORY_SEPARATOR . 'automation.php';
 
-        if (! is_file($automationFile)) {
+        if (! \is_file($automationFile)) {
 
             $this->filesystem->createFile($automationFile, self::AUTOMATION_FILE);
         }
@@ -65,7 +62,7 @@ final readonly class AutomationFactory implements FactoryInterface
         $automation = require $automationFile;
         if (! $automation instanceof Automation) {
             throw new RuntimeException(
-                sprintf('File "%s" must return an instance of %s', $automationFile, Automation::class)
+                \sprintf('File "%s" must return an instance of %s', $automationFile, Automation::class)
             );
         }
 
