@@ -9,14 +9,12 @@ use JsonSerializable;
 use Override;
 use Stringable;
 
-use function trim;
-
 final readonly class DependencyVersion implements JsonSerializable, Stringable
 {
     public function __construct(
         private string $content
     ) {
-        if (trim($content) === '') {
+        if (\trim($content) === '') {
             throw new InvalidArgumentException('Version cannot be empty');
         }
     }
