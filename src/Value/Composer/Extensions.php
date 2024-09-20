@@ -11,9 +11,6 @@ use JsonSerializable;
 use Override;
 use Stringable;
 
-use function array_map;
-use function implode;
-
 /**
  * @implements IteratorAggregate<Extension>
  */
@@ -39,7 +36,7 @@ final readonly class Extensions implements IteratorAggregate, JsonSerializable, 
     #[Override]
     public function __toString(): string
     {
-        return implode(', ', $this->jsonSerialize());
+        return \implode(', ', $this->jsonSerialize());
     }
 
     /**
@@ -54,6 +51,6 @@ final readonly class Extensions implements IteratorAggregate, JsonSerializable, 
     #[Override]
     public function jsonSerialize(): array
     {
-        return array_map(static fn (Extension $extension): string => (string) $extension, $this->extensions);
+        return \array_map(static fn (Extension $extension): string => (string) $extension, $this->extensions);
     }
 }
