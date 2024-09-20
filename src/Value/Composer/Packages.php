@@ -11,8 +11,7 @@ use IteratorAggregate;
 use JsonSerializable;
 use Override;
 use Stringable;
-
-use function array_map;
+use Throwable;
 
 /**
  * @implements IteratorAggregate<Package>
@@ -21,6 +20,8 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
 {
     /**
      * @param array<Package> $packages
+     *
+     * @throws Throwable
      */
     public function __construct(
         private array $packages
@@ -32,6 +33,9 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
         }
     }
 
+    /**
+     * @throws Throwable
+     */
     #[Override]
     public function __toString(): string
     {
@@ -47,9 +51,12 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
         yield from $this->packages;
     }
 
+    /**
+     * @throws Throwable
+     */
     #[Override]
     public function jsonSerialize(): array
     {
-        return array_map(static fn (Package $package): string => (new Json())->encode($package), $this->packages);
+        return \array_map(static fn (Package $package): string => (new Json())->encode($package), $this->packages);
     }
 }
