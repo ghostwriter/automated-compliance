@@ -11,9 +11,6 @@ use Ghostwriter\Compliance\Enum\PhpVersion;
 use Ghostwriter\Compliance\Enum\Tool;
 use Ghostwriter\Container\Attribute\Factory;
 
-use function array_filter;
-use function array_merge;
-
 #[Factory(AutomationFactory::class)]
 final readonly class Automation
 {
@@ -28,7 +25,7 @@ final readonly class Automation
     public function composerStrategies(ComposerStrategy ...$composerStrategy): self
     {
         return new self(
-            array_merge($this->composerStrategies, $composerStrategy),
+            \array_merge($this->composerStrategies, $composerStrategy),
             $this->operatingSystems,
             $this->phpVersions,
             $this->tools,
@@ -39,7 +36,7 @@ final readonly class Automation
     {
         return new self(
             $this->composerStrategies,
-            array_merge($this->operatingSystems, $operatingSystem),
+            \array_merge($this->operatingSystems, $operatingSystem),
             $this->phpVersions,
             $this->tools,
         );
@@ -50,7 +47,7 @@ final readonly class Automation
         return new self(
             $this->composerStrategies,
             $this->operatingSystems,
-            array_merge($this->phpVersions, $phpVersion),
+            \array_merge($this->phpVersions, $phpVersion),
             $this->tools,
         );
     }
@@ -62,7 +59,7 @@ final readonly class Automation
         foreach ($exclusions as $exclusion) {
             $self = match (true) {
                 $exclusion instanceof ComposerStrategy => new self(
-                    array_filter(
+                    \array_filter(
                         $self->composerStrategies,
                         static fn (ComposerStrategy $composerStrategy): bool => $composerStrategy !== $exclusion,
                     ),
@@ -72,7 +69,7 @@ final readonly class Automation
                 ),
                 $exclusion instanceof OperatingSystem => new self(
                     $self->composerStrategies,
-                    array_filter(
+                    \array_filter(
                         $self->operatingSystems,
                         static fn (OperatingSystem $operatingSystem): bool => $operatingSystem !== $exclusion,
                     ),
@@ -82,7 +79,7 @@ final readonly class Automation
                 $exclusion instanceof PhpVersion => new self(
                     $self->composerStrategies,
                     $self->operatingSystems,
-                    array_filter(
+                    \array_filter(
                         $self->phpVersions,
                         static fn (PhpVersion $phpVersion): bool => $phpVersion !== $exclusion,
                     ),
@@ -92,7 +89,7 @@ final readonly class Automation
                     $self->composerStrategies,
                     $self->operatingSystems,
                     $self->phpVersions,
-                    array_filter($self->tools, static fn (Tool $tool): bool => $tool !== $exclusion),
+                    \array_filter($self->tools, static fn (Tool $tool): bool => $tool !== $exclusion),
                 ),
             };
         }
@@ -114,7 +111,7 @@ final readonly class Automation
             $this->composerStrategies,
             $this->operatingSystems,
             $this->phpVersions,
-            array_merge($this->tools, $tool),
+            \array_merge($this->tools, $tool),
         );
     }
 
