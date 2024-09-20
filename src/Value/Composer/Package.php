@@ -7,6 +7,7 @@ namespace Ghostwriter\Compliance\Value\Composer;
 use Ghostwriter\Compliance\Interface\Composer\DependencyInterface;
 use Ghostwriter\Json\Json;
 use Override;
+use Throwable;
 
 final readonly class Package implements DependencyInterface
 {
@@ -16,6 +17,9 @@ final readonly class Package implements DependencyInterface
     ) {
     }
 
+    /**
+     * @throws Throwable
+     */
     #[Override]
     public function __toString(): string
     {
