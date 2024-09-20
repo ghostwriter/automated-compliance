@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Value;
 
 use Ghostwriter\Compliance\Exception\VariableNotFoundException;
-
-use function array_key_exists;
-use function getenv;
+use Throwable;
 
 final class EnvironmentVariables
 {
@@ -16,10 +14,13 @@ final class EnvironmentVariables
     ) {
     }
 
+    /**
+     * @throws Throwable
+     */
     public function get(string $name, null|string $default = null): string
     {
         return match (true) {
-            array_key_exists($name, $this->variables) => $this->variables[$name],
+            \array_key_exists($name, $this->variables) => $this->variables[$name],
             $default !== null => $default,
             default => throw new VariableNotFoundException($name),
         };
@@ -27,7 +28,7 @@ final class EnvironmentVariables
 
     public function has(string $name): bool
     {
-        return array_key_exists($name, $this->variables);
+        return \array_key_exists($name, $this->variables);
     }
 
     public function set(string $name, string $value): void
@@ -49,7 +50,7 @@ final class EnvironmentVariables
             $variables[$name] = (string) $value;
         }
 
-        foreach (getenv() ?: [] as $name => $value) {
+        foreach (\getenv() ?: [] as $name => $value) {
             $variables[$name] = $value;
         }
 
