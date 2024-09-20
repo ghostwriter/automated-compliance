@@ -7,8 +7,6 @@ namespace Ghostwriter\Compliance\Value\Composer;
 use Ghostwriter\Compliance\Interface\Composer\DependencyInterface;
 use Override;
 
-use function mb_substr;
-
 final readonly class Extension implements DependencyInterface
 {
     public function __construct(
@@ -20,7 +18,7 @@ final readonly class Extension implements DependencyInterface
     #[Override]
     public function __toString(): string
     {
-        return mb_substr((string) $this->dependencyName, 4);
+        return \mb_substr((string) $this->dependencyName, 4);
     }
 
     #[Override]
