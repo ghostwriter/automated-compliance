@@ -9,11 +9,7 @@ use Ghostwriter\Config\Config;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ExtensionInterface;
 use Override;
-
-use function chdir;
-use function error;
-use function error_get_last;
-use function sprintf;
+use Throwable;
 
 /**
  * @implements ExtensionInterface<Config>
@@ -27,18 +23,20 @@ final readonly class ConfigExtension implements ExtensionInterface
 
     /**
      * @param Config $service
+     *
+     * @throws Throwable
      */
     #[Override]
     public function __invoke(ContainerInterface $container, object $service): Config
     {
         $currentWorkingDirectory = $this->environmentVariables->get('GITHUB_WORKSPACE');
 
-        $result = chdir($currentWorkingDirectory);
+        $result = \chdir($currentWorkingDirectory);
         if ($result === false) {
-            error(
-                sprintf(
+            \error(
+                \sprintf(
                     'Unable to change current working directory; %s; "%s" given.',
-                    error_get_last()['message'] ?? 'No such file or directory',
+                    \error_get_last()['message'] ?? 'No such file or directory',
                     $currentWorkingDirectory
                 ),
                 __FILE__,
