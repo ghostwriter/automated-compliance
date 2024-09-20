@@ -6,10 +6,6 @@ namespace Ghostwriter\Compliance\Value\GitHub\Action\Output;
 
 use Symfony\Component\Console\Output\OutputInterface;
 
-use function getenv;
-use function sprintf;
-use function strtr;
-
 final readonly class GitHubActionOutput
 {
     /**
@@ -87,7 +83,7 @@ final readonly class GitHubActionOutput
         null|int $col = null
     ): void {
         // Some values must be encoded.
-        $message = strtr($message, self::ESCAPED_DATA);
+        $message = \strtr($message, self::ESCAPED_DATA);
 
         if (! self::isGithubActionEnvironment()) {
             // output the message solely: not in actions
@@ -98,23 +94,23 @@ final readonly class GitHubActionOutput
 
         if ($file === null || $file === '' || $file === '0') {
             // No file provided, output the message solely:
-            $this->output->writeln(sprintf('::%s::%s', $type, $message));
+            $this->output->writeln(\sprintf('::%s::%s', $type, $message));
 
             return;
         }
 
-        $this->output->writeln(sprintf(
+        $this->output->writeln(\sprintf(
             '::%s file=%s,line=%s,col=%s::%s',
             $type,
-            strtr($file, self::ESCAPED_PROPERTIES),
-            strtr((string) ($line ?? 1), self::ESCAPED_PROPERTIES),
-            strtr((string) ($col ?? 0), self::ESCAPED_PROPERTIES),
+            \strtr($file, self::ESCAPED_PROPERTIES),
+            \strtr((string) ($line ?? 1), self::ESCAPED_PROPERTIES),
+            \strtr((string) ($col ?? 0), self::ESCAPED_PROPERTIES),
             $message
         ));
     }
 
     public static function isGithubActionEnvironment(): bool
     {
-        return getenv('GITHUB_ACTIONS') !== false;
+        return \getenv('GITHUB_ACTIONS') !== false;
     }
 }
