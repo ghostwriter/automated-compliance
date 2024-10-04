@@ -402,6 +402,9 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Tool/Infection.php">
+    <UnevaluatedCode>
+      <code><![CDATA[return ['infection.json5', 'infection.json', 'infection.json.dist', 'infection.json5.dist'];]]></code>
+    </UnevaluatedCode>
     <UnusedClass>
       <code><![CDATA[Infection]]></code>
     </UnusedClass>
