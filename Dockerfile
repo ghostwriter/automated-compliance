@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ghcr.io/ghostwriter/php:8.3-pcov
+FROM ghcr.io/ghostwriter/php:8.3
 
 LABEL "org.opencontainers.image.title"="Compliance"
 LABEL "org.opencontainers.image.description"="Compliance Automation for PHP - Automatically configure and execute multiple CI/CD & QA Tests via GitHub Actions."
@@ -8,13 +8,13 @@ LABEL "org.opencontainers.image.source"="https://github.com/ghostwriter/complian
 LABEL "org.opencontainers.image.url"="https://github.com/ghostwriter/compliance"
 LABEL "org.opencontainers.image.licenses"="BSD-3-Clause"
 
-WORKDIR /workspace
+WORKDIR /srv/workspace
 
-COPY functions.php /workspace/
-COPY composer.* /workspace/
-COPY bin /workspace/bin/
-COPY src /workspace/src/
-# COPY tools /workspace/tools/
+COPY functions.php /srv/workspace/
+COPY composer.* /srv/workspace/
+COPY bin /srv/workspace/bin/
+COPY src /srv/workspace/src/
+# COPY tools /srv/workspace/tools/
 
 RUN composer install --no-autoloader --no-cache --no-dev --no-interaction  --verbose \
 && composer dump-autoload --classmap-authoritative --no-cache --no-dev --no-interaction --verbose
@@ -22,4 +22,4 @@ RUN composer install --no-autoloader --no-cache --no-dev --no-interaction  --ver
 # VERBOSITY = DEBUG
 ENV SHELL_VERBOSITY=3
 
-ENTRYPOINT ["/workspace/bin/compliance"]
+ENTRYPOINT ["/srv/workspace/bin/compliance"]
