@@ -397,6 +397,13 @@
     <MissingThrowsDocblock>
       <code><![CDATA[get]]></code>
     </MissingThrowsDocblock>
+    <MixedAssignment>
+      <code><![CDATA[$file]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[getFilename]]></code>
+      <code><![CDATA[isFile]]></code>
+    </MixedMethodCall>
     <PossiblyUnusedMethod>
       <code><![CDATA[__construct]]></code>
     </PossiblyUnusedMethod>
