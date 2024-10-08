@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ccd3c0aa0e81ea6f64b44d79b14b7f2",
+    "content-hash": "355459fa804dc1f83f7e74b8daf33ab4",
     "packages": [
         {
             "name": "composer/semver",
@@ -536,16 +536,16 @@
         },
         {
             "name": "ghostwriter/filesystem",
-            "version": "dev-main",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/filesystem.git",
-                "reference": "b54746bac05b75f3226d328dc512a67381524155"
+                "reference": "2db142dd3aca57573e5a481bfa5086bbc718847e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/filesystem/zipball/b54746bac05b75f3226d328dc512a67381524155",
-                "reference": "b54746bac05b75f3226d328dc512a67381524155",
+                "url": "https://api.github.com/repos/ghostwriter/filesystem/zipball/2db142dd3aca57573e5a481bfa5086bbc718847e",
+                "reference": "2db142dd3aca57573e5a481bfa5086bbc718847e",
                 "shasum": ""
             },
             "require": {
@@ -554,7 +554,6 @@
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -593,7 +592,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-08T18:16:37+00:00"
+            "time": "2024-10-08T19:28:13+00:00"
         },
         {
             "name": "ghostwriter/json",
@@ -4851,8 +4850,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ghostwriter/cli": 20,
-        "ghostwriter/coding-standard": 20,
-        "ghostwriter/filesystem": 20
+        "ghostwriter/coding-standard": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
