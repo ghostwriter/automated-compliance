@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8304ad71f64a392518a9cee71bcbd92",
+    "content-hash": "4ccd3c0aa0e81ea6f64b44d79b14b7f2",
     "packages": [
         {
             "name": "composer/semver",
@@ -159,6 +159,80 @@
                 }
             ],
             "time": "2024-02-10T19:54:53+00:00"
+        },
+        {
+            "name": "ghostwriter/cli",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostwriter/cli.git",
+                "reference": "6fb335ae283f95396a4beaace0aa5d3eb400909e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostwriter/cli/zipball/6fb335ae283f95396a4beaace0aa5d3eb400909e",
+                "reference": "6fb335ae283f95396a4beaace0aa5d3eb400909e",
+                "shasum": ""
+            },
+            "require": {
+                "ghostwriter/case-converter": "^1.0.0",
+                "ghostwriter/collection": "^2.0.0",
+                "ghostwriter/config": "^0.4.1",
+                "ghostwriter/container": "^4.0.2",
+                "ghostwriter/event-dispatcher": "^5.0.2",
+                "ghostwriter/json": "^3.0.0",
+                "ghostwriter/option": "^1.5.1",
+                "ghostwriter/plex": "^0.1.3",
+                "ghostwriter/result": "^1.3.0",
+                "ghostwriter/shell": "^0.1.0",
+                "php": ">=8.3"
+            },
+            "require-dev": {
+                "ghostwriter/coding-standard": "dev-main"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/ghostwriter-cli"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ghostwriter\\Cli\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nathanael Esayeas",
+                    "email": "nathanael.esayeas@protonmail.com",
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides a micro-framework for building CLI tools in PHP.",
+            "homepage": "https://github.com/ghostwriter/cli",
+            "keywords": [
+                "cli",
+                "ghostwriter"
+            ],
+            "support": {
+                "docs": "https://github.com/ghostwriter/cli",
+                "forum": "https://github.com/ghostwriter/cli/discussions",
+                "issues": "https://github.com/ghostwriter/cli/issues",
+                "rss": "https://github.com/ghostwriter/cli/releases.atom",
+                "security": "https://github.com/ghostwriter/cli/security/advisories/new",
+                "source": "https://github.com/ghostwriter/cli"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/ghostwriter",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-08T18:26:12+00:00"
         },
         {
             "name": "ghostwriter/clock",
@@ -466,12 +540,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/filesystem.git",
-                "reference": "58a02e3a3721346c4b48a4d6626c972034802ff9"
+                "reference": "b54746bac05b75f3226d328dc512a67381524155"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/filesystem/zipball/58a02e3a3721346c4b48a4d6626c972034802ff9",
-                "reference": "58a02e3a3721346c4b48a4d6626c972034802ff9",
+                "url": "https://api.github.com/repos/ghostwriter/filesystem/zipball/b54746bac05b75f3226d328dc512a67381524155",
+                "reference": "b54746bac05b75f3226d328dc512a67381524155",
                 "shasum": ""
             },
             "require": {
@@ -519,7 +593,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-22T05:22:39+00:00"
+            "time": "2024-10-08T18:16:37+00:00"
         },
         {
             "name": "ghostwriter/json",
@@ -640,6 +714,126 @@
                 }
             ],
             "time": "2023-07-05T19:51:28+00:00"
+        },
+        {
+            "name": "ghostwriter/plex",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostwriter/plex.git",
+                "reference": "7e7623ea7e9c548a2b2c229060237d1abf738df9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostwriter/plex/zipball/7e7623ea7e9c548a2b2c229060237d1abf738df9",
+                "reference": "7e7623ea7e9c548a2b2c229060237d1abf738df9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.3"
+            },
+            "require-dev": {
+                "ghostwriter/coding-standard": "dev-main"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ghostwriter\\Plex\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nathanael Esayeas",
+                    "email": "nathanael.esayeas@protonmail.com",
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides the fastest lexer for PHP, tokenizing text with named regex patterns for efficient processing",
+            "homepage": "https://github.com/ghostwriter/plex",
+            "keywords": [
+                "ghostwriter",
+                "plex"
+            ],
+            "support": {
+                "docs": "https://github.com/ghostwriter/plex",
+                "forum": "https://github.com/ghostwriter/plex/discussions",
+                "issues": "https://github.com/ghostwriter/plex/issues",
+                "rss": "https://github.com/ghostwriter/plex/releases.atom",
+                "security": "https://github.com/ghostwriter/plex/security/advisories/new",
+                "source": "https://github.com/ghostwriter/plex"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/ghostwriter",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-05T17:49:17+00:00"
+        },
+        {
+            "name": "ghostwriter/result",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostwriter/result.git",
+                "reference": "e922fe4cf5a5dc6b9e5a1f72bbfbe4ab7d630864"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostwriter/result/zipball/e922fe4cf5a5dc6b9e5a1f72bbfbe4ab7d630864",
+                "reference": "e922fe4cf5a5dc6b9e5a1f72bbfbe4ab7d630864",
+                "shasum": ""
+            },
+            "require": {
+                "ghostwriter/option": "^1.5.1",
+                "php": ">=8.1,<8.4"
+            },
+            "require-dev": {
+                "ghostwriter/coding-standard": "dev-main"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ghostwriter\\Result\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nathanael Esayeas",
+                    "email": "nathanael.esayeas@protonmail.com",
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides a Result type implementation for PHP",
+            "homepage": "https://github.com/ghostwriter/result",
+            "keywords": [
+                "ghostwriter",
+                "result"
+            ],
+            "support": {
+                "docs": "https://github.com/ghostwriter/result",
+                "forum": "https://github.com/ghostwriter/result/discussions",
+                "issues": "https://github.com/ghostwriter/result/issues",
+                "rss": "https://github.com/ghostwriter/result/releases.atom",
+                "source": "https://github.com/ghostwriter/result"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/ghostwriter",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-07-06T01:18:31+00:00"
         },
         {
             "name": "ghostwriter/shell",
@@ -2029,21 +2223,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/coding-standard.git",
-                "reference": "556e338e6854691f178a3cf3f9e18f7c2f3e6a9a"
+                "reference": "e8227677bcef7208fe63c278ea4bac8d0e361c19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/556e338e6854691f178a3cf3f9e18f7c2f3e6a9a",
-                "reference": "556e338e6854691f178a3cf3f9e18f7c2f3e6a9a",
+                "url": "https://api.github.com/repos/ghostwriter/coding-standard/zipball/e8227677bcef7208fe63c278ea4bac8d0e361c19",
+                "reference": "e8227677bcef7208fe63c278ea4bac8d0e361c19",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.6.0",
                 "composer-runtime-api": "^2.2.2",
-                "composer/composer": "^2.8.0",
+                "composer/composer": "^2.8.1",
                 "mockery/mockery": "^1.6.12",
                 "php": "^8.2",
-                "phpunit/phpunit": "^11.3.6"
+                "phpunit/phpunit": "^11.4.1"
             },
             "conflict": {
                 "vimeo/psalm": "<4.30"
@@ -2100,7 +2294,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-03T02:36:09+00:00"
+            "time": "2024-10-08T17:35:58+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -2862,16 +3056,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.3.6",
+            "version": "11.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d62c45a19c665bb872c2a47023a0baf41a98bb2b"
+                "reference": "7875627f15f4da7e7f0823d1f323f7295a77334e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d62c45a19c665bb872c2a47023a0baf41a98bb2b",
-                "reference": "d62c45a19c665bb872c2a47023a0baf41a98bb2b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7875627f15f4da7e7f0823d1f323f7295a77334e",
+                "reference": "7875627f15f4da7e7f0823d1f323f7295a77334e",
                 "shasum": ""
             },
             "require": {
@@ -2910,7 +3104,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.3-dev"
+                    "dev-main": "11.4-dev"
                 }
             },
             "autoload": {
@@ -2942,7 +3136,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.3.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.4.1"
             },
             "funding": [
                 {
@@ -2958,7 +3152,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-19T10:54:28+00:00"
+            "time": "2024-10-08T15:38:37+00:00"
         },
         {
             "name": "psr/log",
@@ -4656,6 +4850,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "ghostwriter/cli": 20,
         "ghostwriter/coding-standard": 20,
         "ghostwriter/filesystem": 20
     },
