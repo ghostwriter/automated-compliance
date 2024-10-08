@@ -147,10 +147,9 @@ final readonly class MatrixListener implements ListenerInterface
 
                     $isComposerDependencyLowest = $composerStrategy->isLowest();
                     foreach ($operatingSystems as $operatingSystem) {
-                        if (
-                            $tool instanceof Psalm
-                            && ! $operatingSystem->isUbuntu()
-                        ) {
+                        $isNotUbuntu = ! $operatingSystem->isUbuntu();
+
+                        if ($tool instanceof Psalm && $isNotUbuntu) {
                             continue;
                         }
 
@@ -165,7 +164,7 @@ final readonly class MatrixListener implements ListenerInterface
                                 $phpVersion,
                                 $composerStrategy,
                                 $operatingSystem,
-                                $isComposerDependencyLowest,
+                                $isComposerDependencyLowest || $isNotUbuntu,
                             )
                         );
                     }
