@@ -38,7 +38,7 @@ abstract class AbstractTool implements ToolInterface
     {
         $configuration = $this->configuration();
 
-        foreach ($this->filesystem->findIn($this->environmentVariables->get('GITHUB_WORKSPACE')) as $file) {
+        foreach ($this->filesystem->listDirectory($this->environmentVariables->get('GITHUB_WORKSPACE')) as $file) {
             if (! $file->isFile()) {
                 continue;
             }
