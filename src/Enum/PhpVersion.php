@@ -20,6 +20,7 @@ enum PhpVersion: int
     case PHP_82 = 80200;
     case PHP_83 = 80300;
     case PHP_84 = 80400;
+    case PHP_85 = 80500;
     // case PHP_90 = 90000;
 
     public function toString(): string
@@ -36,6 +37,7 @@ enum PhpVersion: int
             self::PHP_82 => '8.2',
             self::PHP_83 => '8.3',
             self::PHP_84 => '8.4',
+            self::PHP_85 => '8.5',
             // self::PHP_90 => '9.0',
         };
     }
@@ -47,7 +49,7 @@ enum PhpVersion: int
 
     public static function experimental(): self
     {
-        return self::PHP_84;
+        return self::PHP_85;
     }
 
     public static function highest(): self
@@ -62,7 +64,7 @@ enum PhpVersion: int
 
     public static function latest(): self
     {
-        return self::PHP_83;
+        return self::PHP_84;
     }
 
     public static function lowest(): self
