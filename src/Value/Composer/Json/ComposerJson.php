@@ -2,10 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Value\Composer;
+namespace Ghostwriter\Compliance\Value\Composer\Json;
 
 use Composer\InstalledVersions;
 use Generator;
+use Ghostwriter\Compliance\Value\Composer\DependencyName;
+use Ghostwriter\Compliance\Value\Composer\DependencyVersion;
+use Ghostwriter\Compliance\Value\Composer\Extension;
+use Ghostwriter\Compliance\Value\Composer\InstalledVersionsResolver;
+use Ghostwriter\Compliance\Value\Composer\License;
+use Ghostwriter\Compliance\Value\Composer\Package;
+use Ghostwriter\Compliance\Value\Composer\PhpVersionConstraintInterface;
+use Ghostwriter\Compliance\Value\Composer\RequireDevList;
+use Ghostwriter\Compliance\Value\Composer\RequireList;
+use Ghostwriter\Compliance\Value\Composer\RequirePhp;
+use Ghostwriter\Json\Interface\JsonInterface;
 
 final readonly class ComposerJson
 {
@@ -23,12 +34,18 @@ final readonly class ComposerJson
     public function __construct(
         private string $path,
         private array $contents,
+        private JsonInterface $json,
+        private InstalledVersionsResolver $installedVersionsResolver
     ) {
-        $this->package = new Package(new DependencyName($contents['name']), new DependencyVersion('dev-main'));
+        $this->package = new Package(
+            new DependencyName($contents['name']),
+            new DependencyVersion('dev-main'),
+            $this->json
+        );
 
         $this->phpVersionConstraint = RequirePhp::new($contents['require']['php'] ?? '*');
-        $this->requireList = RequireList::new($contents['require'] ?? []);
-        $this->requireDevList = RequireDevList::new($contents['require-dev'] ?? []);
+        $this->requireList = RequireList::new($contents['require'] ?? [], $this->json);
+        $this->requireDevList = RequireDevList::new($contents['require-dev'] ?? [], $this->json);
 
         // $configPlatformPhp = $contents['config']['platform']['php'] ?? null;
 
