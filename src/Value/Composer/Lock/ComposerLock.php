@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance\Value\Composer;
+namespace Ghostwriter\Compliance\Value\Composer\Lock;
 
 final readonly class ComposerLock
 {
