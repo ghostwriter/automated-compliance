@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Container\Factory;
 
 use Ghostwriter\Compliance\Compliance;
-use Ghostwriter\Compliance\ServiceProvider;
+use Ghostwriter\Compliance\Container\ServiceProvider;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\FactoryInterface;
 use Override;
