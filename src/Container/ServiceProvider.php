@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ghostwriter\Compliance;
+namespace Ghostwriter\Compliance\Container;
 
 use Ghostwriter\Compliance\Container\Extension\ConfigExtension;
 use Ghostwriter\Compliance\Container\Extension\ListenerProviderExtension;
@@ -15,7 +15,6 @@ use Ghostwriter\Config\Config;
 use Ghostwriter\Config\ConfigFactory;
 use Ghostwriter\Config\Contract\ConfigFactoryInterface;
 use Ghostwriter\Config\Contract\ConfigInterface;
-use Ghostwriter\Container\Attribute\Inject;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\ServiceProviderInterface;
 use Ghostwriter\EventDispatcher\EventDispatcher;
@@ -44,16 +43,17 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 final readonly class ServiceProvider implements ServiceProviderInterface
 {
     public const array ALIASES = [
-        Shell::class => ShellInterface::class,
-        Runner::class => RunnerInterface::class,
         ArgvInput::class => InputInterface::class,
         Config::class => ConfigInterface::class,
         ConfigFactory::class => ConfigFactoryInterface::class,
         ConsoleOutput::class => OutputInterface::class,
         EventDispatcher::class => EventDispatcherInterface::class,
+        Filesystem::class => FilesystemInterface::class,
         Json::class => JsonInterface::class,
         ListenerProvider::class => ListenerProviderInterface::class,
         OutputFormatter::class => OutputFormatterInterface::class,
+        Runner::class => RunnerInterface::class,
+        Shell::class => ShellInterface::class,
         SymfonyStyle::class => StyleInterface::class,
     ];
 
@@ -66,12 +66,6 @@ final readonly class ServiceProvider implements ServiceProviderInterface
     public const array FACTORIES = [
         Application::class => SymfonyApplicationFactory::class,
     ];
-
-    public function __construct(
-        #[Inject(Filesystem::class)]
-        private FilesystemInterface $filesystem,
-    ) {
-    }
 
     #[Override]
     public function __invoke(ContainerInterface $container): void
