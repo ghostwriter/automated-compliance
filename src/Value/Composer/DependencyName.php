@@ -14,7 +14,7 @@ final readonly class DependencyName implements JsonSerializable, Stringable
     public function __construct(
         private string $content
     ) {
-        if (\trim($content) === '') {
+        if (\mb_trim($content) === '') {
             throw new InvalidArgumentException('Name cannot be empty');
         }
     }
