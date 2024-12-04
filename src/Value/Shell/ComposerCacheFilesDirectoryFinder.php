@@ -27,7 +27,7 @@ final readonly class ComposerCacheFilesDirectoryFinder
             ['config', 'cache-files-dir', '--no-interaction']
         );
 
-        $output = \trim($result->stdout());
+        $output = \mb_trim($result->stdout());
         if ($output === '' || $result->exitCode() !== 0) {
             throw new FailedToFindComposerCacheFilesDirectoryException($result->stderr());
         }
