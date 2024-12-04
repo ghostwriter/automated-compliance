@@ -10,7 +10,6 @@ use Throwable;
 use const E_ALL;
 use const E_DEPRECATED;
 use const E_NOTICE;
-use const E_STRICT;
 use const E_USER_DEPRECATED;
 use const PHP_EOL;
 use const STDERR;
@@ -28,7 +27,7 @@ use const STDERR;
             throw new ErrorException($message, 0, $severity, $file, $line);
         },
         // reports all errors except E_USER_DEPRECATED, E_DEPRECATED, E_STRICT, and E_NOTICE
-        E_ALL & ~E_USER_DEPRECATED & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE
+        E_ALL & ~E_USER_DEPRECATED & ~E_DEPRECATED & ~E_NOTICE
     );
 
     if (! \file_exists($composerAutoloadPath)) {
