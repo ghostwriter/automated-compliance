@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Value\Composer;
 
 use Generator;
+use Ghostwriter\Json\Interface\JsonInterface;
 use IteratorAggregate;
 use Override;
 
@@ -27,7 +28,7 @@ final readonly class RequireList implements IteratorAggregate
         yield from $this->requireList;
     }
 
-    public static function new(array $require): self
+    public static function new(array $require, JsonInterface $json): self
     {
         $requireList = [];
 
@@ -37,7 +38,7 @@ final readonly class RequireList implements IteratorAggregate
 
             $requireList[$name] = $dependencyName->isPhpExtension()
                 ? Extension::new($dependencyName, $dependencyVersion)
-                : Package::new($dependencyName, $dependencyVersion);
+                : Package::new($dependencyName, $dependencyVersion, $json);
         }
 
         return new self($requireList);
