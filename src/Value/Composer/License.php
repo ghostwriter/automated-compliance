@@ -32,7 +32,7 @@ final readonly class License implements JsonSerializable, Stringable
     {
         return match (true) {
             $content === null => throw new InvalidArgumentException('License cannot be null'),
-            \trim($content) === '' => throw new InvalidArgumentException('License cannot be empty'),
+            \mb_trim($content) === '' => throw new InvalidArgumentException('License cannot be empty'),
             default => new self($content)
         };
     }
