@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Value\Composer;
 
 use Generator;
-use Ghostwriter\Json\Json;
+use Ghostwriter\Json\Interface\JsonInterface;
 use InvalidArgumentException;
 use IteratorAggregate;
 use JsonSerializable;
@@ -24,7 +24,8 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
      * @throws Throwable
      */
     public function __construct(
-        private array $packages
+        private array $packages,
+        private JsonInterface $json
     ) {
         foreach ($packages as $package) {
             if (! $package instanceof Package) {
@@ -39,7 +40,7 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
     #[Override]
     public function __toString(): string
     {
-        return (new Json())->encode($this);
+        return $this->json->encode($this);
     }
 
     /**
@@ -57,6 +58,6 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
     #[Override]
     public function jsonSerialize(): array
     {
-        return \array_map(static fn (Package $package): string => (new Json())->encode($package), $this->packages);
+        return \array_map(static fn (Package $package): string => $this->json->encode($package), $this->packages);
     }
 }
