@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Value\Composer;
 
 use Ghostwriter\Compliance\Interface\Composer\DependencyInterface;
-use Ghostwriter\Json\Json;
+use Ghostwriter\Json\Interface\JsonInterface;
 use Override;
 use Throwable;
 
@@ -13,7 +13,8 @@ final readonly class Package implements DependencyInterface
 {
     public function __construct(
         private DependencyName $dependencyName,
-        private DependencyVersion $dependencyVersion
+        private DependencyVersion $dependencyVersion,
+        private JsonInterface $json
     ) {
     }
 
@@ -23,7 +24,7 @@ final readonly class Package implements DependencyInterface
     #[Override]
     public function __toString(): string
     {
-        return (new Json())->encode($this);
+        return $this->json->encode($this);
     }
 
     #[Override]
@@ -46,8 +47,11 @@ final readonly class Package implements DependencyInterface
         return $this->dependencyVersion;
     }
 
-    public static function new(DependencyName $dependencyName, DependencyVersion $dependencyVersion): self
-    {
-        return new self($dependencyName, $dependencyVersion);
+    public static function new(
+        DependencyName $dependencyName,
+        DependencyVersion $dependencyVersion,
+        JsonInterface $json
+    ): self {
+        return new self($dependencyName, $dependencyVersion, $json);
     }
 }
