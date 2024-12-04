@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Value\Composer;
 
+use Throwable;
+
 final readonly class ExtensionFinder
 {
     public function __construct(
@@ -11,6 +13,9 @@ final readonly class ExtensionFinder
     ) {
     }
 
+    /**
+     * @throws Throwable
+     */
     public function find(string $composerJsonPath): Extensions
     {
         $extensions = [];
