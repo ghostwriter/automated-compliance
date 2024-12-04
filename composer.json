@@ -21,7 +21,6 @@
     "homepage": "https://github.com/ghostwriter/compliance",
     "support": {
         "issues": "https://github.com/ghostwriter/compliance/issues",
-        "forum": "https://github.com/ghostwriter/compliance/discussions",
         "source": "https://github.com/ghostwriter/compliance",
         "docs": "https://github.com/ghostwriter/compliance",
         "rss": "https://github.com/ghostwriter/compliance/releases.atom",
@@ -33,7 +32,11 @@
             "url": "https://github.com/sponsors/ghostwriter"
         }
     ],
-    "_comment": "#BlackLivesMatter",
+    "_comment": [
+        "#BlackLivesMatter",
+        "#FreePalestine",
+        "#StandWithUkraine"
+    ],
     "require": {
         "php": ">=8.3",
         "ext-json": "*",
@@ -47,17 +50,18 @@
         "ghostwriter/clock": "^3.0.0",
         "ghostwriter/collection": "^2.0.0",
         "ghostwriter/config": "^0.4.1",
-        "ghostwriter/container": "^4.0.2",
+        "ghostwriter/container": "^4.0.3",
         "ghostwriter/event-dispatcher": "^5.0.2",
-        "ghostwriter/filesystem": "^0.1.0",
+        "ghostwriter/filesystem": "^0.1.1",
         "ghostwriter/json": "^3.0.0",
         "ghostwriter/option": "^1.5.1",
         "ghostwriter/shell": "^0.1.0",
         "ghostwriter/uuid": "^1.0.1",
-        "symfony/console": "^7.1.5"
+        "symfony/console": "^7.2.0"
     },
     "require-dev": {
-        "ghostwriter/coding-standard": "dev-main"
+        "ghostwriter/coding-standard": "dev-main",
+        "ghostwriter/psalm-plugin": "dev-main"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -72,14 +76,18 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests"
-        }
+        },
+        "exclude-from-classmap": [
+            "tests/Fixture/"
+        ]
     },
     "bin": [
         "bin/compliance"
     ],
     "config": {
         "allow-plugins": {
-            "ghostwriter/coding-standard": true
+            "ghostwriter/coding-standard": true,
+            "ghostwriter/handrail": true
         },
         "classmap-authoritative": false,
         "discard-changes": true,
@@ -95,17 +103,17 @@
     },
     "scripts": {
         "bin_ecs": "ecs check --clear-cache --no-interaction",
-        "bin_infection": "infection --ansi --show-mutations --threads=max --min-msi=0 --min-covered-msi=0",
-        "bin_phive": "phive",
-        "bin_phpunit": "phpunit --do-not-cache-result --colors=always",
-        "bin_psalm": "psalm --no-cache",
+        "bin_infection": "vendor/ghostwriter/coding-standard/tools/infection --ansi --show-mutations --threads=max --min-msi=0 --min-covered-msi=0",
+        "bin_phive": "vendor/ghostwriter/coding-standard/tools/phive",
+        "bin_phpunit": "vendor/ghostwriter/coding-standard/tools/phpunit --do-not-cache-result --colors=always",
+        "bin_psalm": "vendor/ghostwriter/coding-standard/tools/psalm --no-cache",
         "bin_rector": "rector process --no-ansi --clear-cache",
         "cache": [
             "rm -fr ./.cache"
         ],
         "cache:clear": "rm -rf ./.cache/*",
         "check": [
-            "@composer validate",
+            "vendor/ghostwriter/coding-standard/tools/composer validate",
             "@ecs",
             "@test"
         ],
@@ -131,7 +139,7 @@
         "psalm:alter": "@bin_psalm --alter --allow-backwards-incompatible-changes=false --safe-types",
         "psalm:baseline": "@psalm --no-diff --set-baseline=psalm-baseline.xml",
         "psalm:dry-run": "@psalm:alter --issues=all --dry-run",
-        "psalm:fix": "@psalm:alter --issues=UnnecessaryVarAnnotation,MissingPureAnnotation,MissingImmutableAnnotation",
+        "psalm:fix": "@psalm:alter --issues=UnnecessaryVarAnnotation",
         "psalm:security": "@psalm --no-diff --taint-analysis",
         "psalm:shepherd": "@psalm --no-diff --shepherd --stats",
         "psalm:update": "@psalm --no-diff --update-baseline=psalm-baseline.xml",
