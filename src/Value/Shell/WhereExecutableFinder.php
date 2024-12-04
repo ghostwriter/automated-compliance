@@ -28,7 +28,7 @@ final readonly class WhereExecutableFinder
 
         $result = $this->shell->execute($where, [$executable]);
 
-        $stdout = \trim($result->stdout());
+        $stdout = \mb_trim($result->stdout());
 
         if ($stdout === '' || $result->exitCode() !== 0) {
             throw new FailedToFindExecutableException(
