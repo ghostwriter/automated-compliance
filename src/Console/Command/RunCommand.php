@@ -41,6 +41,7 @@ use Ghostwriter\Compliance\EventDispatcher\Event\MatrixEvent;
 use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
+use Ghostwriter\Filesystem\Interface\FilesystemInterface;
 use Override;
 use RuntimeException;
 use SplFileInfo;
@@ -54,10 +55,13 @@ use Throwable;
 
 use const PHP_EOL;
 
+use function sprintf;
+
 final class RunCommand extends Command
 {
     public function __construct(
         private readonly ContainerInterface $container,
+        private readonly FilesystemInterface $filesystem,
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly EnvironmentVariables $environmentVariables,
         private readonly StyleInterface $symfonyStyle,
@@ -98,7 +102,7 @@ final class RunCommand extends Command
             'workspace',
             InputArgument::OPTIONAL,
             'The default working directory on the GitHub runner.',
-            $this->environmentVariables->get('GITHUB_WORKSPACE', \getcwd())
+            $this->environmentVariables->get('GITHUB_WORKSPACE', $this->filesystem->currentWorkingDirectory())
         );
 
         // GITHUB_ENV	The path on the runner to the file that sets variables from workflow commands.
@@ -115,14 +119,14 @@ final class RunCommand extends Command
     #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->symfonyStyle->writeln(\sprintf(Compliance::LOGO, Compliance::BLACK_LIVES_MATTER, ''));
+        $this->symfonyStyle->writeln(sprintf(Compliance::LOGO, Compliance::BLACK_LIVES_MATTER, ''));
 
         $this->symfonyStyle->title(Compliance::NAME);
 
         $payload = (new SplFileInfo($input->getArgument('payload')))->getRealPath();
-        if ($payload === false) {
+        if (false === $payload) {
             $output->writeln(
-                \sprintf('GitHub Payload: <error>%s File does not exist.</error>', $input->getArgument('payload'))
+                sprintf('GitHub Payload: <error>%s File does not exist.</error>', $input->getArgument('payload'))
             );
 
             return Command::INVALID;
@@ -130,13 +134,13 @@ final class RunCommand extends Command
 
         $eventName = $input->getArgument('event');
 
-        $this->symfonyStyle->info(\sprintf('GitHub Event: <comment>%s</comment>', $eventName));
+        $this->symfonyStyle->info(sprintf('GitHub Event: <comment>%s</comment>', $eventName));
 
         try {
             $this->eventDispatcher
                 ->dispatch(
                     match ($eventName) {
-                        default => throw new RuntimeException(\sprintf(
+                        default => throw new RuntimeException(sprintf(
                             '<comment>GitHub Event "%s" is not Supported.</comment>',
                             $eventName
                         )),
@@ -177,7 +181,7 @@ final class RunCommand extends Command
                 );
         } catch (Throwable $throwable) {
             $this->symfonyStyle->error(
-                \sprintf(
+                sprintf(
                     '[%s] %s%s%s' . PHP_EOL,
                     $throwable::class,
                     $throwable->getMessage(),
