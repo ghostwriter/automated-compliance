@@ -113,6 +113,7 @@ final readonly class MatrixListener implements ListenerInterface
 
             $command = $tool->command();
 
+            /** @var list<string> $extensions */
             $extensions = array_unique([...$requiredPhpExtensions, ...$tool->extensions()]);
 
             if (! $tool instanceof PHPUnit) {
@@ -124,7 +125,7 @@ final readonly class MatrixListener implements ListenerInterface
                         $composerCacheFilesDirectory,
                         $composerJsonPath,
                         $composerLockPath,
-                        PhpVersion::latest(),
+                        $tool instanceof Psalm ? PhpVersion::PHP_83 : PhpVersion::latest(),
                     )
                 );
 
