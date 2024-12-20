@@ -8,10 +8,15 @@ use Ghostwriter\Compliance\Enum\ComposerStrategy;
 use Ghostwriter\Compliance\Enum\OperatingSystem;
 use Ghostwriter\Compliance\Enum\PhpVersion;
 
+use function file_exists;
+use function filesystem;
+use function implode;
+use function sprintf;
+
 final readonly class Job
 {
     /**
-     * @param array<string> $extensions
+     * @param list<string> $extensions
      */
     public function __construct(
         private string $name,
@@ -24,62 +29,10 @@ final readonly class Job
         private PhpVersion $phpVersion,
         private OperatingSystem $operatingSystem,
         private bool $experimental,
-    ) {
-    }
+    ) {}
 
     /**
-     * @return array{
-     *     name:string,
-     *     runCommand:string,
-     *     installCommand:string,
-     *     validateCommand:string,
-     *     composerCacheFilesDirectory:string,
-     *     extensions:array<string>,
-     *     os:string,
-     *     php:string,
-     *     dependency:string,
-     *     experimental:bool
-     * }
-     */
-    public function toArray(): array
-    {
-        $composerOptions = ['--no-interaction', '--no-progress', '--ansi'];
-
-        $composerCommand = match ($this->composerStrategy) {
-            ComposerStrategy::LOCKED => 'install',
-            default => 'update',
-        };
-
-        if ($this->composerStrategy === ComposerStrategy::LOWEST) {
-            $composerOptions[] = '--prefer-lowest';
-            $composerOptions[] = '--prefer-stable';
-        }
-
-        if (! \file_exists($this->composerLockPath)) {
-            $composerCommand = 'update';
-        }
-
-        $validateCommand = \file_exists($this->composerJsonPath) ?
-            // 'composer validate --no-check-publish --no-check-lock --no-interaction --ansi --strict' :
-            'composer validate --no-check-publish --no-check-lock --no-interaction --ansi --strict || exit 0;' :
-            'echo "composer.json does not exist" && exit 1;';
-
-        return [
-            'name' => $this->name,
-            'runCommand' => $this->command,
-            'composerCacheFilesDirectory' => $this->composerCacheFilesDirectory,
-            'os' => $this->operatingSystem->toString(),
-            'php' => $this->phpVersion->toString(),
-            'dependency' => $this->composerStrategy->toString(),
-            'experimental' => $this->experimental,
-            'extensions' => $this->extensions,
-            'validateCommand' => $validateCommand,
-            'installCommand' => \sprintf('composer %s %s', $composerCommand, \implode(' ', $composerOptions)),
-        ];
-    }
-
-    /**
-     * @param array<string> $extensions
+     * @param list<string> $extensions
      */
     public static function new(
         string $name,
@@ -107,13 +60,67 @@ final readonly class Job
         );
     }
 
+    /**
+     * @return array{
+     *     name:string,
+     *     runCommand:string,
+     *     installCommand:string,
+     *     validateCommand:string,
+     *     composerCacheFilesDirectory:string,
+     *     extensions:array<string>,
+     *     os:string,
+     *     php:string,
+     *     dependency:string,
+     *     experimental:bool
+     * }
+     */
+    public function toArray(): array
+    {
+        $composerOptions = ['--no-interaction', '--no-progress', '--ansi'];
+
+        $composerCommand = match ($this->composerStrategy) {
+            ComposerStrategy::LOCKED => 'install',
+            default => 'update',
+        };
+
+        if (ComposerStrategy::LOWEST === $this->composerStrategy) {
+            $composerOptions[] = '--prefer-lowest';
+            $composerOptions[] = '--prefer-stable';
+        }
+
+        if (! file_exists($this->composerLockPath)) {
+            $composerCommand = 'update';
+        }
+
+        $validateCommand = file_exists($this->composerJsonPath)
+            // 'composer validate --no-check-publish --no-check-lock --no-interaction --ansi --strict' :
+            ? 'composer validate --no-check-publish --no-check-lock --no-interaction --ansi --strict || exit 0;'
+            : 'echo "composer.json does not exist" && exit 1;';
+
+        return [
+            'name' => $this->name,
+            'runCommand' => $this->command,
+            'composerCacheFilesDirectory' => $this->composerCacheFilesDirectory,
+            'os' => $this->operatingSystem->toString(),
+            'php' => $this->phpVersion->toString(),
+            'dependency' => $this->composerStrategy->toString(),
+            'experimental' => $this->experimental,
+            'extensions' => $this->extensions,
+            'validateCommand' => $validateCommand,
+            'installCommand' => sprintf('composer %s %s', $composerCommand, implode(' ', $composerOptions)),
+        ];
+    }
+
     public static function noop(): self
     {
         $name = 'Noop';
-        $currentDirectory = \getcwd() ?: '.';
+
+        $currentDirectory = filesystem()
+            ->currentWorkingDirectory();
+
         return new self(
             name: $name,
-            command: \sprintf('echo "%s"', $name),
+            command: sprintf('echo "%s"', $name),
             extensions: [],
             composerCacheFilesDirectory: '/home/runner/.cache/composer/files',
             composerJsonPath: $currentDirectory,
