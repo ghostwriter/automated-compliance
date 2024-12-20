@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Exception;
 
 use RuntimeException;
 
-final class FailedToFindExecutableException extends RuntimeException
-{
-}
+final class FailedToFindExecutableException extends RuntimeException {}
