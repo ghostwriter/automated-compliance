@@ -11,7 +11,11 @@ final readonly class CopyWorkflowEvent
     public function __construct(
         private string $to,
         private bool $overwrite,
-    ) {
+    ) {}
+
+    public static function new(string $to, bool $overwrite = false): self
+    {
+        return new self($to, $overwrite);
     }
 
     public function from(): string
@@ -27,10 +31,5 @@ final readonly class CopyWorkflowEvent
     public function to(): string
     {
         return $this->to;
-    }
-
-    public static function new(string $to, bool $overwrite = false): self
-    {
-        return new self($to, $overwrite);
     }
 }
