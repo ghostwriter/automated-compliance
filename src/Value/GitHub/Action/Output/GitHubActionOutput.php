@@ -6,6 +6,10 @@ namespace Ghostwriter\Compliance\Value\GitHub\Action\Output;
 
 use Symfony\Component\Console\Output\OutputInterface;
 
+use function getenv;
+use function sprintf;
+use function strtr;
+
 final readonly class GitHubActionOutput
 {
     /**
@@ -30,20 +34,15 @@ final readonly class GitHubActionOutput
 
     public function __construct(
         private OutputInterface $output
-    ) {
-    }
+    ) {}
 
     /**
      * Output a debug log using the Github annotations format.
      *
      * @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-a-debug-message
      */
-    public function debug(
-        string $message,
-        null|string $file = null,
-        null|int $line = null,
-        null|int $col = null
-    ): void {
+    public function debug(string $message, ?string $file = null, ?int $line = null, ?int $col = null): void
+    {
         $this->log('debug', $message, $file, $line, $col);
     }
 
@@ -52,12 +51,8 @@ final readonly class GitHubActionOutput
      *
      * @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-error-message
      */
-    public function error(
-        string $message,
-        null|string $file = null,
-        null|int $line = null,
-        null|int $col = null
-    ): void {
+    public function error(string $message, ?string $file = null, ?int $line = null, ?int $col = null): void
+    {
         $this->log('error', $message, $file, $line, $col);
     }
 
@@ -66,24 +61,20 @@ final readonly class GitHubActionOutput
      *
      * @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-a-warning-message
      */
-    public function warning(
-        string $message,
-        null|string $file = null,
-        null|int $line = null,
-        null|int $col = null
-    ): void {
+    public function warning(string $message, ?string $file = null, ?int $line = null, ?int $col = null): void
+    {
         $this->log('warning', $message, $file, $line, $col);
     }
 
     private function log(
         string $type,
         string $message,
-        null|string $file = null,
-        null|int $line = null,
-        null|int $col = null
+        ?string $file = null,
+        ?int $line = null,
+        ?int $col = null
     ): void {
         // Some values must be encoded.
-        $message = \strtr($message, self::ESCAPED_DATA);
+        $message = strtr($message, self::ESCAPED_DATA);
 
         if (! self::isGithubActionEnvironment()) {
             // output the message solely: not in actions
@@ -92,25 +83,25 @@ final readonly class GitHubActionOutput
             return;
         }
 
-        if ($file === null || $file === '' || $file === '0') {
+        if (null === $file || '' === $file || '0' === $file) {
             // No file provided, output the message solely:
-            $this->output->writeln(\sprintf('::%s::%s', $type, $message));
+            $this->output->writeln(sprintf('::%s::%s', $type, $message));
 
             return;
         }
 
-        $this->output->writeln(\sprintf(
+        $this->output->writeln(sprintf(
             '::%s file=%s,line=%s,col=%s::%s',
             $type,
-            \strtr($file, self::ESCAPED_PROPERTIES),
-            \strtr((string) ($line ?? 1), self::ESCAPED_PROPERTIES),
-            \strtr((string) ($col ?? 0), self::ESCAPED_PROPERTIES),
+            strtr($file, self::ESCAPED_PROPERTIES),
+            strtr((string) ($line ?? 1), self::ESCAPED_PROPERTIES),
+            strtr((string) ($col ?? 0), self::ESCAPED_PROPERTIES),
             $message
         ));
     }
 
     public static function isGithubActionEnvironment(): bool
     {
-        return \getenv('GITHUB_ACTIONS') !== false;
+        return getenv('GITHUB_ACTIONS') !== false;
     }
 }
