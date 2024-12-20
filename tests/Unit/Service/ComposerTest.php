@@ -28,9 +28,12 @@ final class ComposerTest extends AbstractTestCase
      */
     public function testGetJsonFilePath(): void
     {
-        $root = \getcwd();
+        $currentWorkingDirectory = $this->filesystem->currentWorkingDirectory();
 
-        self::assertSame($this->composer->getJsonFilePath($root), $root . DIRECTORY_SEPARATOR . 'composer.json');
+        self::assertSame(
+            $this->composer->getJsonFilePath($currentWorkingDirectory),
+            $currentWorkingDirectory . DIRECTORY_SEPARATOR . 'composer.json',
+        );
     }
 
     /**
@@ -38,8 +41,11 @@ final class ComposerTest extends AbstractTestCase
      */
     public function testGetLockFilePath(): void
     {
-        $root = \getcwd();
+        $currentWorkingDirectory = $this->filesystem->currentWorkingDirectory();
 
-        self::assertSame($this->composer->getLockFilePath($root), $root . DIRECTORY_SEPARATOR . 'composer.lock');
+        self::assertSame(
+            $this->composer->getLockFilePath($currentWorkingDirectory),
+            $currentWorkingDirectory . DIRECTORY_SEPARATOR . 'composer.lock',
+        );
     }
 }
