@@ -13,13 +13,15 @@ use Override;
 use Stringable;
 use Throwable;
 
+use function array_map;
+
 /**
  * @implements IteratorAggregate<Package>
  */
 final readonly class Packages implements IteratorAggregate, JsonSerializable, Stringable
 {
     /**
-     * @param array<Package> $packages
+     * @param list<Package> $packages
      *
      * @throws Throwable
      */
@@ -58,6 +60,6 @@ final readonly class Packages implements IteratorAggregate, JsonSerializable, St
     #[Override]
     public function jsonSerialize(): array
     {
-        return \array_map(static fn (Package $package): string => $this->json->encode($package), $this->packages);
+        return array_map(static fn (Package $package): string => $this->json->encode($package), $this->packages);
     }
 }
