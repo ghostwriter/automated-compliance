@@ -9,21 +9,25 @@ use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Filesystem\Interface\FilesystemInterface;
 use Override;
 
+use function in_array;
+use function mb_strtolower;
+use function preg_replace;
+use function str_replace;
+
 abstract class AbstractTool implements ToolInterface
 {
     public function __construct(
         private readonly FilesystemInterface $filesystem,
         private readonly EnvironmentVariables $environmentVariables
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function command(): string
     {
-        return 'composer ' . \str_replace(
+        return 'composer ' . str_replace(
             'p-h-p-',
             'php',
-            \mb_strtolower((string) \preg_replace('#([a-zA-Z])(?=[A-Z])#', '$1-', $this->name()))
+            mb_strtolower((string) preg_replace('#([a-zA-Z])(?=[A-Z])#', '$1-', $this->name()))
         );
     }
 
@@ -43,7 +47,7 @@ abstract class AbstractTool implements ToolInterface
                 continue;
             }
 
-            if (! \in_array($file->getFilename(), $configuration, true)) {
+            if (! in_array($file->getFilename(), $configuration, true)) {
                 continue;
             }
 
@@ -56,9 +60,12 @@ abstract class AbstractTool implements ToolInterface
     #[Override]
     public function name(): string
     {
-        return \str_replace(__NAMESPACE__ . '\\', '', static::class);
+        return str_replace(__NAMESPACE__ . '\\', '', static::class);
     }
 
+    /**
+     * @return list<string>
+     */
     #[Override]
     abstract public function configuration(): array;
 }
