@@ -24,7 +24,7 @@ final readonly class Compliance
     /**
      * @var string
      */
-    public const string LOGO = <<<'CODE_SAMPLE'
+    public const string LOGO = <<<'EOD'
         <fg=red;bg=black;options=bold>
           ____                      _ _
          / ___|___  _ __ ___  _ __ | (_) __ _ _ __   ___ ___
@@ -33,7 +33,7 @@ final readonly class Compliance
          \____\___/|_| |_| |_| .__/|_|_|\__,_|_| |_|\___\___|
                              |_|     %s
         </>%s
-        CODE_SAMPLE;
+        EOD;
 
     /**
      * @var string
@@ -48,7 +48,14 @@ final readonly class Compliance
     public function __construct(
         private Application $application,
         private ContainerInterface $container,
-    ) {
+    ) {}
+
+    /**
+     * @throws Throwable
+     */
+    public static function new(): self
+    {
+        return Container::getInstance()->get(self::class);
     }
 
     /**
@@ -60,13 +67,5 @@ final readonly class Compliance
             $this->container->get(InputInterface::class),
             $this->container->get(OutputInterface::class)
         );
-    }
-
-    /**
-     * @throws Throwable
-     */
-    public static function new(): self
-    {
-        return Container::getInstance()->get(self::class);
     }
 }
