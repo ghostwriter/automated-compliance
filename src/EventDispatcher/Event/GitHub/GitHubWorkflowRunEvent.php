@@ -14,8 +14,7 @@ final readonly class GitHubWorkflowRunEvent implements GitHubEventInterface
 {
     public function __construct(
         private string $content
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function payload(): string
