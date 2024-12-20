@@ -15,13 +15,7 @@ final readonly class OutputEvent extends AbstractEvent
         private array|string $message,
         protected InputInterface $input,
         protected StyleInterface $style
-    ) {
-    }
-
-    public function getMessage(): array|string
-    {
-        return $this->message;
-    }
+    ) {}
 
     /**
      * @throws Throwable
@@ -29,5 +23,10 @@ final readonly class OutputEvent extends AbstractEvent
     public static function new(array|string $message): self
     {
         return Container::getInstance()->build(self::class, [$message]);
+    }
+
+    public function getMessage(): array|string
+    {
+        return $this->message;
     }
 }
