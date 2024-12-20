@@ -10,8 +10,7 @@ final readonly class ConfigPlatformPhp implements PhpVersionConstraintInterface
 {
     public function __construct(
         private string $version,
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function getVersion(): string
