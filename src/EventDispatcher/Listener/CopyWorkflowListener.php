@@ -13,8 +13,7 @@ final readonly class CopyWorkflowListener implements ListenerInterface
     public function __construct(
         private FilesystemInterface $fileSystem,
         private SymfonyStyle $symfonyStyle,
-    ) {
-    }
+    ) {}
 
     public function __invoke(CopyWorkflowEvent $copyWorkflowEvent): void
     {
@@ -22,6 +21,7 @@ final readonly class CopyWorkflowListener implements ListenerInterface
 
         if ($this->fileSystem->exists($to) && ! $copyWorkflowEvent->overwrite()) {
             $this->symfonyStyle->error('The file already exists. Use the --overwrite option to overwrite it.');
+
             return;
         }
 
