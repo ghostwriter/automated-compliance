@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ghostwriter\Compliance\Container\Factory;
 
 use Ghostwriter\Compliance\Compliance;
-use Ghostwriter\Compliance\Value\Composer\InstalledVersionsResolver;
+use Ghostwriter\Compliance\Value\Composer\Resolver\InstalledVersionsResolver;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\Container\Interface\FactoryInterface;
 use Override;
@@ -19,8 +19,7 @@ final readonly class SymfonyApplicationFactory implements FactoryInterface
 {
     public function __construct(
         private InstalledVersionsResolver $installedVersionsResolver
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
