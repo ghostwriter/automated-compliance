@@ -17,12 +17,12 @@ enum OperatingSystem: string
 
     public function isUbuntu(): bool
     {
-        return $this === self::UBUNTU;
+        return self::UBUNTU === $this;
     }
 
     public function isWindows(): bool
     {
-        return $this === self::WINDOWS;
+        return self::WINDOWS === $this;
     }
 
     public function toString(): string
