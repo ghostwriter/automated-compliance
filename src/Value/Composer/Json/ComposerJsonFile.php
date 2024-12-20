@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Value\Composer\Json;
 
 use Ghostwriter\Compliance\Value\Composer\ComposerFile;
 
-interface ComposerJsonFile extends ComposerFile
-{
-}
+interface ComposerJsonFile extends ComposerFile {}
