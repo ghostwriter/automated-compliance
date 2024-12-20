@@ -13,8 +13,7 @@ final readonly class CheckListener implements ListenerInterface
 {
     public function __construct(
         private EventDispatcherInterface $eventDispatcher
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
