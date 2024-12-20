@@ -15,18 +15,11 @@ use Override;
 final readonly class RequireDevList implements IteratorAggregate
 {
     /**
-     * @param array<Extension|Package> $requireDevList
+     * @param list<Extension|Package> $requireDevList
      */
     public function __construct(
         private array $requireDevList,
-    ) {
-    }
-
-    #[Override]
-    public function getIterator(): Generator
-    {
-        yield from $this->requireDevList;
-    }
+    ) {}
 
     public static function new(array $requireDev, JsonInterface $json): self
     {
@@ -42,5 +35,11 @@ final readonly class RequireDevList implements IteratorAggregate
         }
 
         return new self($requireDevList);
+    }
+
+    #[Override]
+    public function getIterator(): Generator
+    {
+        yield from $this->requireDevList;
     }
 }
