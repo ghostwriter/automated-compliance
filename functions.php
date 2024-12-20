@@ -8,8 +8,9 @@ use Ghostwriter\Compliance\Value\GitHub\Action\Output\GitHubActionOutput;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Ghostwriter\EventDispatcher\Interface\EventDispatcherInterface;
+use Ghostwriter\Filesystem\Interface\FilesystemInterface;
 use Ghostwriter\Shell\Interface\ResultInterface;
-use Ghostwriter\Shell\Shell;
+use Ghostwriter\Shell\Interface\ShellInterface;
 
 if (! \function_exists('container')) {
     /**
@@ -18,6 +19,16 @@ if (! \function_exists('container')) {
     function container(): ContainerInterface
     {
         return Container::getInstance();
+    }
+}
+if (! \function_exists('filesystem')) {
+    /**
+     * @throws \Throwable
+     */
+    function filesystem(): FilesystemInterface
+    {
+        return \container()
+            ->get(FilesystemInterface::class);
     }
 }
 
@@ -108,10 +119,22 @@ if (! \function_exists('error')) {
 
 if (! \function_exists('execute')) {
     /**
+     * @param list<string>          $arguments
+     * @param array<string, string> $environmentVariables
+     *
      * @throws \Throwable
+     *
+     * @return ResultInterface
      */
-    function execute(string $command, string ...$arguments): ResultInterface
-    {
-        return Shell::new()->execute($command, $arguments);
+    function execute(
+        string $command,
+        array $arguments = [],
+        ?string $workingDirectory = null,
+        ?array $environmentVariables = null,
+        ?string $input = null,
+    ): ResultInterface {
+        return \container()
+            ->get(ShellInterface::class)
+            ->execute($command, $arguments, $workingDirectory, $environmentVariables, $input);
     }
 }
