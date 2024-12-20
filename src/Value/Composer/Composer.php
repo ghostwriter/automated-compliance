@@ -13,20 +13,26 @@ use Throwable;
 use const DIRECTORY_SEPARATOR;
 use const PATHINFO_EXTENSION;
 
+use function basename;
+use function getenv;
+use function implode;
+use function mb_substr;
+use function mb_trim;
+use function pathinfo;
+
 final readonly class Composer
 {
     public function __construct(
         private ComposerJsonReader $composerJsonReader,
         private ComposerLockReader $composerLockReader,
-    ) {
-    }
+    ) {}
 
     /**
      * Retrieve the path to composer.json file.
      */
     public function getJsonFilePath(string $root): string
     {
-        return \implode(DIRECTORY_SEPARATOR, [$root, \basename(\mb_trim(\getenv('COMPOSER') ?: ComposerFile::JSON))]);
+        return implode(DIRECTORY_SEPARATOR, [$root, basename(mb_trim(getenv('COMPOSER') ?: ComposerFile::JSON))]);
     }
 
     /**
@@ -36,8 +42,8 @@ final readonly class Composer
     {
         $composerJsonPath = $this->getJsonFilePath($root);
 
-        return \pathinfo($composerJsonPath, PATHINFO_EXTENSION) === ComposerFileType::JSON
-            ? \mb_substr($composerJsonPath, 0, -4) . 'lock'
+        return pathinfo($composerJsonPath, PATHINFO_EXTENSION) === ComposerFileType::JSON
+            ? mb_substr($composerJsonPath, 0, -4) . 'lock'
             : $composerJsonPath . '.lock';
     }
 
