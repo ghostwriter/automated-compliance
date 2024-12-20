@@ -12,8 +12,7 @@ abstract readonly class AbstractEvent
     public function __construct(
         protected InputInterface $input,
         protected StyleInterface $style
-    ) {
-    }
+    ) {}
 
     public function input(): InputInterface
     {
