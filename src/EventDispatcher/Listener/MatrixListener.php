@@ -20,11 +20,21 @@ use Ghostwriter\Compliance\Value\EnvironmentVariables;
 use Ghostwriter\Compliance\Value\GitHub\Action\Job;
 use Ghostwriter\Compliance\Value\Shell\ComposerCacheFilesDirectoryFinder;
 use Ghostwriter\Container\Interface\ContainerInterface;
-use RuntimeException;
+use Ghostwriter\Filesystem\Interface\FilesystemInterface;
 use Throwable;
 
 use const FILE_APPEND;
 use const PHP_EOL;
+
+use function array_map;
+use function array_unique;
+use function chdir;
+use function dispatchOutputEvent;
+use function file_put_contents;
+use function iterator_to_array;
+use function sprintf;
+use function sys_get_temp_dir;
+use function tempnam;
 
 final readonly class MatrixListener implements ListenerInterface
 {
@@ -35,26 +45,22 @@ final readonly class MatrixListener implements ListenerInterface
         private Composer $composer,
         private ComposerCacheFilesDirectoryFinder $composerCacheFilesDirectoryFinder,
         private EnvironmentVariables $environmentVariables,
-    ) {
-    }
+        private FilesystemInterface $filesystem,
+    ) {}
 
     /**
      * @throws Throwable
      */
     public function __invoke(MatrixEvent $generateMatrixEvent): void
     {
-        $root = \getcwd();
+        $currentWorkingDirectory = $this->filesystem->currentWorkingDirectory();
 
-        if ($root === false) {
-            throw new RuntimeException('Could not get current working directory');
-        }
+        chdir($currentWorkingDirectory);
 
-        \chdir($root);
-
-        $composerJson = $this->composer->readJsonFile($root);
-        $requiredPhpExtensions = \array_map(
+        $composerJson = $this->composer->readJsonFile($currentWorkingDirectory);
+        $requiredPhpExtensions = array_map(
             static fn (Extension $extension): string => (string) $extension,
-            \iterator_to_array($composerJson->getRequiredPhpExtensions())
+            iterator_to_array($composerJson->getRequiredPhpExtensions())
         );
 
         $composerStrategies = [];
@@ -65,16 +71,19 @@ final readonly class MatrixListener implements ListenerInterface
         foreach ($this->automation->toArray() as $automation) {
             if ($automation instanceof ComposerStrategy) {
                 $composerStrategies[$automation->name] = $automation;
+
                 continue;
             }
 
             if ($automation instanceof Tool) {
                 $tools[$automation->name] = $automation;
+
                 continue;
             }
 
             if ($automation instanceof PhpVersion) {
                 $phpVersions[$automation->name] = $automation;
+
                 continue;
             }
 
@@ -88,8 +97,8 @@ final readonly class MatrixListener implements ListenerInterface
         $constraints = $composerJson->getPhpVersionConstraint()
             ->getVersion();
         $composerCacheFilesDirectory = ($this->composerCacheFilesDirectoryFinder)();
-        $composerJsonPath = $this->composer->getJsonFilePath($root);
-        $composerLockPath = $this->composer->getLockFilePath($root);
+        $composerJsonPath = $this->composer->getJsonFilePath($currentWorkingDirectory);
+        $composerLockPath = $this->composer->getLockFilePath($currentWorkingDirectory);
         foreach ($tools as $toolEnum) {
             $tool = $this->container->get($toolEnum->toString());
             if (! $tool instanceof ToolInterface) {
@@ -104,7 +113,7 @@ final readonly class MatrixListener implements ListenerInterface
 
             $command = $tool->command();
 
-            $extensions = \array_unique([...$requiredPhpExtensions, ...$tool->extensions()]);
+            $extensions = array_unique([...$requiredPhpExtensions, ...$tool->extensions()]);
 
             if (! $tool instanceof PHPUnit) {
                 $generateMatrixEvent->include(
@@ -118,6 +127,7 @@ final readonly class MatrixListener implements ListenerInterface
                         PhpVersion::latest(),
                     )
                 );
+
                 continue;
             }
 
@@ -134,7 +144,7 @@ final readonly class MatrixListener implements ListenerInterface
                 foreach ($composerStrategies as $composerStrategy) {
                     if (
                         $tool instanceof Psalm
-                        && $composerStrategy !== ComposerStrategy::LOCKED
+                        && ComposerStrategy::LOCKED !== $composerStrategy
                     ) {
                         continue;
                     }
@@ -168,13 +178,13 @@ final readonly class MatrixListener implements ListenerInterface
 
         $gitHubOutput = $this->environmentVariables->get(
             'GITHUB_OUTPUT',
-            \tempnam(\sys_get_temp_dir(), 'GITHUB_OUTPUT')
+            tempnam(sys_get_temp_dir(), 'GITHUB_OUTPUT')
         );
 
-        $matrix = \sprintf('matrix=%s' . PHP_EOL, $generateMatrixEvent->getMatrix());
+        $matrix = sprintf('matrix=%s' . PHP_EOL, $generateMatrixEvent->getMatrix());
 
-        \file_put_contents($gitHubOutput, $matrix, FILE_APPEND);
+        file_put_contents($gitHubOutput, $matrix, FILE_APPEND);
 
-        \dispatchOutputEvent($matrix);
+        dispatchOutputEvent($matrix);
     }
 }
