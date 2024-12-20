@@ -22,7 +22,6 @@
     "support": {
         "issues": "https://github.com/ghostwriter/compliance/issues",
         "source": "https://github.com/ghostwriter/compliance",
-        "docs": "https://github.com/ghostwriter/compliance",
         "rss": "https://github.com/ghostwriter/compliance/releases.atom",
         "security": "https://github.com/ghostwriter/compliance/security/advisories/new"
     },
@@ -57,7 +56,7 @@
         "ghostwriter/option": "^1.5.1",
         "ghostwriter/shell": "^0.1.0",
         "ghostwriter/uuid": "^1.0.1",
-        "symfony/console": "^7.2.0"
+        "symfony/console": "^7.2.1"
     },
     "require-dev": {
         "ghostwriter/coding-standard": "dev-main",
@@ -75,10 +74,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "Tests\\Unit\\": "tests/unit/"
         },
         "exclude-from-classmap": [
-            "tests/Fixture/"
+            "tests/fixture/"
         ]
     },
     "bin": [
@@ -103,9 +102,15 @@
     },
     "scripts": {
         "bin_ecs": "ecs check --clear-cache --no-interaction",
-        "bin_infection": "vendor/ghostwriter/coding-standard/tools/infection --ansi --show-mutations --threads=max --min-msi=0 --min-covered-msi=0",
+        "bin_infection": [
+            "@xdebug",
+            "vendor/ghostwriter/coding-standard/tools/infection --ansi --show-mutations --threads=max --min-msi=0 --min-covered-msi=0"
+        ],
         "bin_phive": "vendor/ghostwriter/coding-standard/tools/phive",
-        "bin_phpunit": "vendor/ghostwriter/coding-standard/tools/phpunit --do-not-cache-result --colors=always",
+        "bin_phpunit": [
+            "@xdebug",
+            "vendor/ghostwriter/coding-standard/tools/phpunit --do-not-cache-result --colors=always"
+        ],
         "bin_psalm": "vendor/ghostwriter/coding-standard/tools/psalm --no-cache",
         "bin_rector": "rector process --no-ansi --clear-cache",
         "cache": [
@@ -149,6 +154,7 @@
             "@phpunit",
             "@psalm:shepherd",
             "@infection"
-        ]
+        ],
+        "xdebug": "@putenv XDEBUG_MODE=coverage"
     }
 }
