@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Value\Composer\Json;
 
-use Ghostwriter\Compliance\Value\Composer\InstalledVersionsResolver;
+use Ghostwriter\Compliance\Value\Composer\Resolver\InstalledVersionsResolver;
 use Ghostwriter\Filesystem\Interface\FilesystemInterface;
 use Ghostwriter\Json\Interface\JsonInterface;
 use InvalidArgumentException;
@@ -16,8 +16,7 @@ final readonly class ComposerJsonReader
         private FilesystemInterface $filesystem,
         private JsonInterface $json,
         private InstalledVersionsResolver $installedVersionsResolver
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
