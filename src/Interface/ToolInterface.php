@@ -9,12 +9,12 @@ interface ToolInterface
     public function command(): string;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function configuration(): array;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function extensions(): array;
 
