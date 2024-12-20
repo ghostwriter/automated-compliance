@@ -8,13 +8,14 @@ use Ghostwriter\Compliance\Exception\FailedToFindComposerCacheFilesDirectoryExce
 use Ghostwriter\Shell\Interface\ShellInterface;
 use Throwable;
 
+use function mb_trim;
+
 final readonly class ComposerCacheFilesDirectoryFinder
 {
     public function __construct(
         private ShellInterface $shell,
         private ComposerExecutableFinder $composerExecutableFinder,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
@@ -27,8 +28,8 @@ final readonly class ComposerCacheFilesDirectoryFinder
             ['config', 'cache-files-dir', '--no-interaction']
         );
 
-        $output = \mb_trim($result->stdout());
-        if ($output === '' || $result->exitCode() !== 0) {
+        $output = mb_trim($result->stdout());
+        if ('' === $output || $result->exitCode() !== 0) {
             throw new FailedToFindComposerCacheFilesDirectoryException($result->stderr());
         }
 
