@@ -19,8 +19,7 @@ final readonly class Logger implements ListenerInterface
     public function __construct(
         private EventDispatcherInterface $eventDispatcher,
         private SymfonyStyle $symfonyStyle,
-    ) {
-    }
+    ) {}
 
     public function __invoke(GitHubEventInterface $gitHubEvent): void
     {
