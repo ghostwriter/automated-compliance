@@ -15,8 +15,7 @@ final readonly class GitHubListener implements ListenerInterface
     public function __construct(
         private ContainerInterface $container,
         private EventDispatcherInterface $eventDispatcher,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
