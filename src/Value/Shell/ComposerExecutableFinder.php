@@ -10,8 +10,7 @@ final readonly class ComposerExecutableFinder
 {
     public function __construct(
         private WhereExecutableFinder $whereExecutableFinder,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
