@@ -8,6 +8,7 @@ use Ghostwriter\Compliance\Container\ServiceProvider;
 use Ghostwriter\Compliance\Value\Composer\Composer;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
+use Ghostwriter\Filesystem\Interface\FilesystemInterface;
 use Override;
 use PHPUnit\Framework\TestCase;
 use Throwable;
@@ -17,6 +18,8 @@ abstract class AbstractTestCase extends TestCase
     public Composer $composer;
 
     public ContainerInterface $container;
+
+    public FilesystemInterface $filesystem;
 
     /**
      * @throws Throwable
@@ -31,6 +34,8 @@ abstract class AbstractTestCase extends TestCase
         $this->container->provide(ServiceProvider::class);
 
         $this->composer = $this->container->get(Composer::class);
+
+        $this->filesystem = $this->container->get(FilesystemInterface::class);
     }
 
     /**
