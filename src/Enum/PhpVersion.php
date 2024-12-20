@@ -7,6 +7,8 @@ namespace Ghostwriter\Compliance\Enum;
 use const PHP_MAJOR_VERSION;
 use const PHP_MINOR_VERSION;
 
+use function array_filter;
+
 enum PhpVersion: int
 {
     case PHP_54 = 50400;
@@ -59,7 +61,7 @@ enum PhpVersion: int
 
     public static function isExperimental(self $phpVersion): bool
     {
-        return $phpVersion->value >= self::experimental()->value;
+        return self::experimental()->value <= $phpVersion->value;
     }
 
     public static function latest(): self
@@ -74,11 +76,11 @@ enum PhpVersion: int
 
     public static function supported(): array
     {
-        return \array_filter(
+        return array_filter(
             self::cases(),
-            static fn (self $phpVersion): bool =>
-            ($phpVersion->value >= self::lowest()->value && $phpVersion->value <= self::highest()->value)
-            && $phpVersion->value <= self::current()->value
+            static fn (self $phpVersion): bool
+            => (self::lowest()->value <= $phpVersion->value && self::highest()->value >= $phpVersion->value)
+            && self::current()->value >= $phpVersion->value
         );
     }
 }
