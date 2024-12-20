@@ -13,7 +13,11 @@ final readonly class MatrixEvent
 {
     public function __construct(
         private Matrix $matrix,
-    ) {
+    ) {}
+
+    public static function new(): self
+    {
+        return Container::getInstance()->get(self::class);
     }
 
     public function exclude(array $matrices): void
@@ -32,10 +36,5 @@ final readonly class MatrixEvent
     public function include(Job $job): void
     {
         $this->matrix->include($job);
-    }
-
-    public static function new(): self
-    {
-        return Container::getInstance()->get(self::class);
     }
 }
