@@ -9,13 +9,13 @@ use Generator;
 use Ghostwriter\Compliance\Value\Composer\DependencyName;
 use Ghostwriter\Compliance\Value\Composer\DependencyVersion;
 use Ghostwriter\Compliance\Value\Composer\Extension;
-use Ghostwriter\Compliance\Value\Composer\InstalledVersionsResolver;
 use Ghostwriter\Compliance\Value\Composer\License;
 use Ghostwriter\Compliance\Value\Composer\Package;
 use Ghostwriter\Compliance\Value\Composer\PhpVersionConstraintInterface;
 use Ghostwriter\Compliance\Value\Composer\RequireDevList;
 use Ghostwriter\Compliance\Value\Composer\RequireList;
 use Ghostwriter\Compliance\Value\Composer\RequirePhp;
+use Ghostwriter\Compliance\Value\Composer\Resolver\InstalledVersionsResolver;
 use Ghostwriter\Json\Interface\JsonInterface;
 
 final readonly class ComposerJson
@@ -121,8 +121,8 @@ final readonly class ComposerJson
     public function getVersion(): DependencyVersion
     {
         return new DependencyVersion(
-            $this->contents['version'] ??
-            InstalledVersions::getPrettyVersion($this->contents['name'])
+            $this->contents['version']
+            ?? InstalledVersions::getPrettyVersion($this->contents['name'])
         );
     }
 
