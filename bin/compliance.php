@@ -14,12 +14,20 @@ use const E_USER_DEPRECATED;
 use const PHP_EOL;
 use const STDERR;
 
+use function dirname;
+use function error_reporting;
+use function file_exists;
+use function fwrite;
+use function restore_error_handler;
+use function set_error_handler;
+use function sprintf;
+
 /** @var ?string $_composer_autoload_path */
 (static function (string $composerAutoloadPath): void {
-    \set_error_handler(
+    set_error_handler(
         // Convert PHP errors to exceptions,
         static function (int $severity, string $message, string $file, int $line): void {
-            if ((\error_reporting() & $severity) === 0) {
+            if (0 === (error_reporting() & $severity)) {
                 // Error not in mask
                 return;
             }
@@ -30,10 +38,10 @@ use const STDERR;
         E_ALL & ~E_USER_DEPRECATED & ~E_DEPRECATED & ~E_NOTICE
     );
 
-    if (! \file_exists($composerAutoloadPath)) {
-        \fwrite(
+    if (! file_exists($composerAutoloadPath)) {
+        fwrite(
             STDERR,
-            \sprintf('[ERROR]Failed to locate "%s"\n please run "composer install"\n', $composerAutoloadPath)
+            sprintf('[ERROR]Failed to locate "%s"\n please run "composer install"\n', $composerAutoloadPath)
         );
 
         exit(1);
@@ -45,9 +53,9 @@ use const STDERR;
         /** #BlackLivesMatter */
         $exitCode = Compliance::new()->run();
     } catch (Throwable $throwable) {
-        \fwrite(
+        fwrite(
             STDERR,
-            \sprintf(
+            sprintf(
                 '[%s] %s%s%s' . PHP_EOL,
                 $throwable::class,
                 $throwable->getMessage(),
@@ -58,7 +66,7 @@ use const STDERR;
 
         $exitCode = $throwable->getCode();
     } finally {
-        \restore_error_handler();
+        restore_error_handler();
         //    000: Success.
         //    126: Permission denied or command not executable.
         //    127: Command not found.
@@ -70,4 +78,4 @@ use const STDERR;
         //    255: Generic error indicating unspecified problem.
         exit($exitCode ?? 255);
     }
-})($_composer_autoload_path ?? \dirname(__DIR__) . '/vendor/autoload.php');
+})($_composer_autoload_path ?? dirname(__DIR__) . '/vendor/autoload.php');
