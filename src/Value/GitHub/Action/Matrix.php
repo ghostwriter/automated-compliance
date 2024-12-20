@@ -10,18 +10,17 @@ use Throwable;
 final class Matrix
 {
     /**
-     * @param array<string>                                                                                                             $exclude
-     * @param array<array{name:string,command:string,extensions:list<string>,os:string,php:string,dependency:string,experimental:bool}> $include
+     * @param list<array{name:string,command:string,extensions:list<string>,os:string,php:string,dependency:string,experimental:bool}> $include
+     * @param list<string>                                                                                                             $exclude
      */
     public function __construct(
         public JsonInterface $json,
         public array $include = [],
         public array $exclude = [],
-    ) {
-    }
+    ) {}
 
     /**
-     * @param array<string> $matrices
+     * @param list<string> $matrices
      */
     public function exclude(array $matrices): void
     {
@@ -40,7 +39,7 @@ final class Matrix
      */
     public function toString(): string
     {
-        if ($this->include === []) {
+        if ([] === $this->include) {
             $this->include(Job::noop());
         }
 
