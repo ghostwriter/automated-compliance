@@ -106,13 +106,7 @@ final readonly class MatrixListener implements ListenerInterface
 
             $extensions = \array_unique([...$requiredPhpExtensions, ...$tool->extensions()]);
 
-            if (
-                ! match (true) {
-                    $tool instanceof Psalm,
-                    $tool instanceof PHPUnit => true,
-                    default => false,
-                }
-            ) {
+            if (! $tool instanceof PHPUnit) {
                 $generateMatrixEvent->include(
                     Job::new(
                         $name,
