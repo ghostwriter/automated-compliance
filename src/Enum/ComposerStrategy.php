@@ -13,19 +13,19 @@ enum ComposerStrategy: string
     public function isLatest(): bool
     {
         // Installing latest supported dependencies via Composer
-        return $this === self::LATEST;
+        return self::LATEST === $this;
     }
 
     public function isLocked(): bool
     {
         // Installing locked dependencies as specified in lockfile via Composer
-        return $this === self::LOCKED;
+        return self::LOCKED === $this;
     }
 
     public function isLowest(): bool
     {
         // Installing lowest supported dependencies via Composer
-        return $this === self::LOWEST;
+        return self::LOWEST === $this;
     }
 
     public function toString(): string
