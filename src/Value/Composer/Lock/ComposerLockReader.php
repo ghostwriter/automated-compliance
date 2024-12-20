@@ -14,8 +14,7 @@ final readonly class ComposerLockReader
     public function __construct(
         private FilesystemInterface $filesystem,
         private JsonInterface $json
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable
