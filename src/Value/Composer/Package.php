@@ -15,7 +15,14 @@ final readonly class Package implements DependencyInterface
         private DependencyName $dependencyName,
         private DependencyVersion $dependencyVersion,
         private JsonInterface $json
-    ) {
+    ) {}
+
+    public static function new(
+        DependencyName $dependencyName,
+        DependencyVersion $dependencyVersion,
+        JsonInterface $json
+    ): self {
+        return new self($dependencyName, $dependencyVersion, $json);
     }
 
     /**
@@ -45,13 +52,5 @@ final readonly class Package implements DependencyInterface
     public function version(): DependencyVersion
     {
         return $this->dependencyVersion;
-    }
-
-    public static function new(
-        DependencyName $dependencyName,
-        DependencyVersion $dependencyVersion,
-        JsonInterface $json
-    ): self {
-        return new self($dependencyName, $dependencyVersion, $json);
     }
 }
