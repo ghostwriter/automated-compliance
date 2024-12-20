@@ -4,6 +4,4 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance\Value\GPG;
 
-final readonly class ImportPrivateKey
-{
-}
+final readonly class ImportPrivateKey {}
