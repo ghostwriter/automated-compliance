@@ -6,6 +6,4 @@ namespace Ghostwriter\Compliance\Exception;
 
 use RuntimeException;
 
-final class FailedToFindComposerCacheFilesDirectoryException extends RuntimeException
-{
-}
+final class FailedToFindComposerCacheFilesDirectoryException extends RuntimeException {}
