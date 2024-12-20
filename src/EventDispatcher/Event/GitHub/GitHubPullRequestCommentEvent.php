@@ -14,8 +14,7 @@ final readonly class GitHubPullRequestCommentEvent implements GitHubEventInterfa
 {
     public function __construct(
         private string $content
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function payload(): string
