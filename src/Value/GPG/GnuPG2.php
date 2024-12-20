@@ -7,6 +7,9 @@ namespace Ghostwriter\Compliance\Value\GPG;
 use RuntimeException;
 use Throwable;
 
+use function file_exists;
+use function sprintf;
+
 final readonly class GnuPG2
 {
     /**
@@ -15,8 +18,8 @@ final readonly class GnuPG2
     public function __construct(
         private string $binary,
     ) {
-        if (! \file_exists($binary)) {
-            throw new RuntimeException(\sprintf('GnuPG binary "%s" does not exist', $binary));
+        if (! file_exists($binary)) {
+            throw new RuntimeException(sprintf('GnuPG binary "%s" does not exist', $binary));
         }
     }
 
