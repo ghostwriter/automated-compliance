@@ -9,12 +9,14 @@ use Ghostwriter\Shell\Interface\ShellInterface;
 
 use const DIRECTORY_SEPARATOR;
 
+use function mb_trim;
+use function sprintf;
+
 final readonly class WhereExecutableFinder
 {
     public function __construct(
         private ShellInterface $shell,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws FailedToFindExecutableException
@@ -28,11 +30,11 @@ final readonly class WhereExecutableFinder
 
         $result = $this->shell->execute($where, [$executable]);
 
-        $stdout = \mb_trim($result->stdout());
+        $stdout = mb_trim($result->stdout());
 
-        if ($stdout === '' || $result->exitCode() !== 0) {
+        if ('' === $stdout || $result->exitCode() !== 0) {
             throw new FailedToFindExecutableException(
-                \sprintf('Failed to find executable "%s": %s', $executable, $result->stderr())
+                sprintf('Failed to find executable "%s": %s', $executable, $result->stderr())
             );
         }
 
