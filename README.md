@@ -1,10 +1,9 @@
 # Automation
 
-[![Automation](https://github.com/ghostwriter/automation/actions/workflows/automation.yml/badge.svg)](https://github.com/ghostwriter/automation/actions/workflows/automation.yml)
-[![Supported PHP Version](https://badgen.net/packagist/php/ghostwriter/automation?color=8892bf)](https://www.php.net/supported-versions)
-[![Type Coverage](https://shepherd.dev/github/ghostwriter/automation/coverage.svg)](https://shepherd.dev/github/ghostwriter/automation)
-[![Latest Version on Packagist](https://badgen.net/packagist/v/ghostwriter/automation)](https://packagist.org/packages/ghostwriter/automation)
-[![Downloads](https://badgen.net/packagist/dt/ghostwriter/automation?color=blue)](https://packagist.org/packages/ghostwriter/automation)
+[![Automation](https://github.com/ghostwriter/compliance/actions/workflows/automation.yml/badge.svg)](https://github.com/ghostwriter/compliance/actions/workflows/automation.yml)
+[![Supported PHP Version](https://badgen.net/packagist/php/ghostwriter/compliance?color=8892bf)](https://www.php.net/supported-versions)
+[![Latest Version on Packagist](https://badgen.net/packagist/v/ghostwriter/compliance)](https://packagist.org/packages/ghostwriter/compliance)
+[![Downloads](https://badgen.net/packagist/dt/ghostwriter/compliance?color=blue)](https://packagist.org/packages/ghostwriter/compliance)
 
 `Automation` - `CI/CD` & `QA Testing`  Test Automation for `PHP` via `GitHub Actions`.
 
@@ -82,7 +81,7 @@ on:
 
 jobs:
   automation:
-    uses: ghostwriter/automation/.github/workflows/automation.yml@v1
+    uses: ghostwriter/compliance/.github/workflows/automation.yml@v1
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -94,7 +93,7 @@ jobs:
 You can install the package via composer:
 
 ``` bash
-composer require ghostwriter/automation --dev
+composer require ghostwriter/compliance --dev
 ```
 
 ```bash
@@ -137,16 +136,16 @@ vendor/bin/automation workflow
 ``` bash
 # Install from the command line:
 
-docker pull ghcr.io/ghostwriter/automation:v1
+docker pull ghcr.io/ghostwriter/compliance:v1
 
 # Usage from the command line:
 
-docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/automation workflow
-docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/automation matrix
+docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance workflow
+docker run -v $(PWD):/app -w=/app ghcr.io/ghostwriter/compliance matrix
 
 # Use as base image in Dockerfile:
 
-FROM ghcr.io/ghostwriter/automation:v1
+FROM ghcr.io/ghostwriter/compliance:v1
 ```
 
 ## Supported Tools ?!
@@ -200,7 +199,7 @@ If you discover any security related issues, please email `nathanael.esayeas@pro
 - [`mlocati/docker-php-extension-installer`](https://github.com/mlocati/docker-php-extension-installer)
 - [`shivammathur/setup-php`](https://github.com/shivammathur/setup-php)
 - [`symfony`](https://github.com/symfony)
-- [All Contributors](https://github.com/ghostwriter/automation/contributors)
+- [All Contributors](https://github.com/ghostwriter/compliance/contributors)
 
 ## License
 
