@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "814c99a848c5ab114ad923b7c7aa19eb",
+    "content-hash": "9294db99dc7f35f6ee3be5e47a3c7405",
     "packages": [
         {
             "name": "composer/semver",
@@ -281,20 +281,20 @@
         },
         {
             "name": "ghostwriter/config",
-            "version": "0.4.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ghostwriter/config.git",
-                "reference": "bcbe21a32abd8e2788c58e74a9bb82b676b4be5f"
+                "reference": "f2e1aa3cfe936244deb3128e081997f93576b910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/config/zipball/bcbe21a32abd8e2788c58e74a9bb82b676b4be5f",
-                "reference": "bcbe21a32abd8e2788c58e74a9bb82b676b4be5f",
+                "url": "https://api.github.com/repos/ghostwriter/config/zipball/f2e1aa3cfe936244deb3128e081997f93576b910",
+                "reference": "f2e1aa3cfe936244deb3128e081997f93576b910",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1 <8.4"
+                "php": ">=8.4"
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main"
@@ -324,10 +324,9 @@
                 "ghostwriter"
             ],
             "support": {
-                "docs": "https://github.com/ghostwriter/config",
-                "forum": "https://github.com/ghostwriter/config/discussions",
                 "issues": "https://github.com/ghostwriter/config/issues",
                 "rss": "https://github.com/ghostwriter/config/releases.atom",
+                "security": "https://github.com/ghostwriter/config/security/advisories/new",
                 "source": "https://github.com/ghostwriter/config"
             },
             "funding": [
@@ -336,7 +335,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-11T10:18:30+00:00"
+            "time": "2025-01-07T22:42:43+00:00"
         },
         {
             "name": "ghostwriter/container",
@@ -578,65 +577,6 @@
                 }
             ],
             "time": "2024-02-09T19:45:55+00:00"
-        },
-        {
-            "name": "ghostwriter/option",
-            "version": "1.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ghostwriter/option.git",
-                "reference": "126c6ef6a87d0256a4806c2ef4e8985741a07577"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/option/zipball/126c6ef6a87d0256a4806c2ef4e8985741a07577",
-                "reference": "126c6ef6a87d0256a4806c2ef4e8985741a07577",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1,<8.4"
-            },
-            "require-dev": {
-                "ghostwriter/coding-standard": "dev-main"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ghostwriter\\Option\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nathanael Esayeas",
-                    "email": "nathanael.esayeas@protonmail.com",
-                    "homepage": "https://github.com/ghostwriter",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Provides an Option type implementation for PHP",
-            "homepage": "https://github.com/ghostwriter/option",
-            "keywords": [
-                "ghostwriter",
-                "option"
-            ],
-            "support": {
-                "docs": "https://github.com/ghostwriter/option",
-                "forum": "https://github.com/ghostwriter/option/discussions",
-                "issues": "https://github.com/ghostwriter/option/issues",
-                "rss": "https://github.com/ghostwriter/option/releases.atom",
-                "source": "https://github.com/ghostwriter/option"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/ghostwriter",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-07-05T19:51:28+00:00"
         },
         {
             "name": "ghostwriter/shell",
@@ -2105,42 +2045,43 @@
             "time": "2025-01-15T03:14:49+00:00"
         },
         {
-            "name": "ghostwriter/psalm-plugin",
+            "name": "ghostwriter/handrail",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ghostwriter/psalm-plugin.git",
-                "reference": "bffd0762547b19b7e76c0797985fa5b708defe46"
+                "url": "https://github.com/ghostwriter/handrail.git",
+                "reference": "06d1483395f6682e6ef476cf3cc893ecb4dd3037"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ghostwriter/psalm-plugin/zipball/bffd0762547b19b7e76c0797985fa5b708defe46",
-                "reference": "bffd0762547b19b7e76c0797985fa5b708defe46",
+                "url": "https://api.github.com/repos/ghostwriter/handrail/zipball/06d1483395f6682e6ef476cf3cc893ecb4dd3037",
+                "reference": "06d1483395f6682e6ef476cf3cc893ecb4dd3037",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1"
-            },
-            "replace": {
-                "ghostwriter/example-psalm-plugin": "*",
-                "ghostwriter/phpunit-psalm-plugin": "*"
+                "composer-plugin-api": "^2.6.0",
+                "composer-runtime-api": "^2.2.2",
+                "composer/composer": "^2.8.4",
+                "ext-tokenizer": "*",
+                "ghostwriter/container": "^4.0.3",
+                "ghostwriter/event-dispatcher": "^5.0.2",
+                "ghostwriter/filesystem": "^0.1.1",
+                "ghostwriter/json": "^3.0.0",
+                "php": ">=8.3"
             },
             "require-dev": {
                 "ghostwriter/coding-standard": "dev-main",
-                "ghostwriter/psalm-plugin-tester": "^0.2.1",
-                "psr/container": "^2.0.2",
-                "vimeo/psalm": "^5.26.1"
+                "ghostwriter/psalm-plugin": "dev-main"
             },
             "default-branch": true,
-            "type": "psalm-plugin",
+            "type": "composer-plugin",
             "extra": {
-                "psalm": {
-                    "pluginClass": "Ghostwriter\\PsalmPlugin\\Plugin"
-                }
+                "class": "Ghostwriter\\Handrail\\Plugin",
+                "plugin-optional": false
             },
             "autoload": {
                 "psr-4": {
-                    "Ghostwriter\\PsalmPlugin\\": "src/"
+                    "Ghostwriter\\Handrail\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2155,21 +2096,24 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Provides a plugin for Psalm",
-            "homepage": "https://github.com/ghostwriter/psalm-plugin",
+            "description": "Safeguard PHP functions from redeclaration conflicts",
+            "homepage": "https://github.com/ghostwriter/handrail",
             "keywords": [
-                "dev",
+                "composer",
+                "composer-plugin",
+                "conflicts",
+                "functions",
                 "ghostwriter",
-                "psalm",
-                "psalm-plugin",
-                "static analysis"
+                "handrail",
+                "plugin",
+                "redeclaration",
+                "safeguard"
             ],
             "support": {
-                "docs": "https://github.com/ghostwriter/psalm-plugin",
-                "forum": "https://github.com/ghostwriter/psalm-plugin/discussions",
-                "issues": "https://github.com/ghostwriter/psalm-plugin/issues",
-                "rss": "https://github.com/ghostwriter/psalm-plugin/releases.atom",
-                "source": "https://github.com/ghostwriter/psalm-plugin"
+                "issues": "https://github.com/ghostwriter/handrail/issues",
+                "rss": "https://github.com/ghostwriter/handrail/releases.atom",
+                "security": "https://github.com/ghostwriter/handrail/security/advisories/new",
+                "source": "https://github.com/ghostwriter/handrail"
             },
             "funding": [
                 {
@@ -2177,7 +2121,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-08T15:47:51+00:00"
+            "time": "2025-01-08T06:26:01+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -4873,12 +4817,12 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ghostwriter/coding-standard": 20,
-        "ghostwriter/psalm-plugin": 20
+        "ghostwriter/handrail": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-json": "*",
         "ext-mbstring": "*",
         "composer-plugin-api": "^2.6.0",
@@ -4886,7 +4830,7 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "8.3.999"
+        "php": "8.4.999"
     },
     "plugin-api-version": "2.6.0"
 }
