@@ -1,38 +1,22 @@
 name: Automation
 
 on:
-  pull_request:
-  push:
+  pull_request: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+  push: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
     branches:
-      # Default branch
-      - "main"
-      # Release branches
-      ## 1.2.x - e.g. Semantic Versioning
-      - "[0-9]+.[0-9]+.x"
-      ## v1 - e.g. GitHub Actions Versioning
-      - "v[0-9]+"
-  schedule:
+      - "main" # Default branch
+      - "[0-9]+.[0-9]+.x" # Release branches (1.2.x - e.g. Semantic Versioning)
+      - "v[0-9]+" # v1 - e.g. GitHub Actions Versioning
+  schedule: # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onschedule
     - cron: "0 * * * *" # Runs hourly
-  workflow_dispatch:
-  workflow_run:
-    workflows: ["Docker Build"]
-    types:
-      - completed
-  workflow_call:
-    secrets:
-      CODECOV_TOKEN:
-        required: false
-      GPG_PRIVATE_KEY:
-        required: false
-      INFECTION_DASHBOARD_API_KEY:
-        required: false
+  workflow_dispatch: # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onworkflow_dispatch
 
-
-# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 # values: read, write, none
-permissions:
+permissions: # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
   # actions: Work with GitHub Actions. For example, actions: write permits an action to cancel a workflow run.
   actions: write
+  # attestations: Work with artifact attestations. For example, attestations: write permits an action to generate an artifact attestation for a build.
+  attestations: write
   # checks: Work with check runs and check suites. For example, checks: write permits an action to create a check run.
   checks: write
   # contents: Work with the contents of the repository. For example, contents: read permits an action to list the commits, and contents:write allows the action to create a release.
@@ -59,103 +43,9 @@ permissions:
   statuses: write
 
 jobs:
-  matrix:
-    name: Generate job matrix
-    concurrency:
-      group: ${{ github.head_ref || github.ref }}-${{ github.event_name }}-${{ github.workflow }}
-      cancel-in-progress: true
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
-      codecov: ${{ env.CODECOV_TOKEN }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # - name: Determine CI Jobs (dev)
-      #   id: matrix
-      #   if: github.event_name == 'push' || github.event_name == 'pull_request'
-      #   uses: ghostwriter/compliance@v1
-      #   with:
-      #     command: matrix
-
-      - name: Determine CI Jobs
-        id: matrix
-        uses: docker://ghcr.io/ghostwriter/compliance:v1
-
-  qa:
-    name: "[PHP${{ matrix.php }}][${{ matrix.dependency }}]${{ matrix.name }} on ${{ matrix.os }}"
-    needs: [matrix]
-    runs-on: ${{ matrix.os }}-latest
-    continue-on-error: ${{ matrix.dependency == 'lowest' || matrix.experimental }}
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup PHP ${{ matrix.php }} with ${{ join(matrix.extensions, ', ') }} extensions.
-        uses: shivammathur/setup-php@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          coverage: pcov
-          tools: psalm,phpunit,infection
-          ini-values: assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
-          php-version: ${{ matrix.php }}
-          extensions: :php-psr,pcntl, ${{ join(matrix.extensions, ', ') }}
-
-      - name: Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
-      - name: Setup Cache Directory
-        id: composer-cache
-        run: echo "directory=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composer-cache.outputs.directory || matrix.composerCacheFilesDirectory }}
-          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ matrix.dependency }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ matrix.dependency }}-
-
-      - name: Validate composer.json file
-        working-directory: ${{ github.workspace }}
-        run: ${{ matrix.validateCommand }}
-
-      - name: Install ${{ matrix.dependency }} dependencies
-        working-directory: ${{ github.workspace }}
-        run: |
-          composer config --global github-oauth.github.com ${{secrets.GITHUB_TOKEN}};
-          composer config --no-plugins allow-plugins.ghostwriter/coding-standard true;
-          ${{ matrix.installCommand }};
-          composer config --global --auth --unset github-oauth.github.com
-
-      - name: Run ${{ matrix.name }} command
-        run: ${{ matrix.runCommand }}
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY || secrets.STRYKER_DASHBOARD_API_KEY }}
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        if: ${{ matrix.name == 'PHPUnit' }}
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        with:
-          directory: ${{ github.workspace }}/.cache/phpunit/
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
-
-      - name: Upload test results to Codecov
-        if: ${{ matrix.name == 'PHPUnit' }}
-        uses: codecov/test-results-action@v1
-        with:
-          directory: ${{ github.workspace }}/.cache/phpunit/
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
+  automation:
+    uses: ghostwriter/compliance/.github/workflows/automation.yml@v1
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY }}
