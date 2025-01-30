@@ -1,6 +1,6 @@
 # Definition of the GitHub action as per https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
 #
-# Uses GITHUB_TOKEN, GPG_PRIVATE_KEY, INFECTION_DASHBOARD_API_KEY, CODECOV_TOKEN environment variables
+# Uses GITHUB_TOKEN, GPG_PRIVATE_KEY, INFECTION_DASHBOARD_API_KEY environment variables
 # see https://docs.github.com/en/actions/reference/environment-variables
 
 name: 'ghostwriter/compliance'
