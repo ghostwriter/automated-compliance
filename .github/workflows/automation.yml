@@ -58,6 +58,9 @@ permissions:
 
 jobs:
   matrix:
+    defaults:
+      run:
+        shell: bash
     name: Generate job matrix
     concurrency:
       group: ${{ github.head_ref || github.ref }}-${{ github.event_name }}-${{ github.workflow }}
@@ -81,6 +84,9 @@ jobs:
         uses: docker://ghcr.io/ghostwriter/compliance:v1
 
   qa:
+    defaults:
+      run:
+        shell: bash
     name: "[PHP${{ matrix.php }}][${{ matrix.dependency }}]${{ matrix.name }} on ${{ matrix.os }}"
     needs: [matrix]
     runs-on: ${{ matrix.os }}-latest
