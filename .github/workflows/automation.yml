@@ -109,7 +109,7 @@ jobs:
           tools: psalm,phpunit,infection
           ini-values: assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
           php-version: ${{ matrix.php }}
-          extensions: :php-psr,gd,pcntl, ${{ join(matrix.extensions, ', ') }}
+          extensions: :php-psr,ctype,curl,dom,filter,gd,hash,iconv,intl,json,libxml,mbstring,openssl,pcntl,phar,readline,session,simplexml,tokenizer,xml,xmlwriter,${{ join(matrix.extensions, ', ') }}
 
       - name: Setup problem matchers
         run: |
