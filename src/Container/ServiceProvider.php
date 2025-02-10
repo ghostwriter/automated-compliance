@@ -40,6 +40,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\StyleInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+use const DIRECTORY_SEPARATOR;
+
 use function getcwd;
 
 final readonly class ServiceProvider implements ServiceProviderInterface
@@ -73,7 +75,7 @@ final readonly class ServiceProvider implements ServiceProviderInterface
     public function __invoke(ContainerInterface $container): void
     {
         $_ENV['GITHUB_EVENT_NAME'] ??= 'push';
-        $_ENV['GITHUB_EVENT_PATH'] ??= 'tests' . \DIRECTORY_SEPARATOR . 'fixture' . \DIRECTORY_SEPARATOR . 'payload.json';
+        $_ENV['GITHUB_EVENT_PATH'] ??= 'tests' . DIRECTORY_SEPARATOR . 'fixture' . DIRECTORY_SEPARATOR . 'payload.json';
         $_ENV['GITHUB_TOKEN'] ??= 'github-token';
         $_ENV['GITHUB_WORKSPACE'] ??= getcwd();
         $_ENV['RUNNER_DEBUG'] ??= 1;
