@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Ghostwriter\Compliance;
 
-use Ghostwriter\Compliance\Container\Factory\ComplianceFactory;
-use Ghostwriter\Container\Attribute\Factory;
+use Ghostwriter\Compliance\Container\ServiceProvider;
+use Ghostwriter\Container\Attribute\Provider;
 use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\ContainerInterface;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
-#[Factory(ComplianceFactory::class)]
+#[Provider(ServiceProvider::class)]
 final readonly class Compliance
 {
     /**
@@ -61,8 +62,10 @@ final readonly class Compliance
     /**
      * @throws Throwable
      */
-    public function run(): int
+    public function run(array $arguments = []): int
     {
+        $this->container->set(ArgvInput::class, new ArgvInput($arguments));
+
         return $this->application->run(
             $this->container->get(InputInterface::class),
             $this->container->get(OutputInterface::class)
