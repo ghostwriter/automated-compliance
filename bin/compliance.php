@@ -49,9 +49,9 @@ use function sprintf;
 
     require_once $composerAutoloadPath;
 
+    /** #BlackLivesMatter */
     try {
-        /** #BlackLivesMatter */
-        $exitCode = Compliance::new()->run();
+        $exitCode = Compliance::new()->run($_SERVER['argv'] ?? []);
     } catch (Throwable $throwable) {
         fwrite(
             STDERR,
