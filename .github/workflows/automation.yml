@@ -84,6 +84,8 @@ jobs:
         uses: docker://ghcr.io/ghostwriter/compliance:v1
 
   qa:
+    container:
+      image: ghcr.io/ghostwriter/php:${{ matrix.php }}
     defaults:
       run:
         shell: bash
