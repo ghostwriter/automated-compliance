@@ -12,6 +12,7 @@ use Ghostwriter\Compliance\Enum\PhpVersion;
 use Ghostwriter\Compliance\Enum\Tool;
 use Ghostwriter\Compliance\EventDispatcher\Event\MatrixEvent;
 use Ghostwriter\Compliance\Interface\ToolInterface;
+use Ghostwriter\Compliance\Tool\Infection;
 use Ghostwriter\Compliance\Tool\PHPUnit;
 use Ghostwriter\Compliance\Tool\Psalm;
 use Ghostwriter\Compliance\Value\Composer\Composer;
@@ -126,6 +127,9 @@ final readonly class MatrixListener implements ListenerInterface
                         $composerJsonPath,
                         $composerLockPath,
                         $tool instanceof Psalm ? PhpVersion::PHP_83 : PhpVersion::latest(),
+                        ComposerStrategy::LOCKED,
+                        OperatingSystem::UBUNTU,
+                        $tool instanceof Infection, // infection tool is experimental
                     )
                 );
 
@@ -143,10 +147,7 @@ final readonly class MatrixListener implements ListenerInterface
                 }
 
                 foreach ($composerStrategies as $composerStrategy) {
-                    if (
-                        $tool instanceof Psalm
-                        && ComposerStrategy::LOCKED !== $composerStrategy
-                    ) {
+                    if ($tool instanceof Psalm && ComposerStrategy::LOCKED !== $composerStrategy) {
                         continue;
                     }
 
