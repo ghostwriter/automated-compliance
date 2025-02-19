@@ -34,7 +34,7 @@ abstract class AbstractTool implements ToolInterface
     #[Override]
     public function extensions(): array
     {
-        return ['xdebug'];
+        return ['mbstring'];
     }
 
     #[Override]
