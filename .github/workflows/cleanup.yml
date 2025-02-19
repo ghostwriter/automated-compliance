@@ -1,0 +1,27 @@
+name: cleanup
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *" # Runs every hour.
+
+permissions:
+  packages: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: dataaxiom/ghcr-cleanup-action@v1
+        with:
+          delete-ghost-images: true
+          delete-partial-images: true
+          delete-untagged: true
+          log-level: debug
+          owner: ${{ github.repository_owner }}
+          package: compliance
+          repository: compliance
+          validate: true
